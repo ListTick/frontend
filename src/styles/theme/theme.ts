@@ -1,5 +1,5 @@
 import createTheme from '@mui/material/styles/createTheme';
-import styles from '../styles/base/export.module.scss';
+import styles from '../base/export.module.scss';
 
 export const theme = createTheme({
   palette: {
@@ -10,7 +10,7 @@ export const theme = createTheme({
       main: styles.secondaryColor
     },
     success: {
-      main: styles.accent
+      main: styles.accentColor
     },
     text: {
       primary: styles.textColor,
