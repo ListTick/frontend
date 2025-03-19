@@ -1,0 +1,26 @@
+@use '/src/styles/base/core.scss' as *;
+
+.navbar {
+  background-color: $secondary-color;
+
+  &__list {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    gap: $small-gap;
+  }
+}
+
+@media screen and (max-width: $breakpoint-tablet) {
+  .navbar {
+    &__list {
+      &--home h4 {
+        display: none;
+      }
+
+      &--settings {
+        display: none;
+      }
+    }
+  }
+}

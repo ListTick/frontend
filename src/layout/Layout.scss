@@ -1,0 +1,28 @@
+@use '/src/styles/base/core.scss' as *;
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+
+  &__navbar {
+    order: 0;
+  }
+
+  &__outlet {
+    flex: 1;
+    order: 1;
+  }
+}
+
+@media screen and (max-width: $breakpoint-tablet) {
+  .layout {
+    &__navbar {
+      order: 1;
+    }
+
+    &__outlet {
+      order: 0;
+    }
+  }
+}
