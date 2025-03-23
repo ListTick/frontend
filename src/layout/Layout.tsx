@@ -1,11 +1,11 @@
-import Divider from '@mui/material/Divider';
 import { Outlet } from 'react-router';
 import Authentication from '../pages/authentication/Authentication';
 import Navbar from './navbar/Navbar';
 import './Layout.scss';
+import Sidebar from './sidebar/Sidebar';
 
 const Layout = () => {
-  const isAuthenticated: boolean = false;
+  const isAuthenticated: boolean = true;
 
   return (
     <>
@@ -15,12 +15,14 @@ const Layout = () => {
         <div className='layout'>
           <div className='layout__navbar'>
             <Navbar />
-            <div className='layout__navbar--divider'>
-              <Divider />
-            </div>
           </div>
-          <div className='layout__outlet'>
-            <Outlet />
+          <div className='layout__main'>
+            <div className='layout__main--sidebar'>
+              <Sidebar />
+            </div>
+            <div className='layout__main--outlet'>
+              <Outlet />
+            </div>
           </div>
         </div>
       )}

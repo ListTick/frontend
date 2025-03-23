@@ -1,0 +1,25 @@
+@use '/src/styles/base/core.scss' as *;
+
+.sidebar__tab {
+  display: flex;
+  align-items: center;
+  padding: $padding-base;
+  gap: $small-gap;
+  p {
+    font-size: $font-size-medium;
+  }
+  &:hover {
+    cursor: pointer;
+    color: $accent-color;
+  }
+}
+
+.active {
+  color: $accent-color;
+}
+
+@media screen and (max-width: $breakpoint-tablet) {
+  .sidebar__tab p {
+    display: none;
+  }
+}

@@ -9,20 +9,35 @@
     order: 0;
   }
 
-  &__outlet {
-    flex: 1;
+  &__main {
+    display: flex;
+    flex-direction: row;
     order: 1;
+    flex-grow: 1;
+    &--sidebar {
+      border-right: $border;
+      background-color: $secondary-color;
+    }
+
+    &--outlet {
+      padding: $padding-base;
+      flex-grow: 1;
+    }
   }
 }
 
-@media screen and (max-width: $breakpoint-tablet) {
+@media screen and (max-width: $breakpoint-phone) {
   .layout {
     &__navbar {
       order: 1;
+      align-items: flex-end;
     }
 
-    &__outlet {
+    &__main {
       order: 0;
+      &--sidebar {
+        display: none;
+      }
     }
   }
 }

@@ -8,6 +8,11 @@
     justify-content: space-between;
     list-style: none;
     gap: $small-gap;
+    border-bottom: $border;
+
+    &--settings {
+      display: none;
+    }
   }
 }
 
@@ -17,8 +22,25 @@
       &--home h4 {
         display: none;
       }
+    }
+  }
+}
+@media screen and (min-width: $breakpoint-phone) {
+  .navbar {
+    &__list {
+      &--lists {
+        display: none;
+      }
+
+      &--tasks {
+        display: none;
+      }
 
       &--settings {
+        display: none;
+      }
+
+      &--notes {
         display: none;
       }
     }
