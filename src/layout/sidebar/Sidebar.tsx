@@ -2,6 +2,7 @@ import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import TaskAltIcon from '@mui/icons-material/TaskAlt';
 import StickyNote2Icon from '@mui/icons-material/StickyNote2';
 import FactCheckIcon from '@mui/icons-material/FactCheck';
+import HomeIcon from '@mui/icons-material/Home';
 import './Sidebar.scss';
 import { useNavigate } from 'react-router';
 import { useState } from 'react';
@@ -19,11 +20,14 @@ const Sidebar = () => {
     <div className='sidebar'>
       <ul>
         <li>
-          <div
-            className={`sidebar__tab ${activeTab === 'home' ? 'active' : ''}`}
-            onClick={() => handleTabChange('')}
-          >
+          <div className='sidebar__tab logo' onClick={() => handleTabChange('')}>
             <FactCheckIcon fontSize='medium' />
+          </div>
+        </li>
+        <li>
+          <div className={`sidebar__tab ${activeTab === 'home' ? 'active' : ''}`} onClick={() => handleTabChange('')}>
+            <HomeIcon fontSize='medium' />
+            <p>Home</p>
           </div>
         </li>
         <li className='sidebar__lists'>

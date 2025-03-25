@@ -1,3 +1,4 @@
+import HomeIcon from '@mui/icons-material/Home';
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import TaskAltIcon from '@mui/icons-material/TaskAlt';
 import StickyNote2Icon from '@mui/icons-material/StickyNote2';
@@ -13,6 +14,12 @@ const Navbar = () => {
   return (
     <header className='navbar'>
       <ul className='navbar__list'>
+        <li>
+          <div className='navbar__list--home navbar__tab' onClick={() => navigate(AppRoutes.HOME)}>
+            <HomeIcon fontSize='medium' />
+            <p>Home</p>
+          </div>
+        </li>
         <li>
           <div className='navbar__list--lists navbar__tab' onClick={() => navigate(AppRoutes.LISTS)}>
             <FormatListBulletedIcon fontSize='medium' />

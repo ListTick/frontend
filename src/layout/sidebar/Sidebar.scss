@@ -2,16 +2,24 @@
 
 .sidebar__tab {
   display: flex;
+  flex-direction: column;
   align-items: center;
   padding: $padding-base;
+  margin: $margin-base;
   gap: $small-gap;
   p {
-    font-size: $font-size-base;
+    font-size: $font-size-small;
   }
   &:hover {
     cursor: pointer;
     color: $accent-color;
+    background-color: $gray-900;
+    border-radius: $border-radius-base;
   }
+}
+
+.logo {
+  color: $accent-color;
 }
 
 .active {
@@ -21,5 +29,11 @@
 @media screen and (max-width: $breakpoint-tablet) {
   .sidebar__tab p {
     display: none;
+  }
+}
+
+@media screen and (min-width: $breakpoint-tablet) {
+  .logo .MuiSvgIcon-root {
+    font-size: 2rem;
   }
 }
