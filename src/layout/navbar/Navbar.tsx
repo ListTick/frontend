@@ -2,9 +2,8 @@ import HomeIcon from '@mui/icons-material/Home';
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import TaskAltIcon from '@mui/icons-material/TaskAlt';
 import StickyNote2Icon from '@mui/icons-material/StickyNote2';
-import SettingsIcon from '@mui/icons-material/Settings';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
-import IconButton from '@mui/material/IconButton';
+import NotificationsIcon from '@mui/icons-material/Notifications';
 import { useNavigate } from 'react-router';
 import { AppRoutes } from '../../types/routes';
 import './Navbar.scss';
@@ -15,36 +14,44 @@ const Navbar = () => {
   return (
     <header className='navbar'>
       <ul className='navbar__list'>
-        <li className='navbar__list--home'>
-          <IconButton color='inherit' onClick={() => navigate(AppRoutes.HOME)}>
+        <li>
+          <div className='navbar__list--home navbar__tab' onClick={() => navigate(AppRoutes.HOME)}>
             <HomeIcon fontSize='medium' />
-            <h4>ListTick</h4>
-          </IconButton>
+            <p>ListTick</p>
+          </div>
         </li>
-        <li className='navbar__list--lists'>
-          <IconButton color='inherit' onClick={() => navigate(AppRoutes.LISTS)}>
+        <li>
+          <div className='navbar__list--lists navbar__tab' onClick={() => navigate(AppRoutes.LISTS)}>
             <FormatListBulletedIcon fontSize='medium' />
-          </IconButton>
+          </div>
         </li>
-        <li className='navbar__list--tasks'>
-          <IconButton color='inherit' onClick={() => navigate(AppRoutes.TASKS)}>
+        <li>
+          <div className='navbar__list--tasks navbar__tab' onClick={() => navigate(AppRoutes.TASKS)}>
             <TaskAltIcon fontSize='medium' />
-          </IconButton>
+          </div>
         </li>
-        <li className='navbar__list--notes'>
-          <IconButton color='inherit' onClick={() => navigate(AppRoutes.NOTES)}>
+        <li>
+          <div className='navbar__list--notes navbar__tab' onClick={() => navigate(AppRoutes.NOTES)}>
             <StickyNote2Icon fontSize='medium' />
-          </IconButton>
+          </div>
         </li>
-        <li className='navbar__list--settings'>
-          <IconButton color='inherit' onClick={() => navigate(AppRoutes.SETTINGS)}>
-            <SettingsIcon fontSize='medium' />
-          </IconButton>
+        <li>
+          <div className='navbar__list--notifications navbar__tab' onClick={() => navigate(AppRoutes.NOTIFICATIONS)}>
+            <NotificationsIcon fontSize='medium' />
+          </div>
         </li>
-        <li className='navbar__list--profile'>
-          <IconButton color='inherit' onClick={() => navigate(AppRoutes.PROFILE)}>
-            <AccountBoxIcon fontSize='medium' />
-          </IconButton>
+        <li>
+          <div className='navbar__list--group'>
+            <div
+              className='navbar__list--notifications-desktop navbar__tab'
+              onClick={() => navigate(AppRoutes.NOTIFICATIONS)}
+            >
+              <NotificationsIcon fontSize='medium' />
+            </div>
+            <div className='navbar__list--profile navbar__tab' onClick={() => navigate(AppRoutes.PROFILE)}>
+              <AccountBoxIcon fontSize='medium' />
+            </div>
+          </div>
         </li>
       </ul>
     </header>

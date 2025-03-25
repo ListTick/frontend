@@ -5,5 +5,6 @@ export enum AppRoutes {
   NOTES = 'notes',
   SETTINGS = 'settings',
   PROFILE = 'profile',
+  NOTIFICATIONS = 'notifications',
   AUTHENTICATION = '/auth'
 }

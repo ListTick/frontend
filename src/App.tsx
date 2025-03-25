@@ -9,6 +9,7 @@ import Profile from './pages/profile/Profile';
 import Lists from './pages/lists/Lists';
 import Tasks from './pages/tasks/Tasks';
 import Notes from './pages/notes/Notes';
+import Notifications from './pages/notifications/Notifications';
 
 function App() {
   return (
@@ -21,8 +22,9 @@ function App() {
             <Route path={AppRoutes.LISTS} element={<Lists />} />
             <Route path={AppRoutes.TASKS} element={<Tasks />} />
             <Route path={AppRoutes.NOTES} element={<Notes />} />
-            <Route path={AppRoutes.SETTINGS} element={<Settings />} />
+            <Route path={AppRoutes.NOTIFICATIONS} element={<Notifications />} />
             <Route path={AppRoutes.PROFILE} element={<Profile />} />
+            <Route path={AppRoutes.SETTINGS} element={<Settings />} />
           </Route>
         </Routes>
       </BrowserRouter>

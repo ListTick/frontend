@@ -6,12 +6,39 @@
   &__list {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     list-style: none;
     gap: $small-gap;
     border-bottom: $border;
 
-    &--settings {
-      display: none;
+    &--home {
+      p {
+        font-size: $font-size-medium;
+      }
+    }
+    &--group {
+      display: flex;
+      gap: $gap-base;
+    }
+  }
+
+  &__tab {
+    display: flex;
+    padding: $padding-base;
+    &:hover {
+      cursor: pointer;
+      color: $accent-color;
+    }
+  }
+}
+
+@media screen and (max-width: $breakpoint-phone) {
+  .navbar {
+    &__list {
+      border: none;
+      &--notifications-desktop {
+        display: none;
+      }
     }
   }
 }
@@ -19,7 +46,7 @@
 @media screen and (max-width: $breakpoint-tablet) {
   .navbar {
     &__list {
-      &--home h4 {
+      &--home p {
         display: none;
       }
     }
@@ -28,19 +55,14 @@
 @media screen and (min-width: $breakpoint-phone) {
   .navbar {
     &__list {
-      &--lists {
-        display: none;
+      &--group {
+        display: flex;
       }
 
-      &--tasks {
-        display: none;
-      }
-
-      &--settings {
-        display: none;
-      }
-
-      &--notes {
+      &--lists,
+      &--tasks,
+      &--notes,
+      &--notifications {
         display: none;
       }
     }
