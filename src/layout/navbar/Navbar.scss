@@ -6,12 +6,11 @@
   &__list {
     display: flex;
     justify-content: space-between;
-    align-items: center;
     list-style: none;
-    gap: $small-gap;
     border-bottom: $border;
 
     &--home {
+      gap: $small-gap;
       p {
         font-size: $font-size-medium;
       }
