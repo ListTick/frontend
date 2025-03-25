@@ -9,12 +9,6 @@
     list-style: none;
     border-bottom: $border;
 
-    &--home {
-      gap: $small-gap;
-      p {
-        font-size: $font-size-medium;
-      }
-    }
     &--group {
       display: flex;
       gap: $gap-base;
@@ -42,15 +36,6 @@
   }
 }
 
-@media screen and (max-width: $breakpoint-tablet) {
-  .navbar {
-    &__list {
-      &--home p {
-        display: none;
-      }
-    }
-  }
-}
 @media screen and (min-width: $breakpoint-phone) {
   .navbar {
     &__list {

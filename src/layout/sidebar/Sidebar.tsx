@@ -1,6 +1,7 @@
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import TaskAltIcon from '@mui/icons-material/TaskAlt';
 import StickyNote2Icon from '@mui/icons-material/StickyNote2';
+import FactCheckIcon from '@mui/icons-material/FactCheck';
 import './Sidebar.scss';
 import { useNavigate } from 'react-router';
 import { useState } from 'react';
@@ -17,6 +18,14 @@ const Sidebar = () => {
   return (
     <div className='sidebar'>
       <ul>
+        <li>
+          <div
+            className={`sidebar__tab ${activeTab === 'home' ? 'active' : ''}`}
+            onClick={() => handleTabChange('')}
+          >
+            <FactCheckIcon fontSize='medium' />
+          </div>
+        </li>
         <li className='sidebar__lists'>
           <div
             className={`sidebar__tab ${activeTab === 'lists' ? 'active' : ''}`}

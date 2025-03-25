@@ -2,21 +2,22 @@
 
 .layout {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   min-height: 100dvh;
 
-  &__navbar {
+  &__sidebar {
     order: 0;
+    border-right: $border;
+    background-color: $secondary-color;
   }
 
   &__main {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     order: 1;
     flex-grow: 1;
-    &--sidebar {
-      border-right: $border;
-      background-color: $secondary-color;
+    &--navbar {
+      order: 0;
     }
 
     &--outlet {
@@ -28,15 +29,18 @@
 
 @media screen and (max-width: $breakpoint-phone) {
   .layout {
-    &__navbar {
-      order: 1;
-      align-items: flex-end;
+    &__sidebar {
+      display: none;
     }
-
     &__main {
-      order: 0;
-      &--sidebar {
-        display: none;
+      display: flex;
+      flex-direction: column;
+      &--navbar {
+        order: 1;
+      }
+
+      &--outlet {
+        order: 0;
       }
     }
   }

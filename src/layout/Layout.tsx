@@ -13,12 +13,12 @@ const Layout = () => {
         <Authentication />
       ) : (
         <div className='layout'>
-          <div className='layout__navbar'>
-            <Navbar />
+          <div className='layout__sidebar'>
+            <Sidebar />
           </div>
           <div className='layout__main'>
-            <div className='layout__main--sidebar'>
-              <Sidebar />
+            <div className='layout__main--navbar'>
+              <Navbar />
             </div>
             <div className='layout__main--outlet'>
               <Outlet />
