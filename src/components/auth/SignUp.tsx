@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 import { Button, TextField } from '@mui/material';
 import './Sign.scss';
 
@@ -24,21 +24,21 @@ const SignUp = ({ onSwitchToSignIn }: { onSwitchToSignIn: () => void }) => {
             label='Email'
             variant='outlined'
             type='email'
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
+            onChange={(e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
           />
           <TextField
             id='username'
             label='Username'
             variant='outlined'
             type='text'
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setUsername(e.target.value)}
+            onChange={(e: ChangeEvent<HTMLInputElement>) => setUsername(e.target.value)}
           />
           <TextField
             id='password'
             label='Password'
             variant='outlined'
             type='password'
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
+            onChange={(e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
           />
         </div>
         <Button type='submit' onClick={() => handleSignUp()}>

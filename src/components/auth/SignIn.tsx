@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 import { Button, TextField } from '@mui/material';
 import { useNavigate } from 'react-router';
 import { AppRoutes } from '../../types/routes';
@@ -27,14 +27,14 @@ const SignIn = ({ onSwitchToSignUp }: { onSwitchToSignUp: () => void }) => {
             label='Email'
             variant='outlined'
             type='email'
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
+            onChange={(e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
           />
           <TextField
             id='password'
             label='Password'
             variant='outlined'
             type='password'
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+            onChange={(e: ChangeEvent<HTMLInputElement>) => {
               setPassword(e.target.value);
             }}
           />
