@@ -23,6 +23,10 @@
   }
 }
 
+.active {
+  color: $accent-color;
+}
+
 @media screen and (max-width: $breakpoint-phone) {
   .navbar {
     &__list {

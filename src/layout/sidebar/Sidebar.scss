@@ -19,9 +19,10 @@
 }
 
 .logo {
-  color: $accent-color;
+  color: $primary-color;
+  background-color: $gray-700;
+  border-radius: $border-radius-base;
 }
-
 .active {
   color: $accent-color;
 }

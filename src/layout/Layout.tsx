@@ -1,11 +1,13 @@
 import { Outlet } from 'react-router';
 import Authentication from '../pages/authentication/Authentication';
 import Navbar from './navbar/Navbar';
-import './Layout.scss';
 import Sidebar from './sidebar/Sidebar';
+import { useState } from 'react';
+import './Layout.scss';
 
 const Layout = () => {
   const isAuthenticated: boolean = true;
+  const [activeTab, setActiveTab] = useState<string | null>(null);
 
   return (
     <>
@@ -14,11 +16,11 @@ const Layout = () => {
       ) : (
         <div className='layout'>
           <div className='layout__sidebar'>
-            <Sidebar />
+            <Sidebar activeTab={activeTab} setActiveTab={setActiveTab} />
           </div>
           <div className='layout__main'>
             <div className='layout__main--navbar'>
-              <Navbar />
+              <Navbar activeTab={activeTab} setActiveTab={setActiveTab} />
             </div>
             <div className='layout__main--outlet'>
               <Outlet />
