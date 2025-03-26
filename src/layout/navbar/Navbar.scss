@@ -1,7 +1,6 @@
 @use '/src/styles/base/core.scss' as *;
 
 .navbar {
-
   &__list {
     display: flex;
     justify-content: space-between;
@@ -29,7 +28,7 @@
     &__list {
       border-bottom: none;
       border-top: $border;
-      
+
       &--home p,
       &--notifications-desktop {
         display: none;
@@ -38,7 +37,10 @@
   }
 }
 
-@media screen and (min-width: $breakpoint-phone) {
+// Using the same value for both min-width and max-width can lead to conflicting styles at the exact breakpoint.
+// To avoid this, we offset one of them (e.g., max-width: $breakpoint - 1px or min-width: $breakpoint + 1px)
+// so that only one media query applies at a time.
+@media screen and (min-width: $breakpoint-phone + 1) {
   .navbar {
     &__list {
       &--group {

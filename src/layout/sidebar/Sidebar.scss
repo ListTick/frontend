@@ -32,7 +32,10 @@
   }
 }
 
-@media screen and (min-width: $breakpoint-tablet) {
+// Using the same value for both min-width and max-width can lead to conflicting styles at the exact breakpoint.
+// To avoid this, we offset one of them (e.g., max-width: $breakpoint - 1px or min-width: $breakpoint + 1px)
+// so that only one media query applies at a time.
+@media screen and (min-width: $breakpoint-tablet + 1) {
   .logo .MuiSvgIcon-root {
     font-size: 2rem;
   }
