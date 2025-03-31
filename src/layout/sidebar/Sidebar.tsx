@@ -3,7 +3,7 @@ import TaskAltIcon from '@mui/icons-material/TaskAlt';
 import StickyNote2Icon from '@mui/icons-material/StickyNote2';
 import FactCheckIcon from '@mui/icons-material/FactCheck';
 import HomeIcon from '@mui/icons-material/Home';
-import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 import { AppRoutes } from '../../types/routes.ts';
 import './Sidebar.scss';
 

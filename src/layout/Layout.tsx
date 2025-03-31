@@ -1,4 +1,4 @@
-import { Outlet } from 'react-router';
+import { Outlet } from 'react-router-dom';
 import Authentication from '../pages/authentication/Authentication';
 import Navbar from './navbar/Navbar';
 import Sidebar from './sidebar/Sidebar';

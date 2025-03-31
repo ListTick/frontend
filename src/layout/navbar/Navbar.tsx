@@ -4,7 +4,7 @@ import TaskAltIcon from '@mui/icons-material/TaskAlt';
 import StickyNote2Icon from '@mui/icons-material/StickyNote2';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import NotificationsIcon from '@mui/icons-material/Notifications';
-import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 import { AppRoutes } from '../../types/routes';
 import './Navbar.scss';
 
