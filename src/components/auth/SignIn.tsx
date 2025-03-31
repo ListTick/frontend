@@ -1,6 +1,6 @@
 import { ChangeEvent, useState } from 'react';
 import { Button, TextField } from '@mui/material';
-import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 import { AppRoutes } from '../../types/routes';
 import './Sign.scss';
 

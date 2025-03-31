@@ -1,5 +1,4 @@
-import { BrowserRouter, Route, Routes } from 'react-router';
-import './App.scss';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { AppRoutes } from './types/routes';
 import Authentication from './pages/authentication/Authentication';
 import Layout from './layout/Layout';
@@ -10,6 +9,7 @@ import Lists from './pages/lists/Lists';
 import Tasks from './pages/tasks/Tasks';
 import Notes from './pages/notes/Notes';
 import Notifications from './pages/notifications/Notifications';
+import './App.scss';
 
 function App() {
   return (
