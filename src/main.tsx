@@ -14,7 +14,7 @@ createRoot(document.getElementById('root')!).render(
       <ThemeProvider theme={theme}>
         <App />
       </ThemeProvider>
-      <ReactQueryDevtools initialIsOpen={false} />
+      <ReactQueryDevtools />
     </QueryClientProvider>
   </StrictMode>
 );
