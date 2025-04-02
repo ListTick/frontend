@@ -1,0 +1,46 @@
+@use '/src/styles/base/core.scss' as *;
+
+.layout {
+  display: flex;
+  flex-direction: row;
+  min-height: 100dvh;
+
+  &__sidebar {
+    order: 0;
+    border-right: $border;
+  }
+
+  &__main {
+    display: flex;
+    flex-direction: column;
+    order: 1;
+    flex-grow: 1;
+    &--navbar {
+      order: 0;
+    }
+
+    &--outlet {
+      padding: $padding-base;
+      flex-grow: 1;
+    }
+  }
+}
+
+@media screen and (max-width: $breakpoint-phone) {
+  .layout {
+    &__sidebar {
+      display: none;
+    }
+    &__main {
+      display: flex;
+      flex-direction: column;
+      &--navbar {
+        order: 1;
+      }
+
+      &--outlet {
+        order: 0;
+      }
+    }
+  }
+}

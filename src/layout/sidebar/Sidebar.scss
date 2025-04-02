@@ -1,0 +1,43 @@
+@use '/src/styles/base/core.scss' as *;
+
+.sidebar__tab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: $padding-base;
+  margin: $margin-base;
+  gap: $small-gap;
+  p {
+    font-size: $font-size-small;
+  }
+  &:hover {
+    cursor: pointer;
+    color: $accent-color;
+    background-color: $gray-900;
+    border-radius: $border-radius-base;
+  }
+}
+
+.logo {
+  color: $primary-color;
+  background-color: $gray-700;
+  border-radius: $border-radius-base;
+}
+.active {
+  color: $accent-color;
+}
+
+@media screen and (max-width: $breakpoint-tablet) {
+  .sidebar__tab p {
+    display: none;
+  }
+}
+
+// Using the same value for both min-width and max-width can lead to conflicting styles at the exact breakpoint.
+// To avoid this, we offset one of them (e.g., max-width: $breakpoint - 1px or min-width: $breakpoint + 1px)
+// so that only one media query applies at a time.
+@media screen and (min-width: $breakpoint-tablet + 1) {
+  .logo .MuiSvgIcon-root {
+    font-size: 2rem;
+  }
+}

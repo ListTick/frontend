@@ -1,0 +1,50 @@
+// Colors
+$primary-color: #252627;
+$secondary-color: #494d50;
+$accent-color: #90c4f9;
+$text-color: #adb5bd;
+$background-color: #252627;
+$white: #ffffff;
+$black: #000000;
+$gray-100: #f8f9fa;
+$gray-200: #e9ecef;
+$gray-500: #adb5bd;
+$gray-700: #6c757d;
+$gray-800: #3f454b;
+$gray-900: #212529;
+$red-delete: #a81111;
+
+// Typography
+$font-family-primary: 'Roboto', sans-serif;
+$font-family-secondary: 'Poppins', sans-serif;
+$font-size-base: 16px;
+$font-size-very-small: 12px;
+$font-size-small: 14px;
+$font-size-medium: 20px;
+$font-size-large: 24px;
+$line-height-base: 1.5;
+$letter-spacing-base: 0.5px;
+
+// Spacing
+$padding-base: 8px;
+$margin-base: 8px;
+$gap-base: 8px;
+$small-gap: 8px;
+$medium-gap: 12px;
+$large-gap: 16px;
+
+// Breakpoints
+$breakpoint-small-phone: 320px;
+$breakpoint-phone: 480px;
+$breakpoint-tablet: 768px;
+$breakpoint-small-desktop: 992px;
+$breakpoint-desktop: 1200px;
+
+// Other
+$border: solid 1px $gray-700;
+$border-radius-base: 8px;
+$border-radius-medium: 12px;
+$border-radius-large: 16px;
+$box-shadow-base: 0px 2px 5px rgba(255, 255, 255, 0.1);
+$transition-duration-base: 0.3s;
+$transition-easing-base: ease-in-out;
