@@ -1,0 +1,134 @@
+@use '/src/styles/base/core' as *;
+
+.landingPage {
+  background: linear-gradient(145deg, #0f0c29, /* Deep Space */ #302b63, /* Neon Shadow */ #24243e /* Digital Gloom */);
+
+  box-sizing: border-box;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  padding: $padding-base;
+
+  &__content {
+    flex-grow: 1;
+
+    &--login {
+      display: flex;
+      justify-self: flex-end;
+      margin: 1rem 0;
+      font-size: $font-size-large;
+      padding: $padding-base;
+      border-radius: $border-radius-base;
+      box-shadow: 0 0 25px #ff00cc;
+
+      &:hover {
+        box-shadow: 0 0 15px #ff00cc;
+        color: $white;
+        transition: all 0.3s ease-in-out;
+        cursor: pointer;
+      }
+
+      @media (max-width: $breakpoint-tablet) {
+        justify-self: center;
+      }
+    }
+
+    &--overview {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+
+      h1 {
+        font-size: 2rem;
+        margin-top: 4rem;
+        margin-bottom: 1rem;
+        color: $accent-color;
+      }
+
+      p {
+        font-size: $font-size-medium;
+        color: $gray-200;
+      }
+    }
+
+    &--features {
+      h1 {
+        font-size: 2rem;
+        margin-top: 4rem;
+        margin-bottom: 1rem;
+        color: $accent-color;
+        text-align: center;
+      }
+      h3 {
+        font-size: $font-size-large;
+        color: $accent-color;
+      }
+      p {
+        font-size: $font-size-medium;
+        color: $gray-200;
+      }
+      .cards {
+        display: grid;
+        grid-template-columns: fit-content(30%) fit-content(30%);
+        gap: $gap-base;
+        justify-content: center;
+        align-content: center;
+
+        @media (max-width: $breakpoint-tablet) {
+          grid-template-columns: 1fr;
+        }
+      }
+    }
+    &--whyus {
+      justify-items: center;
+      h1 {
+        font-size: 2rem;
+        margin-top: 4rem;
+        margin-bottom: 1rem;
+        text-align: center;
+        color: $accent-color;
+      }
+      p {
+        font-size: $font-size-medium;
+        color: $gray-200;
+      }
+      .slides {
+        display: flex;
+        flex-direction: column;
+        gap: $gap-base;
+      }
+    }
+    &--signup {
+      text-align: center;
+      h1 {
+        font-size: 2rem;
+        margin-top: 4rem;
+        margin-bottom: 1rem;
+        color: $accent-color;
+      }
+      p {
+        font-size: $font-size-medium;
+        color: $gray-200;
+      }
+    }
+  }
+
+  &__footer {
+    text-align: center;
+  }
+
+  &__feature-card {
+    border: $border;
+    border-radius: $border-radius-base;
+    padding: $padding-base;
+  }
+
+  &__whyus-slide {
+    max-width: 420px;
+    text-align: center;
+    border: $border;
+    border-radius: $border-radius-base;
+    padding: $padding-base;
+  }
+}

@@ -1,18 +1,18 @@
 import { Outlet } from 'react-router-dom';
-import Authentication from '../pages/authentication/Authentication';
+import LandingPage from '../pages/landingPage/LandingPage.tsx';
 import Navbar from './navbar/Navbar';
 import Sidebar from './sidebar/Sidebar';
 import { useState } from 'react';
 import './Layout.scss';
 
 const Layout = () => {
-  const isAuthenticated: boolean = true;
+  const isAuthenticated: boolean = false; // TODO Replace with actual authentication logic
   const [activeTab, setActiveTab] = useState<string | null>(null);
 
   return (
     <>
       {!isAuthenticated ? (
-        <Authentication />
+        <LandingPage />
       ) : (
         <div className='layout'>
           <div className='layout__sidebar'>

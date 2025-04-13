@@ -6,5 +6,5 @@ export enum AppRoutes {
   SETTINGS = 'settings',
   PROFILE = 'profile',
   NOTIFICATIONS = 'notifications',
-  AUTHENTICATION = '/auth'
+  LANDING_PAGE = '/welcome'
 }
