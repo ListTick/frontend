@@ -6,7 +6,7 @@ import { useState } from 'react';
 import './Layout.scss';
 
 const Layout = () => {
-  const isAuthenticated: boolean = false; // TODO Replace with actual authentication logic
+  const isAuthenticated: boolean = true; // TODO Replace with actual authentication logic
   const [activeTab, setActiveTab] = useState<string | null>(null);
 
   return (

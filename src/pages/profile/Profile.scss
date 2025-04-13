@@ -1,0 +1,8 @@
+@use '/src/styles/base/core.scss' as *;
+
+.profile {
+  display: flex;
+  &__logout {
+    margin-left: auto;
+  }
+}

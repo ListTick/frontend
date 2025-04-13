@@ -70,7 +70,7 @@ export const theme = createTheme({
       styleOverrides: {
         root: {
           color: styles.gray100,
-          backgroundColor: styles.gray900,
+          backgroundColor: styles.secondaryColor,
           textTransform: 'none'
         }
       }
