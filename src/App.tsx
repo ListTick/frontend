@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { AppRoutes } from './types/routes';
-import Authentication from './pages/authentication/Authentication';
+import LandingPage from './pages/landingPage/LandingPage.tsx';
 import Layout from './layout/Layout';
 import Home from './pages/home/Home';
 import Settings from './pages/settings/Settings';
@@ -16,7 +16,7 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path={AppRoutes.AUTHENTICATION} element={<Authentication />} />
+          <Route path={AppRoutes.LANDING_PAGE} element={<LandingPage />} />
           <Route path={AppRoutes.HOME} element={<Layout />}>
             <Route index element={<Home />} />
             <Route path={AppRoutes.LISTS} element={<Lists />} />
