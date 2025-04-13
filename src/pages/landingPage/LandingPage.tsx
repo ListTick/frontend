@@ -1,9 +1,16 @@
 import './LandingPage.scss';
+import useKeycloak from '../../security/useKeycloak';
+import {AppRoutes} from "../../types/routes";
 
 const LandingPage = () => {
+  const { keycloak, authenticated } = useKeycloak();
+
   const handleRedirect = () => {
-    // TODO Redirect to the keycloak page
-    alert('Redirecting!');
+    if (authenticated) {
+      window.location.href = AppRoutes.HOME;
+    } else {
+      keycloak?.login();
+    }
   };
 
   return (
