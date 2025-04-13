@@ -15,11 +15,12 @@
     &--login {
       display: flex;
       justify-self: flex-end;
-      margin: 1rem 0;
+      margin: 1rem 0 0 0;
       font-size: $font-size-large;
       padding: $padding-base;
       border-radius: $border-radius-base;
       box-shadow: 0 0 25px #ff00cc;
+      color: $text-color;
 
       &:hover {
         box-shadow: 0 0 15px #ff00cc;
@@ -99,8 +100,9 @@
         gap: $gap-base;
       }
     }
-    &--signup {
+    &--join {
       text-align: center;
+      margin-bottom: 4rem;
       h1 {
         font-size: 2rem;
         margin-top: 4rem;
@@ -130,5 +132,23 @@
     border: $border;
     border-radius: $border-radius-base;
     padding: $padding-base;
+  }
+
+  @media (max-width: $breakpoint-tablet) {
+    span {
+      font-size: $font-size-base;
+    }
+
+    h1 {
+      font-size: 1.5rem;
+    }
+
+    h3 {
+      font-size: 1.2rem;
+    }
+
+    p {
+      font-size: $font-size-base;
+    }
   }
 }

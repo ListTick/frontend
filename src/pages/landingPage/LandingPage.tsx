@@ -1,10 +1,17 @@
 import './LandingPage.scss';
 
 const LandingPage = () => {
+  const handleRedirect = () => {
+    // TODO Redirect to the keycloak page
+    alert('Redirecting!');
+  };
+
   return (
     <div className='landingPage'>
       <div className='landingPage__content'>
-        <span className='landingPage__content--login'>Login / Register</span>
+        <span className='landingPage__content--login' onClick={() => handleRedirect()}>
+          Login / Register
+        </span>
         <section className='landingPage__content--overview'>
           <h1>One App to Rule Your Goals</h1>
           <p>No more juggling multiple tools. Manage your goals, tasks, and shopping lists – all in one place.</p>
@@ -43,9 +50,12 @@ const LandingPage = () => {
             </p>
           </div>
         </section>
-        <section className='landingPage__content--signup'>
+        <section className='landingPage__content--join'>
           <h1>Join the Productivity Revolution</h1>
           <p>Start managing your life smarter – all from a single dashboard.</p>
+          <p>
+            Click <b>Login/Register</b> to get started!
+          </p>
         </section>
       </div>
       <footer className='landingPage__footer'>
