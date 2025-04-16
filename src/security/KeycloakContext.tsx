@@ -1,9 +1,4 @@
-import React, {
-    createContext,
-    useEffect,
-    useState,
-    useRef,
-} from 'react'
+import React, {createContext, useEffect, useRef, useState,} from 'react'
 import Keycloak from 'keycloak-js'
 
 interface KeycloakContextProps {
@@ -17,7 +12,7 @@ interface KeycloakProviderProps {
     children: React.ReactNode
 }
 
-const KeycloakProvider: React.FC<KeycloakProviderProps> = ({ children }) => {
+const KeycloakProvider: React.FC<KeycloakProviderProps> = ({children}) => {
     const isRun = useRef<boolean>(false)
     const [keycloak, setKeycloak] = useState<Keycloak | null>(null)
     const [authenticated, setAuthenticated] = useState<boolean>(false)
@@ -29,7 +24,7 @@ const KeycloakProvider: React.FC<KeycloakProviderProps> = ({ children }) => {
 
         const initKeycloak = async () => {
             const keycloackConfig = {
-                url: 'http://127.0.0.1:8090/',
+                url: 'http://localhost:8090/',
                 realm: 'listtick',
                 clientId: 'listtick-frontend',
             }
@@ -82,10 +77,10 @@ const KeycloakProvider: React.FC<KeycloakProviderProps> = ({ children }) => {
     }, [])
 
     return (
-        <KeycloakContext.Provider value={{ keycloak, authenticated }}>
+        <KeycloakContext.Provider value={{keycloak, authenticated}}>
             {children}
         </KeycloakContext.Provider>
     )
 }
 
-export { KeycloakProvider, KeycloakContext }
+export {KeycloakProvider, KeycloakContext}
