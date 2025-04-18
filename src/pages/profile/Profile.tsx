@@ -8,9 +8,9 @@ const Profile = () => {
   const keycloak = useKeycloak();
   const navigate = useNavigate();
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
     navigate(AppRoutes.HOME, { replace: true });
-    void keycloak.logout();
+    await keycloak.logout();
   };
 
   return (
