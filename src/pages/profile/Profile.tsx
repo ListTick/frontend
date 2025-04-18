@@ -1,9 +1,16 @@
 import { Button } from '@mui/material';
 import './Profile.scss';
+import useKeycloak from '../../hooks/useKeycloak.ts';
+import { useNavigate } from 'react-router-dom';
+import { AppRoutes } from '../../types/routes.ts';
 
 const Profile = () => {
+  const keycloak = useKeycloak();
+  const navigate = useNavigate();
+
   const handleLogout = () => {
-    alert('Logging out');
+    navigate(AppRoutes.HOME, { replace: true });
+    void keycloak.logout();
   };
 
   return (

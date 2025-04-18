@@ -1,15 +1,17 @@
 import './LandingPage.scss';
-import useKeycloak from '../../security/useKeycloak';
-import {AppRoutes} from "../../types/routes";
+import useKeycloak from '../../hooks/useKeycloak.ts';
+import { AppRoutes } from '../../types/routes';
+import { useNavigate } from 'react-router-dom';
 
 const LandingPage = () => {
-  const { keycloak, authenticated } = useKeycloak();
+  const keycloak = useKeycloak();
+  const navigate = useNavigate();
 
   const handleRedirect = () => {
-    if (authenticated) {
-      window.location.href = AppRoutes.HOME;
+    if (keycloak.authenticated) {
+      navigate(AppRoutes.HOME);
     } else {
-      keycloak?.login();
+      void keycloak.login();
     }
   };
 

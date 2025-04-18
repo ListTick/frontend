@@ -1,0 +1,7 @@
+@use '/src/styles/base/core.scss' as *;
+
+.home {
+  &__date {
+    color: $accent-color;
+  }
+}
