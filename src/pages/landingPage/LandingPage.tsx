@@ -51,7 +51,7 @@ const LandingPage = () => {
           <h1>Why Choose ListTick?</h1>
           <div className='landingPage__content--whyus slides'>
             <p className='landingPage__whyus-slide'>
-              FocusFlow combines your productivity needs into one clean, powerful tool – so you can stop app-hopping and
+              ListTick combines your productivity needs into one clean, powerful tool – so you can stop app-hopping and
               start achieving more.
             </p>
             <p className='landingPage__whyus-slide'>
