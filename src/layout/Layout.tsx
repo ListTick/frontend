@@ -4,14 +4,16 @@ import Navbar from './navbar/Navbar';
 import Sidebar from './sidebar/Sidebar';
 import { useState } from 'react';
 import './Layout.scss';
+import useKeycloak from '../hooks/useKeycloak.ts';
 
 const Layout = () => {
-  const isAuthenticated: boolean = true; // TODO Replace with actual authentication logic
   const [activeTab, setActiveTab] = useState<string | null>(null);
+
+  const { authenticated } = useKeycloak();
 
   return (
     <>
-      {!isAuthenticated ? (
+      {!authenticated ? (
         <LandingPage />
       ) : (
         <div className='layout'>

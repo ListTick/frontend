@@ -1,7 +1,6 @@
 @use '/src/styles/base/core' as *;
 
 .landingPage {
-  background: linear-gradient(145deg, #0f0c29, /* Deep Space */ #302b63, /* Neon Shadow */ #24243e /* Digital Gloom */);
   box-sizing: border-box;
   min-height: 100dvh;
   display: flex;
@@ -18,11 +17,11 @@
       font-size: $font-size-large;
       padding: $padding-base;
       border-radius: $border-radius-base;
-      box-shadow: 0 0 25px #ff00cc;
+      box-shadow: 0 0 25px $accent-color;
       color: $text-color;
 
       &:hover {
-        box-shadow: 0 0 15px #ff00cc;
+        box-shadow: 0 0 15px $accent-color;
         color: $white;
         transition: all 0.3s ease-in-out;
         cursor: pointer;

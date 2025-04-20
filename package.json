@@ -18,6 +18,8 @@
     "@tanstack/react-query-devtools": "^5.66.3",
     "@typescript-eslint/eslint-plugin": "^8.24.0",
     "axios": "^1.7.9",
+    "dayjs": "^1.11.13",
+    "keycloak-js": "^26.1.5",
     "react": "^19.0.0",
     "react-router-dom": "^7.4.1",
     "sass": "^1.85.0"

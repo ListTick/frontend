@@ -1,9 +1,18 @@
 import './LandingPage.scss';
+import useKeycloak from '../../hooks/useKeycloak.ts';
+import { AppRoutes } from '../../types/routes';
+import { useNavigate } from 'react-router-dom';
 
 const LandingPage = () => {
+  const keycloak = useKeycloak();
+  const navigate = useNavigate();
+
   const handleRedirect = () => {
-    // TODO Redirect to the keycloak page
-    alert('Redirecting!');
+    if (keycloak.authenticated) {
+      navigate(AppRoutes.HOME);
+    } else {
+      void keycloak.login();
+    }
   };
 
   return (
@@ -42,7 +51,7 @@ const LandingPage = () => {
           <h1>Why Choose ListTick?</h1>
           <div className='landingPage__content--whyus slides'>
             <p className='landingPage__whyus-slide'>
-              FocusFlow combines your productivity needs into one clean, powerful tool – so you can stop app-hopping and
+              ListTick combines your productivity needs into one clean, powerful tool – so you can stop app-hopping and
               start achieving more.
             </p>
             <p className='landingPage__whyus-slide'>
