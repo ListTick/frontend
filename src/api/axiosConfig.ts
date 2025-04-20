@@ -2,7 +2,7 @@ import axios, { AxiosInstance } from 'axios';
 import useKeycloak from '../hooks/useKeycloak.ts';
 
 const axiosInstance: AxiosInstance = axios.create({
-  baseURL: 'http://localhost:8080',
+  baseURL: 'http://localhost:8080/api',
   timeout: 10_000,
   headers: {
     'Content-Type': 'application/json'
@@ -16,7 +16,7 @@ axiosInstance.interceptors.request.use(
     if (keycloak.authenticated) {
       config.headers.Authorization = `Bearer ${keycloak.token}`;
     } else {
-      keycloak.login();
+      await keycloak.login();
     }
     return config;
   }
