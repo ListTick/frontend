@@ -1,12 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import Keycloak from 'keycloak-js';
 import { KeycloakContext } from './KeycloakContext.tsx';
 import { CircularProgress } from '@mui/material';
-const keycloak = new Keycloak({
-  url: '/',
-  realm: 'listtick',
-  clientId: 'listtick-frontend'
-});
+import { keycloak } from './keycloak.ts';
 
 let initPromise: Promise<boolean> | null = null;
 const initKeycloak = () =>
@@ -30,7 +25,7 @@ export const KeycloakProvider: React.FC<React.PropsWithChildren> = ({ children }
 
   if (!ready)
     return (
-      <div style={{}}>
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100dvh' }}>
         <CircularProgress />
       </div>
     );

@@ -22,7 +22,8 @@ const LandingPage = () => {
           Login / Register
         </span>
         <section className='landingPage__content--overview'>
-          <h1>One App to Rule Your Goals</h1>
+          <h1>ListTick</h1>
+          <h2>One App to Rule Your Goals</h2>
           <p>No more juggling multiple tools. Manage your goals, tasks, and shopping lists – all in one place.</p>
           <p>Use our custom Pomodoro solution to make sure the tasks get done!</p>
         </section>
