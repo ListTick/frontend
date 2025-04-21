@@ -1,15 +1,13 @@
 import { api } from '../config/axios.ts';
+import { Task } from '../types/task.ts';
 
 enum TaskEndpoint {
-  GET_TASKS = '/tasks',
-  CREATE_TASK = '/tasks',
-  UPDATE_TASK = '/tasks',
-  DELETE_TASK = '/tasks'
+  TASKS = '/tasks'
 }
 
 export const getTasks = async () => {
   try {
-    const response = await api.get(TaskEndpoint.GET_TASKS);
+    const response = await api.get(TaskEndpoint.TASKS);
     return response.data;
   } catch (error) {
     console.error('[API] Error fetching tasks:', error);
@@ -17,9 +15,9 @@ export const getTasks = async () => {
   }
 };
 
-export const createTask = async (task: any) => {
+export const createTask = async (task: Task) => {
   try {
-    const response = await api.post(TaskEndpoint.CREATE_TASK, task);
+    const response = await api.post(TaskEndpoint.TASKS, task);
     return response.data;
   } catch (error) {
     console.error('[API] Error creating task:', error);
@@ -29,7 +27,7 @@ export const createTask = async (task: any) => {
 
 export const updateTask = async (taskId: string, task: any) => {
   try {
-    const response = await api.put(`${TaskEndpoint.UPDATE_TASK}/${taskId}`, task);
+    const response = await api.put(`${TaskEndpoint.TASKS}/${taskId}`, task);
     return response.data;
   } catch (error) {
     console.error('[API] Error updating task:', error);
@@ -39,7 +37,7 @@ export const updateTask = async (taskId: string, task: any) => {
 
 export const deleteTask = async (taskId: string) => {
   try {
-    const response = await api.delete(`${TaskEndpoint.DELETE_TASK}/${taskId}`);
+    const response = await api.delete(`${TaskEndpoint.TASKS}/${taskId}`);
     return response.data;
   } catch (error) {
     console.error('[API] Error deleting task:', error);

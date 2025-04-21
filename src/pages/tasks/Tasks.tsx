@@ -3,10 +3,18 @@ import { getTasks } from '../../api/tasks.ts';
 import { Task } from '../../types/task.ts';
 
 const Tasks = () => {
-  const { data } = useQuery({
+  const { data, isError, isLoading } = useQuery({
     queryKey: ['tasks'],
     queryFn: () => getTasks()
   });
+
+  if (isLoading) {
+    return <div className='tasks'>Loading...</div>;
+  }
+
+  if (isError) {
+    return <div className='tasks'>Error loading tasks</div>;
+  }
 
   return (
     <div className='tasks'>
