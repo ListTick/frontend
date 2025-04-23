@@ -5,7 +5,12 @@ import './Options.scss';
 import EditTagList from '../editTagList/EditTagList';
 import { deleteAllCompletedTasks } from '@/api/task';
 
-const Options = () => {
+interface OptionsProps {
+  toggleShowArchivedTasks: () => void;
+  isArchivedTasksDisplayed: boolean;
+}
+
+const Options: React.FC<OptionsProps> = ({ toggleShowArchivedTasks, isArchivedTasksDisplayed }) => {
   const [isPopoverOpen, setIsPopoverOpen] = useState<boolean>(false);
   const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
   const [isTagsEditOpen, setIsTagsEditOpen] = useState<boolean>(false);
@@ -33,6 +38,11 @@ const Options = () => {
     handleClosePopover();
   };
 
+  const handleShowArchivedTasks = (): void => {
+    toggleShowArchivedTasks();
+    handleClosePopover();
+  };
+
   return (
     <div className='options'>
       <div className='options__button'>
@@ -54,8 +64,9 @@ const Options = () => {
         }}
       >
         <div className='options__popover'>
-          <Button onClick={handleOpenTagsEdit}>Edit tags</Button>
+          <Button onClick={handleShowArchivedTasks}>{isArchivedTasksDisplayed ? 'Show tasks' : 'Show archives'}</Button>
           <Button onClick={handleDeleteCompletedTasks}>Clear done</Button>
+          <Button onClick={handleOpenTagsEdit}>Edit tags</Button>
         </div>
       </Popover>
       <Modal

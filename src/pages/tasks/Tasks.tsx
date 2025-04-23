@@ -3,10 +3,10 @@ import Clock from '@/components/task/clock/Clock';
 import TaskList from '@/components/task/taskList/TaskList';
 
 import { Task } from '@/types/task';
-import { Button, Divider } from '@mui/material';
 import Options from '@/components/task/options/Options';
 import TagListClickable from '@/components/task/tagListClickable/TagListClickable';
 import ArchivedTaskList from '@/components/task/archivedTaskList/ArchivedTaskList';
+import './Tasks.scss';
 
 const Tasks = () => {
   const [isClockDisplayed, setIsClockDisplayed] = useState(false);
@@ -20,39 +20,38 @@ const Tasks = () => {
 
   const displayArchivedTasks = () => {
     setIsArchivedTasksDisplayed((prev) => !prev);
+    console.log(isArchivedTasksDisplayed);
   };
 
   return (
-    <div className='home'>
+    <>
       <Clock
         pomodoroDuration={selectedTask.pomodoroDuration ?? 25}
         breakDuration={selectedTask.breakDuration ?? 5}
         isDisplayed={isClockDisplayed}
         taskId={selectedTask.id}
       />
-      <div className='home__header'>
-        <Options />
+      <div className='tasks'>
+        <section className='tasks__tasks'>
+          <div className='tasks__tasks--header'>
+            <h2>Tasks</h2>
+            <Options
+              toggleShowArchivedTasks={displayArchivedTasks}
+              isArchivedTasksDisplayed={isArchivedTasksDisplayed}
+            />
+          </div>
+          {isArchivedTasksDisplayed ? (
+            <ArchivedTaskList onPomodoroClick={handlePomodoroClick} />
+          ) : (
+            <TaskList onPomodoroClick={handlePomodoroClick} />
+          )}
+        </section>
+        <section className='tasks__tags'>
+          <h2>Tags</h2>
+          <TagListClickable />
+        </section>
       </div>
-      <div className='home__divider'>
-        <Divider />
-      </div>
-      <h2>Tags</h2>
-      <TagListClickable />
-      <div className='home__divider'>
-        <Divider />
-      </div>
-      <div className='home__tasks'>
-        <h2>Tasks</h2>
-        <Button variant='contained' size='large' onClick={displayArchivedTasks}>
-          Show archived tasks
-        </Button>
-      </div>
-      {isArchivedTasksDisplayed ? (
-        <ArchivedTaskList onPomodoroClick={handlePomodoroClick} />
-      ) : (
-        <TaskList onPomodoroClick={handlePomodoroClick} />
-      )}
-    </div>
+    </>
   );
 };
 
