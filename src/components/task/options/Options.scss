@@ -1,0 +1,19 @@
+@use '/src/styles/base/core.scss' as *;
+
+.options {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+
+  &__button {
+    background-color: $secondary-color;
+    border-radius: $border-radius-base;
+  }
+
+  &__popover {
+    padding: $padding-base;
+    display: flex;
+    flex-direction: column;
+    gap: $gap-base;
+  }
+}

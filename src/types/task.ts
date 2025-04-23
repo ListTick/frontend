@@ -1,8 +1,20 @@
-export type Task = {
-  id: string;
+import { Tag } from './tag';
+
+export interface Task {
+  id?: string;
   name: string;
-  description: string;
-  status: string;
-  createdAt: Date;
-  updatedAt: Date;
-};
+  dueDate?: string;
+  totalPomodoros?: number;
+  completedPomodoros?: number;
+  pomodoroDuration?: number;
+  breakDuration?: number;
+  isCompleted: boolean;
+  isDeleted: boolean;
+  tag: Tag;
+}
+
+export interface PagedTask {
+  tasks: Task[];
+  totalPages: number;
+  totalElements: number;
+}

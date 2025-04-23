@@ -1,0 +1,49 @@
+@use '/src/styles/base/core.scss' as *;
+
+.taskItem {
+  background-color: $background-color;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: $padding-base;
+  border: $border;
+  border-radius: $border-radius-base;
+
+  &__title {
+    color: $accent-color;
+
+    &--icon {
+      color: $accent-color;
+    }
+  }
+
+  &__icons {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    align-items: center;
+  }
+
+  &__tags {
+    display: flex;
+    gap: $gap-base;
+  }
+}
+
+.pomodoros-count {
+  display: flex;
+  align-items: center;
+  gap: $gap-base;
+  color: $accent-color;
+  height: 100%;
+}
+
+@media (max-width: $breakpoint-tablet) {
+  .taskItem {
+    &__title {
+      &--icon {
+        display: none;
+      }
+    }
+  }
+}
