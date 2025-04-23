@@ -47,7 +47,7 @@ const Clock = ({ pomodoroDuration, breakDuration, isDisplayed, taskId }: ClockPr
   const updateMutation = useMutation({
     mutationFn: () => updateCompletedPomodoros(taskId, 1),
     onSuccess: () => {
-      useQuery.invalidateQueries({ queryKey: ['tasks'] });
+      void useQuery.invalidateQueries({ queryKey: ['tasks'] });
     }
   });
 
@@ -73,12 +73,14 @@ const Clock = ({ pomodoroDuration, breakDuration, isDisplayed, taskId }: ClockPr
       <div className='clock'>
         <div className='clock__time'>
           <h1>{time.format('mm:ss')}</h1>
-          <Button variant='contained' size='large' onClick={handleStartStop}>
-            {isRunning ? 'Pause' : 'Start'}
-          </Button>
-          <Button variant='contained' size='large' onClick={handleSkip}>
-            Skip
-          </Button>
+          <div className='clock__time--buttons'>
+            <Button variant='contained' size='large' onClick={handleStartStop}>
+              {isRunning ? 'Pause' : 'Start'}
+            </Button>
+            <Button variant='contained' size='large' onClick={handleSkip}>
+              Skip
+            </Button>
+          </div>
         </div>
       </div>
     )

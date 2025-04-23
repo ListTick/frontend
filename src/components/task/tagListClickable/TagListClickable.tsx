@@ -21,7 +21,7 @@ const TagListClickable = () => {
       queryKey: ['tasks']
     });
   }, [selectedTag]);
-
+  // todo: add a query to get tasks by user id and tag id
   // const { refetch: refetchTasks } = useQuery({
   //   queryKey: ['tasks'],
   //   queryFn: () => getTasksByUserId(selectedTag),

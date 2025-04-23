@@ -11,10 +11,15 @@
     flex-direction: column;
     align-items: center;
     background-color: $secondary-color;
-    padding: $padding-base 100px;
+    padding: 25px 50px;
     border-radius: $border-radius-base;
     font-family: $font-family-secondary;
     font-size: $font-size-large;
     margin-bottom: $medium-gap;
+
+    &--buttons {
+      display: flex;
+      gap: $gap-base;
+    }
   }
 }

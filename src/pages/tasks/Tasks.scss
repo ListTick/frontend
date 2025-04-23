@@ -1,0 +1,25 @@
+@use '/src/styles/base/core.scss' as *;
+
+.tasks {
+  display: flex;
+  flex-direction: row;
+  gap: $gap-base;
+
+  &__tasks {
+    flex-grow: 1;
+    gap: $small-gap;
+    margin: $margin-base 0;
+
+    &--header {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  &__tags {
+    flex-grow: 1;
+    gap: $small-gap;
+    margin: $margin-base 0;
+  }
+}
