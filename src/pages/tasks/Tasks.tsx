@@ -20,7 +20,6 @@ const Tasks = () => {
 
   const displayArchivedTasks = () => {
     setIsArchivedTasksDisplayed((prev) => !prev);
-    console.log(isArchivedTasksDisplayed);
   };
 
   return (
@@ -34,7 +33,7 @@ const Tasks = () => {
       <div className='tasks'>
         <section className='tasks__tasks'>
           <div className='tasks__tasks--header'>
-            <h2>Tasks</h2>
+            <h2>{isArchivedTasksDisplayed ? 'Archived Tasks' : 'Tasks'}</h2>
             <Options
               toggleShowArchivedTasks={displayArchivedTasks}
               isArchivedTasksDisplayed={isArchivedTasksDisplayed}

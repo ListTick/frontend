@@ -2,7 +2,30 @@
 
 .profile {
   display: flex;
-  &__logout {
-    margin-left: auto;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: $gap-base;
+  &__user {
+    background-color: $secondary-color;
+    padding: $padding-base;
+    border-radius: $border-radius-base;
+  }
+  &__goals {
+    flex: 2 1 0px;
+
+    display: flex;
+    flex-direction: column;
+    margin-top: $small-gap;
+    gap: $small-gap;
+    margin-bottom: 2rem;
+  }
+  &__settings {
+    flex: 1 1 0px;
+
+    display: flex;
+    flex-direction: column;
+    margin-top: $small-gap;
+    gap: $small-gap;
+    margin-bottom: 2rem;
   }
 }
