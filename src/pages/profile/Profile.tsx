@@ -38,7 +38,7 @@ const Profile = () => {
           <ToggleButton value='check' selected>
             Daily
           </ToggleButton>
-          <ToggleButton>Weekly</ToggleButton>
+          <ToggleButton value='check'>Weekly</ToggleButton>
           <ToggleButton value='check'>Monthly</ToggleButton>
           <ToggleButton value='check'>Yearly</ToggleButton>
         </div>

@@ -3,14 +3,13 @@ import { Tag } from './tag';
 export interface Task {
   id?: string;
   name: string;
-  dueDate?: string;
   totalPomodoros?: number;
   completedPomodoros?: number;
   pomodoroDuration?: number;
   breakDuration?: number;
+  dueDate?: string;
   isCompleted: boolean;
-  isDeleted: boolean;
-  tag: Tag;
+  tag: Tag | undefined;
 }
 
 export interface PagedTask {

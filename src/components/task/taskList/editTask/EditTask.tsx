@@ -2,15 +2,16 @@ import { TextField, Button } from '@mui/material';
 import React, { useState } from 'react';
 import { Task } from '@/types/task';
 import { createTask, deleteTask, updateTask } from '@/api/task';
-import { Tag } from '@/types/tag';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import './EditTask.scss';
 import TagListClickable from '@/components/task/tagListClickable/TagListClickable.tsx';
+import { Tag } from '@/types/tag';
 
 interface EditTaskProps {
   taskDetails?: Task;
   handleClose: () => void;
 }
+
 const EditTask: React.FC<EditTaskProps> = ({ taskDetails, handleClose }) => {
   const queryClient = useQueryClient();
   const [task, setTask] = useState<Task>({
@@ -22,10 +23,9 @@ const EditTask: React.FC<EditTaskProps> = ({ taskDetails, handleClose }) => {
     totalPomodoros: taskDetails?.totalPomodoros || undefined,
     completedPomodoros: taskDetails?.completedPomodoros || undefined,
     isCompleted: taskDetails?.isCompleted || false,
-    isDeleted: taskDetails?.isDeleted || false,
-    tag: taskDetails?.tag || []
+    tag: taskDetails?.tag || undefined
   });
-  const [selectedTag, setSelectedTag] = useState<Tag | null>(task.tag);
+  const [selectedTagId, setSelectedTagId] = useState<string | undefined>(taskDetails?.tag?.id);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -38,7 +38,7 @@ const EditTask: React.FC<EditTaskProps> = ({ taskDetails, handleClose }) => {
   const postMutation = useMutation({
     mutationFn: () => createTask(task),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['tasks'] });
+      void queryClient.invalidateQueries({ queryKey: ['tasks'] });
       handleClose();
     }
   });
@@ -46,7 +46,7 @@ const EditTask: React.FC<EditTaskProps> = ({ taskDetails, handleClose }) => {
   const updateTaskMutation = useMutation({
     mutationFn: () => updateTask(task, task.id!),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['tasks'] });
+      void queryClient.invalidateQueries({ queryKey: ['tasks'] });
       handleClose();
     }
   });
@@ -54,7 +54,7 @@ const EditTask: React.FC<EditTaskProps> = ({ taskDetails, handleClose }) => {
   const deleteMutation = useMutation({
     mutationFn: () => deleteTask(task.id!),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['tasks'] });
+      void queryClient.invalidateQueries({ queryKey: ['tasks'] });
       handleClose();
     }
   });
@@ -71,10 +71,6 @@ const EditTask: React.FC<EditTaskProps> = ({ taskDetails, handleClose }) => {
     if (task.id != null) {
       deleteMutation.mutate();
     }
-  };
-
-  const handleSelectedTagsChange = (tags: Tag[]) => {
-    setSelectedTags(tags);
   };
 
   return (
@@ -141,7 +137,17 @@ const EditTask: React.FC<EditTaskProps> = ({ taskDetails, handleClose }) => {
         </div>
         <div>
           <h2>Tags</h2>
-          <TagListClickable selectedTags={selectedTag} onSelectedTagsChange={handleSelectedTagsChange} />
+          <TagListClickable
+            handleTagClick={(tag: Tag) => {
+              if (task.tag?.id === tag.id) {
+                setTask({ ...task, tag: undefined });
+                setSelectedTagId(tag.id);
+                return;
+              }
+              setTask({ ...task, tag });
+            }}
+            selectedTagId
+          />
         </div>
         <div className='add-new-task__content--buttons'>
           {taskDetails ? (

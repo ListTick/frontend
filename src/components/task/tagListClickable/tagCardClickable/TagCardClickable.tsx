@@ -1,3 +1,4 @@
+import React from 'react';
 import ListItem from '@mui/material/ListItem';
 import { Tag } from '@/types/tag';
 import './TagCardClickable.scss';
@@ -14,7 +15,7 @@ const TagCardClickable: React.FC<TagCardProps> = ({ tag, onTagClick, isSelected 
       onTagClick(tag);
     }
   };
-
+  console.log(isSelected);
   return (
     <ListItem
       className={`tagCardClickable${isSelected ? '--selected' : ''}`}
