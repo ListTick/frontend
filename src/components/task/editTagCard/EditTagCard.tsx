@@ -1,8 +1,8 @@
 import ListItem from '@mui/material/ListItem';
-import { Tag } from '@/types/tag';
+import { Tag } from '@/types/tag.ts';
 import './EditTagCard.scss';
 import Modal from '@mui/material/Modal';
-import EditTag from '../editTag/EditTag';
+import EditTag from '@/components/task/editTag/EditTag.tsx';
 import { useState } from 'react';
 
 interface EditTagCardProps {

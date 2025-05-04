@@ -1,8 +1,8 @@
 import { TextField, Button } from '@mui/material';
 import { useState } from 'react';
 import { HexColorPicker } from 'react-colorful';
-import { createTag, deleteTag, updateTag } from '@/api/tag';
-import { Tag } from '@/types/tag';
+import { createTag, deleteTag, updateTag } from '@/api/tag.ts';
+import { Tag } from '@/types/tag.ts';
 import './EditTag.scss';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 

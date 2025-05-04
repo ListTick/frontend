@@ -1,12 +1,12 @@
-import { Task } from '@/types/task';
+import { Task } from '@/types/task.ts';
 import { Button, Checkbox, IconButton, Modal } from '@mui/material';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import './TaskItem.scss';
-import TagCard from '../../tagList/tagCard/TagCard';
+import TagCard from '../tagList/tagCard/TagCard.tsx';
 import React, { useState } from 'react';
 import TimerIcon from '@mui/icons-material/Timer';
-import EditTask from '../editTask/EditTask';
-import { toggleTaskComplete } from '@/api/task';
+import EditTask from '@/components/task/editTask/EditTask.tsx';
+import { toggleTaskComplete } from '@/api/task.ts';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 interface TaskItemProps {

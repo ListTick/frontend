@@ -1,11 +1,11 @@
 import { TextField, Button } from '@mui/material';
 import React, { useState } from 'react';
-import { Task } from '@/types/task';
-import { createTask, deleteTask, updateTask } from '@/api/task';
+import { Task } from '@/types/task.ts';
+import { createTask, deleteTask, updateTask } from '@/api/task.ts';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import './EditTask.scss';
 import TagListClickable from '@/components/task/tagListClickable/TagListClickable.tsx';
-import { Tag } from '@/types/tag';
+import { Tag } from '@/types/tag.ts';
 
 interface EditTaskProps {
   taskDetails?: Task;

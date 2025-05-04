@@ -2,7 +2,7 @@ import { CircularProgress, TablePagination } from '@mui/material';
 import { getArchivedTasksByUserId } from '@/api/task';
 import React, { useState } from 'react';
 import { Task } from '@/types/task';
-import TaskItem from '../taskList/task/TaskItem';
+import TaskItem from '@/components/task/task/TaskItem';
 import './ArchivedTaskList.scss';
 import { useQuery } from '@tanstack/react-query';
 import Snackbar from '@/components/task/alert/Alert';

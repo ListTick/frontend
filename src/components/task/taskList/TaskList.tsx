@@ -1,10 +1,10 @@
 import { CircularProgress } from '@mui/material';
 import { getTasksByUserId } from '@/api/task';
-import TaskItem from './task/TaskItem';
+import TaskItem from '@/components/task/task/TaskItem';
 import React from 'react';
 import Snackbar from '../alert/Alert';
 import { Task } from '@/types/task';
-import NewTask from './newTask/NewTask';
+import NewTask from '@/components/task/newTask/NewTask';
 import { useQuery } from '@tanstack/react-query';
 import './TaskList.scss';
 

@@ -3,7 +3,7 @@ import Clock from '@/components/task/clock/Clock';
 import TaskList from '@/components/task/taskList/TaskList';
 
 import { Task } from '@/types/task';
-import TaskOptions from '@/components/task/options/TaskOptions.tsx';
+import TaskOptions from '@/components/task/taskOptions/TaskOptions.tsx';
 import TagListClickable from '@/components/task/tagListClickable/TagListClickable';
 import ArchivedTaskList from '@/components/task/archivedTaskList/ArchivedTaskList';
 import './Tasks.scss';

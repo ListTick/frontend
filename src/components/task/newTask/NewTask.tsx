@@ -2,7 +2,7 @@ import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
 import './NewTask.scss';
 import { Modal } from '@mui/material';
 import { useState } from 'react';
-import EditTask from '../editTask/EditTask';
+import EditTask from '@/components/task/editTask/EditTask.tsx';
 
 const NewTask = () => {
   const [open, setOpen] = useState(false);

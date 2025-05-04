@@ -1,8 +1,9 @@
 import { useQuery } from '@tanstack/react-query';
 import { getGoals } from '@/api/goal.ts';
-import { Button, CircularProgress } from '@mui/material';
+import { CircularProgress } from '@mui/material';
 import Snackbar from '@/components/task/alert/Alert.tsx';
 import './GoalList.scss';
+import AddGoal from '@/components/profile/addGoal/AddGoal.tsx';
 
 const GoalList = () => {
   const { data, isLoading, isError } = useQuery({
@@ -22,6 +23,7 @@ const GoalList = () => {
     return (
       <div className='goal-list'>
         <h2>No goals added!</h2>
+        <AddGoal />
       </div>
     );
   }
@@ -31,15 +33,13 @@ const GoalList = () => {
       <h2>Goals</h2>
       {data.map((goal) => {
         return (
-          <div>
-            <div key={goal.id} className='goalList__item'>
-              <h3>{goal.name}</h3>
-              <p>{goal.description}</p>
-            </div>
-            <Button>Add Goal</Button>
+          <div key={goal.id} className='goalList__item'>
+            <h3>{goal.name}</h3>
+            <p>{goal.description}</p>
           </div>
         );
       })}
+      <AddGoal />
     </div>
   );
 };

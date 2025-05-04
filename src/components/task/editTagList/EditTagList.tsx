@@ -2,10 +2,10 @@ import { useState } from 'react';
 import CircularProgress from '@mui/material/CircularProgress';
 import Snackbar from '../alert/Alert';
 import { getTagsByUserId } from '@/api/tag';
-import EditTagCard from './editTagCard/EditTagCard';
+import EditTagCard from '@/components/task/editTagCard/EditTagCard';
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
-import EditTag from './editTag/EditTag';
+import EditTag from '@/components/task/editTag/EditTag';
 import { useQuery } from '@tanstack/react-query';
 import './EditTagList.scss';
 

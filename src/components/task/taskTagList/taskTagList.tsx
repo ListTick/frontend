@@ -2,8 +2,8 @@ import CircularProgress from '@mui/material/CircularProgress';
 import { useQuery } from '@tanstack/react-query';
 import { getTagsByUserId } from '../../../api/tag';
 import { Tag } from '../../../types/entities/Tag';
-import Snackbar from '../../alert/Alert';
-import TagCardClickable from '../../tagListClickable/tagCardClickable/TagCardClickable';
+import Snackbar from '../alert/Alert.tsx';
+import TagCardClickable from '../tagListClickable/tagCardClickable/TagCardClickable.tsx';
 import { useState } from 'react';
 import './TaskTagList.scss';
 

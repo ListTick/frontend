@@ -1,9 +1,9 @@
 export interface Goal {
-  id?: string;
+  id?: string | null;
   name: string;
   description: string;
   priority: number;
-  startDate: Date;
-  endDate: Date;
-  realizationDate?: Date;
+  startDate: string;
+  endDate: string;
+  realizationDate?: string | null;
 }
