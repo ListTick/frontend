@@ -1,0 +1,7 @@
+@use '/src/styles/base/core.scss' as *;
+
+.goal-list {
+  background-color: $gray-800;
+  border-radius: $border-radius-base;
+  padding: $padding-base;
+}

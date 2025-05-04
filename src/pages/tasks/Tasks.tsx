@@ -3,7 +3,7 @@ import Clock from '@/components/task/clock/Clock';
 import TaskList from '@/components/task/taskList/TaskList';
 
 import { Task } from '@/types/task';
-import Options from '@/components/task/options/Options';
+import TaskOptions from '@/components/task/options/TaskOptions.tsx';
 import TagListClickable from '@/components/task/tagListClickable/TagListClickable';
 import ArchivedTaskList from '@/components/task/archivedTaskList/ArchivedTaskList';
 import './Tasks.scss';
@@ -34,7 +34,7 @@ const Tasks = () => {
         <section className='tasks__tasks'>
           <div className='tasks__tasks--header'>
             <h2>{isArchivedTasksDisplayed ? 'Archived Tasks' : 'Tasks'}</h2>
-            <Options
+            <TaskOptions
               toggleShowArchivedTasks={displayArchivedTasks}
               isArchivedTasksDisplayed={isArchivedTasksDisplayed}
             />

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { IconButton, Popover, Button, Modal } from '@mui/material';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-import './Options.scss';
+import './TaskOptions.scss';
 import EditTagList from '../editTagList/EditTagList';
 import { deleteAllCompletedTasks } from '@/api/task';
 
@@ -10,7 +10,7 @@ interface OptionsProps {
   isArchivedTasksDisplayed: boolean;
 }
 
-const Options: React.FC<OptionsProps> = ({ toggleShowArchivedTasks, isArchivedTasksDisplayed }) => {
+const TaskOptions: React.FC<OptionsProps> = ({ toggleShowArchivedTasks, isArchivedTasksDisplayed }) => {
   const [isPopoverOpen, setIsPopoverOpen] = useState<boolean>(false);
   const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
   const [isTagsEditOpen, setIsTagsEditOpen] = useState<boolean>(false);
@@ -87,4 +87,4 @@ const Options: React.FC<OptionsProps> = ({ toggleShowArchivedTasks, isArchivedTa
   );
 };
 
-export default Options;
+export default TaskOptions;

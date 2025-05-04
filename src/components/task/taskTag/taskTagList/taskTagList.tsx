@@ -12,13 +12,10 @@ interface TaskTagProps {
   onSelectedTagsChange: (selectedTags: Tag[]) => void;
 }
 
-const TaskTagList: React.FC<TaskTagProps> = ({
-  alreadySelectedTags,
-  onSelectedTagsChange,
-}) => {
+const TaskTagList: React.FC<TaskTagProps> = ({ alreadySelectedTags, onSelectedTagsChange }) => {
   const { data, isLoading, isError } = useQuery<Tag[]>({
     queryKey: ['tags'],
-    queryFn: getTagsByUserId,
+    queryFn: getTagsByUserId
   });
   const [selectedTags, setSelectedTags] = useState<Tag[]>(alreadySelectedTags);
 
@@ -27,11 +24,7 @@ const TaskTagList: React.FC<TaskTagProps> = ({
   }
 
   if (isError || !data) {
-    return (
-      <Snackbar severity="error">
-        Oops there was an error, please contact our IT department
-      </Snackbar>
-    );
+    return <Snackbar severity='error'>Oops there was an error, please contact our IT department</Snackbar>;
   }
 
   const handleTagClick = (tag: Tag) => {
@@ -44,13 +37,10 @@ const TaskTagList: React.FC<TaskTagProps> = ({
     });
   };
 
-  const filteredData = data.filter(
-    (tag) =>
-      !alreadySelectedTags.some((selectedTag) => selectedTag.id === tag.id)
-  );
+  const filteredData = data.filter((tag) => !alreadySelectedTags.some((selectedTag) => selectedTag.id === tag.id));
 
   return (
-    <div className="taskTagList">
+    <div className='taskTagList'>
       {alreadySelectedTags.map((selectedTag) => (
         <TagCardClickable
           key={selectedTag.id}
