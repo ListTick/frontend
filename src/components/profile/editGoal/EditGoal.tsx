@@ -7,16 +7,17 @@ import './EditGoal.scss';
 
 interface EditGoalProps {
   goalDetails?: Goal;
-  onClose: () => void;
+  handleClose: () => void;
 }
-const EditGoal: React.FC<EditGoalProps> = ({ goalDetails, onClose }) => {
+
+const EditGoal: React.FC<EditGoalProps> = ({ goalDetails, handleClose }) => {
   const queryClient = useQueryClient();
 
   const [goal, setGoal] = useState<Goal>({
     id: goalDetails?.id || null,
     name: goalDetails?.name || '',
     description: goalDetails?.description || '',
-    priority: goalDetails?.priority || 5,
+    priority: goalDetails?.priority || '',
     startDate: goalDetails?.startDate ? goalDetails.startDate : new Date().toISOString().split('T')[0],
     endDate: goalDetails?.endDate ? goalDetails.endDate : new Date().toISOString().split('T')[0],
     realizationDate: goalDetails?.realizationDate ? goalDetails.realizationDate : null
@@ -26,7 +27,7 @@ const EditGoal: React.FC<EditGoalProps> = ({ goalDetails, onClose }) => {
     mutationFn: createGoal,
     onSuccess: () => {
       void queryClient.invalidateQueries({ queryKey: ['goals'] });
-      onClose();
+      handleClose();
     }
   });
 
@@ -34,7 +35,7 @@ const EditGoal: React.FC<EditGoalProps> = ({ goalDetails, onClose }) => {
     mutationFn: updateGoal,
     onSuccess: () => {
       void queryClient.invalidateQueries({ queryKey: ['goals'] });
-      onClose();
+      handleClose();
     }
   });
 
@@ -42,7 +43,7 @@ const EditGoal: React.FC<EditGoalProps> = ({ goalDetails, onClose }) => {
     mutationFn: deleteGoal,
     onSuccess: () => {
       void queryClient.invalidateQueries({ queryKey: ['goals'] });
-      onClose();
+      handleClose();
     }
   });
 
@@ -91,7 +92,7 @@ const EditGoal: React.FC<EditGoalProps> = ({ goalDetails, onClose }) => {
           label='Priority'
           variant='filled'
           value={goal.priority}
-          onChange={(e) => setGoal({ ...goal, description: e.target.value })}
+          onChange={(e) => setGoal({ ...goal, priority: e.target.value })}
         />
         <TextField
           id='startDate'

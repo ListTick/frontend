@@ -2,7 +2,7 @@
 
 .user-profile {
   background-color: $gray-800;
-  padding: 20px;
-  border-radius: 8px;
+  padding: $padding-base;
+  border-radius: $border-radius-base;
   //box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }

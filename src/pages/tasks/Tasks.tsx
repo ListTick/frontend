@@ -31,6 +31,10 @@ const Tasks = () => {
         taskId={selectedTask.id}
       />
       <div className='tasks'>
+        <section className='tasks__tags'>
+          <h2>Tags</h2>
+          <TagListClickable />
+        </section>
         <section className='tasks__tasks'>
           <div className='tasks__tasks--header'>
             <h2>{isArchivedTasksDisplayed ? 'Archived Tasks' : 'Tasks'}</h2>
@@ -44,10 +48,6 @@ const Tasks = () => {
           ) : (
             <TaskList onPomodoroClick={handlePomodoroClick} />
           )}
-        </section>
-        <section className='tasks__tags'>
-          <h2>Tags</h2>
-          <TagListClickable />
         </section>
       </div>
     </>

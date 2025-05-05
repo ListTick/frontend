@@ -1,0 +1,22 @@
+@use '/src/styles/base/core' as *;
+
+.goalItem {
+  background-color: $background-color;
+  padding: $padding-base;
+  border-radius: $border-radius-base;
+
+  &__title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__dates {
+    display: flex;
+    gap: $gap-base;
+
+    span {
+      color: $accent-color;
+    }
+  }
+}

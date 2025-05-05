@@ -4,6 +4,7 @@ import { CircularProgress } from '@mui/material';
 import Snackbar from '@/components/task/alert/Alert.tsx';
 import './GoalList.scss';
 import AddGoal from '@/components/profile/addGoal/AddGoal.tsx';
+import GoalItem from '../goalItem/GoalItem';
 
 const GoalList = () => {
   const { data, isLoading, isError } = useQuery({
@@ -31,14 +32,11 @@ const GoalList = () => {
   return (
     <div className='goal-list'>
       <h2>Goals</h2>
-      {data.map((goal) => {
-        return (
-          <div key={goal.id} className='goalList__item'>
-            <h3>{goal.name}</h3>
-            <p>{goal.description}</p>
-          </div>
-        );
-      })}
+      <div className='goal-list__items'>
+        {data.map((goal) => {
+          return <GoalItem key={goal.id} goal={goal} />;
+        })}
+      </div>
       <AddGoal />
     </div>
   );
