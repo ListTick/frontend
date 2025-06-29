@@ -1,5 +1,5 @@
 import { Task } from '@/types/task';
-import { Button, Checkbox, IconButton, Modal } from '@mui/material';
+import { Checkbox, IconButton, Modal } from '@mui/material';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import './TaskItem.scss';
 import TagCard from '../../tagList/tagCard/TagCard';
