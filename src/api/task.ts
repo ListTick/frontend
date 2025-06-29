@@ -1,5 +1,5 @@
 import { api } from '@/config/axios';
-import { PagedTask, Task } from '@/types/task';
+import { PagedTask, Task, TaskWithTagId } from '@/types/task';
 import { Tag } from '@/types/tag.ts';
 
 enum TaskApi {
@@ -26,7 +26,7 @@ export const getArchivedTasksByUserId = async (page: number, size: number): Prom
     throw error;
   }
 };
-export const createTask = async (task: Task): Promise<Task> => {
+export const createTask = async (task: TaskWithTagId): Promise<Task> => {
   try {
     const response = await api.post(TaskApi.TASK, task);
     return response.data;
@@ -36,7 +36,7 @@ export const createTask = async (task: Task): Promise<Task> => {
   }
 };
 
-export const updateTask = async (task: Task, taskId: string): Promise<Task> => {
+export const updateTask = async (task: TaskWithTagId, taskId: string): Promise<Task> => {
   try {
     const response = await api.put(`${TaskApi.TASK}/${taskId}`, task);
     return response.data;

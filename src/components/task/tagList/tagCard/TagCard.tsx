@@ -8,7 +8,6 @@ const TagCard = ({ tag }: { tag: Tag }) => {
   }
   return (
     <ListItem className='tagCard' key={tag.id} style={{ backgroundColor: tag.color }}>
-      <p>{tag.name}</p>
     </ListItem>
   );
 };

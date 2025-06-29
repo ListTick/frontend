@@ -1,6 +1,6 @@
 import { TextField, Button } from '@mui/material';
 import React, { useState } from 'react';
-import { Task } from '@/types/task';
+import { TaskWithTagId } from '@/types/task';
 import { createTask, deleteTask, updateTask } from '@/api/task';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import './EditTask.scss';
@@ -8,13 +8,13 @@ import TagListClickable from '@/components/task/tagListClickable/TagListClickabl
 import { Tag } from '@/types/tag';
 
 interface EditTaskProps {
-  taskDetails?: Task;
+  taskDetails?: TaskWithTagId;
   handleClose: () => void;
 }
 
 const EditTask: React.FC<EditTaskProps> = ({ taskDetails, handleClose }) => {
   const queryClient = useQueryClient();
-  const [task, setTask] = useState<Task>({
+  const [task, setTask] = useState<TaskWithTagId>({
     id: taskDetails?.id || undefined,
     name: taskDetails?.name || '',
     dueDate: taskDetails?.dueDate || '',
@@ -23,9 +23,9 @@ const EditTask: React.FC<EditTaskProps> = ({ taskDetails, handleClose }) => {
     totalPomodoros: taskDetails?.totalPomodoros || undefined,
     completedPomodoros: taskDetails?.completedPomodoros || undefined,
     isCompleted: taskDetails?.isCompleted || false,
-    tag: taskDetails?.tag || undefined
+    tagId: taskDetails?.tagId || undefined
   });
-  const [selectedTagId, setSelectedTagId] = useState<string | undefined>(taskDetails?.tag?.id);
+  console.log(task);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -71,6 +71,13 @@ const EditTask: React.FC<EditTaskProps> = ({ taskDetails, handleClose }) => {
     if (task.id != null) {
       deleteMutation.mutate();
     }
+  };
+
+  const handleTagClick = (tag: Tag) => {
+    setTask((prevTask) => ({
+      ...prevTask,
+      tagId: tag.id
+    }));
   };
 
   return (
@@ -137,17 +144,7 @@ const EditTask: React.FC<EditTaskProps> = ({ taskDetails, handleClose }) => {
         </div>
         <div>
           <h2>Tags</h2>
-          <TagListClickable
-            handleTagClick={(tag: Tag) => {
-              if (task.tag?.id === tag.id) {
-                setTask({ ...task, tag: undefined });
-                setSelectedTagId(tag.id);
-                return;
-              }
-              setTask({ ...task, tag });
-            }}
-            selectedTagId
-          />
+          <TagListClickable handleTagClick={handleTagClick}/>
         </div>
         <div className='add-new-task__content--buttons'>
           {taskDetails ? (

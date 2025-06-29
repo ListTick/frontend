@@ -50,32 +50,36 @@ const TaskItem: React.FC<TaskItemProps> = ({ task, onPomodoroClick }) => {
   const displayPomodoros = () => {
     if (task.completedPomodoros != null && task.totalPomodoros != null && task.totalPomodoros > 0) {
       return (
-        <Button onClick={handlePomodoroClick}>
+        <div onClick={handlePomodoroClick}>
           <div className='pomodoros-count'>
             <h3>
               {task.completedPomodoros}/{task.totalPomodoros}
             </h3>
             <TimerIcon />
           </div>
-        </Button>
+        </div>
       );
     }
   };
 
   return (
     <div className='taskItem'>
-      <div className='taskItem__title'>
-        <h3>{task.name}</h3>
-        <p>{task.dueDate}</p>
-      </div>
-      <div className='taskItem__tags'>
-        <TagCard tag={task.tag} />
-      </div>
-      <div className='taskItem__icons'>
-        {displayPomodoros()}
+      <div className='taskItem__main'>
         <IconButton onClick={handleTaskComplete}>
           <Checkbox checked={task.isCompleted} color='success' />
         </IconButton>
+        <div className='taskItem__main--title'>
+          <h3>{task.name}</h3>
+          {task.dueDate != null && (<p>{task.dueDate}</p>)}
+        </div>
+      </div>
+
+      <div className='taskItem__icons'>
+        <div className='taskItem__tag'>
+          <TagCard tag={task.tag} />
+        </div>
+        {displayPomodoros()}
+
         <IconButton onClick={handleModalOpen}>
           <MoreVertIcon fontSize='medium' color='success' />
         </IconButton>

@@ -9,33 +9,36 @@
   border: $border;
   border-radius: $border-radius-base;
 
-  &__title {
+  &__main {
+    display: flex;
+    flex-direction: row;
     color: $accent-color;
 
-    &--icon {
+    &--title {
       color: $accent-color;
     }
   }
 
   &__icons {
     display: flex;
-    justify-content: space-between;
     text-align: center;
     align-items: center;
-  }
-
-  &__tags {
-    display: flex;
-    gap: $gap-base;
   }
 }
 
 .pomodoros-count {
+  padding: $padding-base;
+  border-radius: $border-radius-base;
+  background-color: $background-color;
   display: flex;
   align-items: center;
   gap: $gap-base;
   color: $accent-color;
-  height: 100%;
+
+  &:hover {
+    cursor: pointer;
+    background-color: $secondary-color;
+  }
 }
 
 @media (max-width: $breakpoint-tablet) {
