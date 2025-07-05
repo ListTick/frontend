@@ -3,7 +3,6 @@ import { AppRoutes } from './types/routes';
 import LandingPage from './pages/landingPage/LandingPage.tsx';
 import Layout from './layout/Layout';
 import Home from './pages/home/Home';
-import Settings from './pages/settings/Settings';
 import Profile from './pages/profile/Profile';
 import Lists from './pages/lists/Lists';
 import Tasks from './pages/tasks/Tasks';
@@ -23,7 +22,6 @@ function App() {
           <Route path={AppRoutes.NOTES} element={<Notes />} />
           <Route path={AppRoutes.NOTIFICATIONS} element={<Notifications />} />
           <Route path={AppRoutes.PROFILE} element={<Profile />} />
-          <Route path={AppRoutes.SETTINGS} element={<Settings />} />
         </Route>
       </Routes>
     </BrowserRouter>

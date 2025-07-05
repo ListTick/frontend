@@ -1,11 +1,11 @@
 import CircularProgress from '@mui/material/CircularProgress';
 import { useQuery } from '@tanstack/react-query';
-import { getTagsByUserId } from '../../../api/tag';
-import { Tag } from '../../../types/entities/Tag';
 import Snackbar from '../../alert/Alert';
 import TagCardClickable from '../../tagListClickable/tagCardClickable/TagCardClickable';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import './TaskTagList.scss';
+import { Tag } from '@/types/tag.ts';
+import { getTagsByUserId } from '@/api/tag.ts';
 
 interface TaskTagProps {
   alreadySelectedTags: Tag[];

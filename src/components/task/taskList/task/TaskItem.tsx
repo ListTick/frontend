@@ -1,13 +1,13 @@
 import { Task } from '@/types/task';
 import { Checkbox, IconButton, Modal } from '@mui/material';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-import './TaskItem.scss';
 import TagCard from '../../tagList/tagCard/TagCard';
 import React, { useState } from 'react';
 import TimerIcon from '@mui/icons-material/Timer';
 import EditTask from '../editTask/EditTask';
 import { toggleTaskComplete } from '@/api/task';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
+import './TaskItem.scss';
 
 interface TaskItemProps {
   task: Task;
@@ -25,7 +25,7 @@ const TaskItem: React.FC<TaskItemProps> = ({ task, onPomodoroClick }) => {
   const updateMutation = useMutation({
     mutationFn: () => toggleTaskComplete(task.id!),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['tasks'] });
+      void queryClient.invalidateQueries({ queryKey: ['tasks'] });
     }
   });
 
@@ -75,9 +75,11 @@ const TaskItem: React.FC<TaskItemProps> = ({ task, onPomodoroClick }) => {
       </div>
 
       <div className='taskItem__icons'>
-        <div className='taskItem__tag'>
-          <TagCard tag={task.tag} />
-        </div>
+        {task.tag && (
+          <div className='taskItem__tag'>
+            <TagCard tag={task.tag} />
+          </div>
+        )}
         {displayPomodoros()}
 
         <IconButton onClick={handleModalOpen}>

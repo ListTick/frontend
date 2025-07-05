@@ -7,6 +7,7 @@ import Options from '@/components/task/options/Options';
 import TagListClickable from '@/components/task/tagListClickable/TagListClickable';
 import ArchivedTaskList from '@/components/task/archivedTaskList/ArchivedTaskList';
 import './Tasks.scss';
+import { Tag } from '@/types/tag';
 
 const Tasks = () => {
   const [isClockDisplayed, setIsClockDisplayed] = useState(false);
@@ -30,9 +31,14 @@ const Tasks = () => {
         isDisplayed={isClockDisplayed}
         taskId={selectedTask.id}
       />
-      <div className='tasks'>
-        <section className='tasks__tags'>
-        <TagListClickable />
+      <div className="tasks">
+        <section className="tasks__tags">
+          {/*
+          TODO: Implement filtering tasks by tags
+          */}
+          <TagListClickable handleTagClick={function(tag: Tag): void {
+                      throw new Error('Function not implemented: ' + tag);
+                  } } />
         </section>
         <section className='tasks__tasks'>
           <div className='tasks__tasks--header'>

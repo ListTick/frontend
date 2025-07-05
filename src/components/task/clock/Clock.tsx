@@ -45,7 +45,12 @@ const Clock = ({ pomodoroDuration, breakDuration, isDisplayed, taskId }: ClockPr
   }, [isRunning, isPomodoro, pomodoroDuration, breakDuration]);
 
   const updateMutation = useMutation({
-    mutationFn: () => updateCompletedPomodoros(taskId, 1),
+    mutationFn: () => {
+      if (taskId) {
+        return updateCompletedPomodoros(taskId, 1);
+      }
+      return Promise.resolve();
+    },
     onSuccess: () => {
       void useQuery.invalidateQueries({ queryKey: ['tasks'] });
     }

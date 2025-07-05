@@ -9,6 +9,9 @@ enum TaskApi {
 export const getTasksByUserId = async (tag: Tag | null): Promise<Task[]> => {
   try {
     //todo: handle tag
+    if (tag) {
+      console.log("Hello handle me!")
+    }
     const response = await api.get(`${TaskApi.TASK}`);
     return response.data;
   } catch (error) {

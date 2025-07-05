@@ -1,5 +1,5 @@
 import { TextField, Button } from '@mui/material';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { HexColorPicker } from 'react-colorful';
 import { createTag, deleteTag, updateTag } from '@/api/tag';
 import { Tag } from '@/types/tag';
@@ -19,7 +19,7 @@ const EditTag: React.FC<EditTagProps> = ({ tag, onClose }) => {
   const updateMutation = useMutation({
     mutationFn: () => updateTag({ name, color }, id),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['tags'] });
+      void queryClient.invalidateQueries({ queryKey: ['tags'] });
       onClose();
     }
   });
@@ -27,15 +27,20 @@ const EditTag: React.FC<EditTagProps> = ({ tag, onClose }) => {
   const createMutation = useMutation({
     mutationFn: () => createTag({ name, color }),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['tags'] });
+      void queryClient.invalidateQueries({ queryKey: ['tags'] });
       onClose();
     }
   });
 
   const deleteMutation = useMutation({
-    mutationFn: () => deleteTag(tag.id),
+    mutationFn: () => {
+      if (tag?.id) {
+        return deleteTag(tag.id);
+      }
+      return Promise.resolve();
+    },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['tags'] });
+      void queryClient.invalidateQueries({ queryKey: ['tags'] });
       onClose();
     }
   });
