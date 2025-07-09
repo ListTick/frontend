@@ -1,0 +1,7 @@
+@use '/src/styles/base/core.scss' as *;
+
+.goalItem {
+  padding: $padding-base;
+  border-radius: $border-radius-base;
+  border: $border;
+}

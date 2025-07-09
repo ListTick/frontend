@@ -1,0 +1,10 @@
+@use '/src/styles/base/core.scss' as *;
+
+.tagListClickable {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: $small-gap;
+  list-style: none;
+  margin: $margin-base 0;
+}

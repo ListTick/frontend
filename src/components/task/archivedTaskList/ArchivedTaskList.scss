@@ -1,0 +1,14 @@
+@use '/src/styles/base/core.scss' as *;
+
+.archivedTaskList {
+  display: flex;
+  flex-direction: column;
+  gap: $small-gap;
+  margin: $margin-base 0;
+}
+
+.customTablePagination {
+  margin-top: 1rem;
+  display: flex;
+  align-self: center;
+}

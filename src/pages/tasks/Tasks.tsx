@@ -1,32 +1,62 @@
-import { useQuery } from '@tanstack/react-query';
-import { getTasks } from '../../api/tasks.ts';
-import { Task } from '../../types/task.ts';
+import { useState } from 'react';
+import Clock from '@/components/task/clock/Clock';
+import TaskList from '@/components/task/taskList/TaskList';
+
+import { Task } from '@/types/task';
+import Options from '@/components/task/options/Options';
+import TagListClickable from '@/components/task/tagListClickable/TagListClickable';
+import ArchivedTaskList from '@/components/task/archivedTaskList/ArchivedTaskList';
+import './Tasks.scss';
+import { Tag } from '@/types/tag';
 
 const Tasks = () => {
-  const { data, isError, isLoading } = useQuery({
-    queryKey: ['tasks'],
-    queryFn: () => getTasks()
-  });
+  const [isClockDisplayed, setIsClockDisplayed] = useState(false);
+  const [selectedTask, setSelectedTask] = useState({} as Task);
+  const [isArchivedTasksDisplayed, setIsArchivedTasksDisplayed] = useState<boolean>(false);
 
-  if (isLoading) {
-    return <div className='tasks'>Loading...</div>;
-  }
+  const handlePomodoroClick = (task: Task) => {
+    setSelectedTask(task);
+    setIsClockDisplayed(true);
+  };
 
-  if (isError) {
-    return <div className='tasks'>Error loading tasks</div>;
-  }
+  const displayArchivedTasks = () => {
+    setIsArchivedTasksDisplayed((prev) => !prev);
+  };
 
   return (
-    <div className='tasks'>
-      <h1>Tasks</h1>
-      <div className='tasks__list'>
-        {data?.map((task: Task) => (
-          <div key={task.id} className='tasks__item'>
-            <h2>{task.name}</h2>
+    <>
+      <Clock
+        pomodoroDuration={selectedTask.pomodoroDuration ?? 25}
+        breakDuration={selectedTask.breakDuration ?? 5}
+        isDisplayed={isClockDisplayed}
+        taskId={selectedTask.id}
+      />
+      <div className="tasks">
+        <section className="tasks__tags">
+          {/*
+          TODO: Implement filtering tasks by tags
+          */}
+          <TagListClickable handleTagClick={function(tag: Tag): void {
+                      throw new Error('Function not implemented: ' + tag);
+                  } } />
+        </section>
+        <section className='tasks__tasks'>
+          <div className='tasks__tasks--header'>
+            <h2>{isArchivedTasksDisplayed ? 'Archived Tasks' : 'Tasks'}</h2>
+            <Options
+              toggleShowArchivedTasks={displayArchivedTasks}
+              isArchivedTasksDisplayed={isArchivedTasksDisplayed}
+            />
           </div>
-        ))}
+          {isArchivedTasksDisplayed ? (
+            <ArchivedTaskList onPomodoroClick={handlePomodoroClick} />
+          ) : (
+            <TaskList onPomodoroClick={handlePomodoroClick} />
+          )}
+        </section>
+
       </div>
-    </div>
+    </>
   );
 };
 

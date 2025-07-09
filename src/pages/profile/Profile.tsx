@@ -1,24 +1,30 @@
-import { Button } from '@mui/material';
 import './Profile.scss';
-import useKeycloak from '../../hooks/useKeycloak.ts';
-import { useNavigate } from 'react-router-dom';
-import { AppRoutes } from '../../types/routes.ts';
+import GoalList from '@/components/profile/goalList/GoalList.tsx';
+import User from '@/components/profile/user/User.tsx';
+import Settings from '@/components/profile/settings/Settings.tsx';
+import { useState } from 'react';
+import { Button } from '@mui/material';
 
 const Profile = () => {
-  const keycloak = useKeycloak();
-  const navigate = useNavigate();
-
-  const handleLogout = async () => {
-    navigate(AppRoutes.HOME, { replace: true });
-    await keycloak.logout();
-  };
+  const [selectedSection, setSelectedSection] = useState<'goals' | 'user' | 'settings'>('goals');
 
   return (
     <div className='profile'>
-      <div className='profile__logout'>
-        <Button variant='contained' onClick={() => handleLogout()}>
-          Logout
-        </Button>
+      <div className='profile__buttons'>
+        <Button onClick={() => setSelectedSection('goals')}>Goals</Button>
+        <Button onClick={() => setSelectedSection('user')}>User</Button>
+        <Button onClick={() => setSelectedSection('settings')}>Settings</Button>
+      </div>
+      <div className='profile__content'>
+        {selectedSection === 'goals' && (
+          <div className='profile__goals'>
+            <div className='profile__goals--container'>
+              <GoalList />
+            </div>
+          </div>
+        )}
+        {selectedSection === 'user' && <User />}
+        {selectedSection === 'settings' && <Settings />}
       </div>
     </div>
   );
