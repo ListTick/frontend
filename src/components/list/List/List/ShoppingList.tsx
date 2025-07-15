@@ -4,7 +4,7 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import TagCard from '../../tagList/tagCard/TagCard';
 import React, { useState } from 'react';
 import TimerIcon from '@mui/icons-material/Timer';
-import EditTask from '@/components/list/List/EditList/EditTask';
+import ShoppingListInfo from '@/components/list/List/ListInfo/ShoppingListInfo.tsx';
 import { toggleTaskComplete } from '@/api/task';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import './TaskItem.scss';
@@ -14,7 +14,7 @@ interface TaskItemProps {
   onPomodoroClick: (task: Task) => void;
 }
 
-const TaskItem: React.FC<TaskItemProps> = ({ task, onPomodoroClick }) => {
+const ShoppingList: React.FC<TaskItemProps> = ({ task, onPomodoroClick }) => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const queryClient = useQueryClient();
 
@@ -98,7 +98,7 @@ const TaskItem: React.FC<TaskItemProps> = ({ task, onPomodoroClick }) => {
           aria-describedby='modal-taskedit-description'
         >
           <div>
-            <EditTask taskDetails={task} handleClose={handleModalClose} />
+            <ShoppingListInfo taskDetails={task} handleClose={handleModalClose} />
           </div>
         </Modal>
       )}
@@ -106,4 +106,4 @@ const TaskItem: React.FC<TaskItemProps> = ({ task, onPomodoroClick }) => {
   );
 };
 
-export default TaskItem;
+export default ShoppingList;

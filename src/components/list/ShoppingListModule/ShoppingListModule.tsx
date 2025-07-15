@@ -1,23 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './ShoppingListModule.scss';
-import { Tag } from '@/types/tag.ts';
-import TagListClickable from '@/components/task/tagListClickable/TagListClickable.tsx';
-import ListList from '@/components/list/List/ListList.tsx';
+import ShoppingListList from '@/components/list/List/ShoppingListList.tsx';
+import ItemList from '@/components/list/Item/ItemList.tsx';
+import CategoryList from '@/components/list/Category/List/CategoryList.tsx';
 
 const ShoppingListModule: React.FC = () => {
-  return (
-    <div className="shopping-lists">
-      <section className="shopping-lists__categories">
-        <TagListClickable handleTagClick={function(tag: Tag): void {
-          throw new Error('Function not implemented: ' + tag);
-        } } />
-      </section>
-      <section className="shopping-lists__content">
-        <section className="shopping-lists__lists">
-          <ListList />
-        </section>
-        <section className="shopping-lists__items">
+  const [selectedListId, setSelectedListId] = useState<string | null>(null);
+  const [selectedCategoryId, setSelectedCategoryId] = useState<string | null>(null);
 
+  return (
+    <div className='shopping-lists'>
+      <section className='shopping-lists__categories'>
+        <CategoryList selectedCategoryId={selectedCategoryId} setSelectedCategoryId={setSelectedCategoryId}/>
+      </section>
+      <section className='shopping-lists__content'>
+        <section className='shopping-lists__lists'>
+          <ShoppingListList selectedCategoryId={selectedCategoryId} onListClick={setSelectedListId} />
+        </section>
+        <section className='shopping-lists__items'>
+          <ItemList shoppingListId={selectedListId} />
         </section>
       </section>
     </div>

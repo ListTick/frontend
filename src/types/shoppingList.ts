@@ -1,12 +1,12 @@
-import { ShoppingListCategory } from '@/types/shoppingListCategory.ts';
+import { ShoppingListCategoryResponse } from '@/types/shoppingListCategory.ts';
 
 export interface ShoppingListResponse {
-  id?: string;
+  id: string;
   name: string;
   active: boolean;
   shared: boolean;
   creationDate: Date;
-  category: ShoppingListCategory;
+  category: ShoppingListCategoryResponse;
   accountId: string;
 }
 
@@ -17,7 +17,6 @@ export interface AccountSharedWithRequest {
 
 export interface ShoppingListRequest {
   name: string;
-  active: boolean;
   categoryId: string;
   shared: boolean;
   sharedWithAccounts?: AccountSharedWithRequest[];

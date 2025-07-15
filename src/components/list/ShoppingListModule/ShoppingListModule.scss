@@ -1,0 +1,9 @@
+.shopping-lists__content {
+  display: flex;
+  gap: 2rem;
+  min-height: 400px;
+}
+
+.shopping-lists__lists, .shopping-lists__items {
+  flex: 2;
+}

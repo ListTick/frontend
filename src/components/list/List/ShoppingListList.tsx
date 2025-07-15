@@ -1,0 +1,47 @@
+import { CircularProgress } from '@mui/material';
+import React from 'react';
+import Snackbar from '../../task/alert/Alert.tsx';
+import { useQuery } from '@tanstack/react-query';
+import './ShoppingListList.scss';
+import { getAllShoppingListsByAccountId } from '@/api/shoppingList.ts';
+import ListItem from '@/components/list/ListItem/ListItem.tsx';
+import NewListItem from '@/components/list/List/NewList/NewShoppingList.tsx';
+
+interface ShoppingListListProps {
+  selectedCategoryId: string | null;
+  onListClick: (shoppingListId: string) => void;
+}
+
+const ShoppingListList: React.FC<ShoppingListListProps> = ({ selectedCategoryId, onListClick }) => {
+  const { data, isError, isLoading } = useQuery({
+    queryKey: ['shopping-lists'],
+    queryFn: () => getAllShoppingListsByAccountId()
+  });
+
+  const filteredLists = data
+    ? selectedCategoryId
+      ? data.filter((list) => list.category.id === selectedCategoryId)
+      : data
+    : [];
+
+  if (isLoading) {
+    return <CircularProgress />;
+  }
+
+  if (isError || !data) {
+    return <Snackbar severity='error'>Oops there was an error, please contact our IT department</Snackbar>;
+  }
+
+  return (
+    <div className='shoppingListList'>
+      {filteredLists.map((shoppingList) => (
+        <div key={shoppingList.id} onClick={() => onListClick(shoppingList.id)}>
+          <ListItem shoppingList={shoppingList} />
+        </div>
+      ))}
+      <NewListItem />
+    </div>
+  );
+};
+
+export default ShoppingListList;

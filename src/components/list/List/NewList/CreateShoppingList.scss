@@ -1,0 +1,23 @@
+.createShoppingList {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  outline: none;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    &__buttons {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+  }
+}

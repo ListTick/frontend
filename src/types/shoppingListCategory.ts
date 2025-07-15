@@ -6,5 +6,5 @@ export interface ShoppingListCategoryRequest {
 export interface ShoppingListCategoryResponse {
   id: string;
   name: string;
-  color: string;
+  colour: string;
 }
