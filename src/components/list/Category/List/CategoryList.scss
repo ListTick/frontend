@@ -1,1 +1,11 @@
 @use '/src/styles/base/core.scss' as *;
+
+.categoryListClickable {
+
+  display: flex;
+  flex-direction: row;
+  gap: $small-gap;
+  margin-left: $margin-base;
+  height: 40px;
+
+}

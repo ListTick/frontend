@@ -5,6 +5,7 @@ import { CircularProgress } from '@mui/material';
 import Snackbar from '@/components/task/alert/Alert.tsx';
 import CategoryClickable from '@/components/list/Category/CategoryClickable.tsx';
 import './CategoryList.scss';
+import NewCategory from '@/components/list/Category/NewCategory/NewCategory.tsx';
 
 interface CategoryListProps {
   selectedCategoryId: string | null,
@@ -36,6 +37,7 @@ const CategoryList: React.FC<CategoryListProps> = ({ selectedCategoryId, setSele
   if (data) {
     return (
       <div className="categoryListClickable">
+        <NewCategory />
         {data.map((category) => (
           <CategoryClickable
             key={category.id}

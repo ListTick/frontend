@@ -13,16 +13,16 @@
   }
 
   &--selected {
-    background-color: palevioletred;
-    border: $border;
+    background-color: $gray-800;
+    border: solid 3px $gray-700;
     border-radius: $border-radius-base;
     max-width: 150px;
-    border: 5px solid $secondary-color;
     cursor: pointer;
 
     p {
       color: $accent-color;
       font-size: $font-size-small;
     }
+
   }
 }

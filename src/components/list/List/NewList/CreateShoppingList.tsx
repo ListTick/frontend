@@ -12,6 +12,8 @@ interface CreateShoppingListProps {
   handleClose: () => void;
 }
 
+const SHARED_LIST_ID = "11111111-1111-1111-1111-111111111111";
+
 const CreateShoppingList: React.FC<CreateShoppingListProps> = ({ handleClose }) => {
   const [categories, setCategories] = useState<ShoppingListCategoryResponse[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>('');
@@ -80,15 +82,19 @@ const CreateShoppingList: React.FC<CreateShoppingListProps> = ({ handleClose }) 
           onChange={(e) => setName(e.target.value)}
         />
         <FormControl fullWidth>
-          <InputLabel id='category-select-label'>Category</InputLabel>
+          <InputLabel id='category-select-label'>{ shared ? 'Shared' : 'Category' }</InputLabel>
           <Select
             labelId='category-select-label'
             id='category'
             value={selectedCategory}
             label='Category'
             onChange={(e) => setSelectedCategory(e.target.value)}
+            disabled={shared}
+            style={shared ? { backgroundColor: '#f0f0f0' } : undefined}
           >
-            {categories.map((category) => (
+            {categories
+              .filter((category) => category.name.toLowerCase() !== 'shared')
+              .map((category) => (
               <MenuItem key={category.id} value={category.id}>
                 {category.name}
               </MenuItem>
@@ -102,7 +108,7 @@ const CreateShoppingList: React.FC<CreateShoppingListProps> = ({ handleClose }) 
               <div className='createShoppingList__content__sharing__record' key={index}>
                 <TextField
                   key={index}
-                  label={`Email ${index + 1}`}
+                  label={'Email'}
                   variant='outlined'
                   type='email'
                   value={sharedWith.email}
@@ -114,7 +120,7 @@ const CreateShoppingList: React.FC<CreateShoppingListProps> = ({ handleClose }) 
                 />
                 <TextField
                   key={index}
-                  label={`Cost Factor ${index + 1}`}
+                  label={'Cost Factor'}
                   variant='outlined'
                   type='number'
                   value={sharedWith.costFactor}
@@ -132,6 +138,7 @@ const CreateShoppingList: React.FC<CreateShoppingListProps> = ({ handleClose }) 
           variant='text'
           size='small'
           onClick={() => {
+            setSelectedCategory(SHARED_LIST_ID)
             setShared(true);
             setSharedWithAccounts([...sharedWithAccounts, { email: '', costFactor: 0 }]);
           }}

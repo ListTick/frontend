@@ -5,7 +5,7 @@ import { useQuery } from '@tanstack/react-query';
 import './ShoppingListList.scss';
 import { getAllShoppingListsByAccountId } from '@/api/shoppingList.ts';
 import ListItem from '@/components/list/ListItem/ListItem.tsx';
-import NewListItem from '@/components/list/List/NewList/NewShoppingList.tsx';
+import NewShoppingList from '@/components/list/List/NewList/NewShoppingList.tsx';
 
 interface ShoppingListListProps {
   selectedCategoryId: string | null;
@@ -39,7 +39,7 @@ const ShoppingListList: React.FC<ShoppingListListProps> = ({ selectedCategoryId,
           <ListItem shoppingList={shoppingList} />
         </div>
       ))}
-      <NewListItem />
+      <NewShoppingList />
     </div>
   );
 };
