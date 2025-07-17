@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { Button, TextField } from '@mui/material';
+import { Button, Snackbar, TextField } from '@mui/material';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { ShoppingListCategoryRequest } from '@/types/shoppingListCategory.ts';
 import { createShoppingListCategory } from '@/api/shoppingListCategory.ts';
+import './CreateCategory.scss'
 
 interface CreateCategoryProps {
   handleClose: () => void;
@@ -11,8 +12,7 @@ interface CreateCategoryProps {
 const CreateCategory: React.FC<CreateCategoryProps> = ({ handleClose }) => {
   const [name, setName] = useState<string>('');
   const [colour, setColour] = useState<string>('');
-  const [open, setOpen] = useState<boolean>(false);
-  const [errorMessage, setErrorMessage] = useState<string>('');
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const queryClient = useQueryClient();
 
@@ -20,14 +20,13 @@ const CreateCategory: React.FC<CreateCategoryProps> = ({ handleClose }) => {
     mutationKey: ['shopping-list-category-create'],
     mutationFn: (newCategory: ShoppingListCategoryRequest) => createShoppingListCategory(newCategory),
     onSuccess: () => {
-      void queryClient.invalidateQueries({ queryKey: ['shopping-list-categories'] })
+      void queryClient.invalidateQueries({ queryKey: ['shopping-list-categories'] });
       handleClose();
     },
-    onError: (error) => {
-      setErrorMessage((error as any)?.response?.data?.message ?? 'An unexpected error occurred.');
-      setOpen(true);
+    onError: (error: any) => {
+      setErrorMessage(error?.response?.data?.message || 'An unexpected error occurred.');
     }
-  })
+  });
 
   const create = () => {
     const categoryRequest: ShoppingListCategoryRequest = {
@@ -43,40 +42,49 @@ const CreateCategory: React.FC<CreateCategoryProps> = ({ handleClose }) => {
   };
 
   return (
-    <div className='createShoppingList'>
-      <div className='createShoppingList__content'>
-        <h3>Create Shopping List</h3>
-        <TextField
-          id='name'
-          name='name'
-          label='Name'
-          variant='outlined'
-          type='text'
-          value={name}
-          error={open}
-          helperText={open ? errorMessage : ''}
-          onChange={(e) => setName(e.target.value)}
-        />
-        <TextField
-          id='colour'
-          name='colour'
-          label='colour'
-          variant='outlined'
-          type='text'
-          value={colour}
-          onChange={(e) => setColour(e.target.value)}
-        />
-        <div className='createShoppingList__content__buttons'>
-          <Button variant='contained' size='small' onClick={handleReset}>
-            Reset
-          </Button>
-          <div className='createShoppingList__content__buttons__right'>
-            <Button variant='contained' size='small' onClick={handleClose}>
-              Cancel
+    <div className='createCategory'>
+      <Snackbar
+        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+        open={errorMessage !== null}
+        autoHideDuration={2000}
+        onClose={() => setErrorMessage(null)}
+        message={errorMessage}
+      />
+      <div className='createCategory__content'>
+        <div className='createCategory__content__fields'>
+          <h3>Create Category</h3>
+          <TextField
+            id='name'
+            name='name'
+            label='Name'
+            variant='outlined'
+            type='text'
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+          <TextField
+            id='colour'
+            name='colour'
+            label='colour'
+            variant='outlined'
+            type='text'
+            value={colour}
+            onChange={(e) => setColour(e.target.value)}
+          />
+        </div>
+        <div className='createCategory__content__buttons'>
+          <div className='createCategory__content__buttons__navigate'>
+            <Button variant='contained' size='small' onClick={handleReset}>
+              Reset
             </Button>
-            <Button variant='contained' size='small' onClick={create}>
-              Create
-            </Button>
+            <div className='createCategory__content__buttons__navigate__right'>
+              <Button variant='contained' size='small' onClick={handleClose}>
+                Cancel
+              </Button>
+              <Button variant='contained' size='small' onClick={create}>
+                Create
+              </Button>
+            </div>
           </div>
         </div>
       </div>

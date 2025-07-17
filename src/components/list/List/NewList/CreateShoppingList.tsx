@@ -42,7 +42,7 @@ const CreateShoppingList: React.FC<CreateShoppingListProps> = ({ handleClose }) 
       handleClose();
     },
     onError: (error: any) => {
-      setErrorMessage(error?.response?.data?.message || 'Unknown error.');
+      setErrorMessage(error?.response?.data?.message || 'An unexpected error occurred.');
     }
   });
 
@@ -80,14 +80,14 @@ const CreateShoppingList: React.FC<CreateShoppingListProps> = ({ handleClose }) 
 
   return (
     <div className='createShoppingList'>
+      <Snackbar
+        anchorOrigin={{vertical: 'top', horizontal: 'center'}}
+        open={errorMessage !== null}
+        autoHideDuration={2000}
+        onClose={() => setErrorMessage(null)}
+        message={errorMessage}
+      />
       <div className='createShoppingList__content'>
-        <Snackbar
-          anchorOrigin={{vertical: 'top', horizontal: 'center'}}
-          open={errorMessage !== null}
-          autoHideDuration={2000}
-          onClose={() => setErrorMessage(null)}
-          message={errorMessage}
-        />
         <div className='createShoppingList__content__fields'>
           <h3>Create Shopping List</h3>
           <TextField
