@@ -12,14 +12,14 @@ interface ListItemProps {
 }
 
 const ListItem: React.FC<ListItemProps> = ({ shoppingList }) => {
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [open, setOpen] = useState<boolean>(false);
 
-  const handleModalOpen = () => {
-    setIsModalOpen(true);
+  const handleOpen = () => {
+    setOpen(true);
   };
 
-  const handleModalClose = () => {
-    setIsModalOpen(false);
+  const handleClose = () => {
+    setOpen(false);
   };
 
   return (
@@ -28,34 +28,31 @@ const ListItem: React.FC<ListItemProps> = ({ shoppingList }) => {
         <h3>{shoppingList.name}</h3>
       </div>
       <div className='listItem__icons'>
-        {shoppingList.shared && <div className='listItem__icons--shared'>
-          <GroupIcon style={{ verticalAlign: 'middle' }}/>
-        </div>}
-        {shoppingList.category && <div className='listItem__icons--category'>
-          <Category category={shoppingList.category} />
-        </div>}
-        <IconButton onClick={handleModalOpen}>
+        {shoppingList.shared && (
+          <div className='listItem__icons--shared'>
+            <GroupIcon style={{ verticalAlign: 'middle' }} />
+          </div>
+        )}
+        {shoppingList.category && (
+          <div className='listItem__icons--category'>
+            <Category category={shoppingList.category} />
+          </div>
+        )}
+        <IconButton onClick={handleOpen}>
           <MoreVertIcon fontSize='medium' color='success' />
         </IconButton>
       </div>
-      <div className='listItem__modal'>
-        {isModalOpen && (
-          <Modal
-            open={isModalOpen}
-            onClose={(_, reason) => {
-              if (reason === 'escapeKeyDown') {
-                handleModalClose();
-              }
-            }}
-            aria-labelledby='modal-shoppingListEdit-title'
-            aria-describedby='modal-shoppingListEdit-description'
-          >
-            <div>
-              <ShoppingListInfo shoppingList={shoppingList} handleClose={handleModalClose} />
-            </div>
-          </Modal>
-        )}
-      </div>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby='modal-shopping-list-info-title'
+        aria-describedby='modal-shopping-list-info-description'
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div onClick={(e) => e.stopPropagation()}>
+          <ShoppingListInfo shoppingList={shoppingList} handleClose={handleClose} />
+        </div>
+      </Modal>
     </div>
   );
 };

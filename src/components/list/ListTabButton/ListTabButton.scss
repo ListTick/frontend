@@ -8,6 +8,7 @@
   border: 2px $secondary-color;
   border-radius: $border-radius-base;
   height: 40px;
+  max-width: 80vw;
 
   &.active {
     background-color: $gray-800;

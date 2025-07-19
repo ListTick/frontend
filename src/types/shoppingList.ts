@@ -8,9 +8,15 @@ export interface ShoppingListResponse {
   creationDate: Date;
   category: ShoppingListCategoryResponse;
   accountId: string;
+  sharedWithAccounts?: AccountSharedWithResponse[];
 }
 
 export interface AccountSharedWithRequest {
+  email: string;
+  costFactor: number;
+}
+
+export interface AccountSharedWithResponse {
   email: string;
   costFactor: number;
 }

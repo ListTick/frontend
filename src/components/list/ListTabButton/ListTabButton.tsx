@@ -8,13 +8,11 @@ interface ListTabButtonProps {
 }
 
 const ListTabButton: React.FC<ListTabButtonProps> = ({ active, onClick, children }) => (
-  <button
-    className={`header-btn${active ? ' active' : ''}`}
-    onClick={onClick}
-    type="button"
-  >
-    {children}
-  </button>
+  <div className='listsTab__content'>
+    <button className={`header-btn${active ? ' active' : ''}`} onClick={onClick} type='button'>
+      {children}
+    </button>
+  </div>
 );
 
 export default ListTabButton;

@@ -1,11 +1,18 @@
 @use '/src/styles/base/core.scss' as *;
 
 .categoryClickable {
-  background-color: $background-color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border: $border;
   border-radius: $border-radius-base;
-  max-width: 150px;
+  min-width: 130px;
+  max-width: 130px;
+  max-height: 30px;
+  font-size: $font-size-small;
+
   cursor: pointer;
+  background-color: $background-color;
 
   p {
     color: $accent-color;
@@ -14,9 +21,11 @@
 
   &--selected {
     background-color: $gray-800;
-    border: solid 3px $gray-700;
+    border: solid 2px $gray-700;
     border-radius: $border-radius-base;
-    max-width: 150px;
+    min-width: 130px;
+    max-width: 130px;
+    max-height: 30px;
     cursor: pointer;
 
     p {

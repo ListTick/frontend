@@ -4,6 +4,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { ShoppingListCategoryRequest } from '@/types/shoppingListCategory.ts';
 import { createShoppingListCategory } from '@/api/shoppingListCategory.ts';
 import './CreateCategory.scss'
+import { HexColorPicker } from 'react-colorful';
 
 interface CreateCategoryProps {
   handleClose: () => void;
@@ -50,6 +51,7 @@ const CreateCategory: React.FC<CreateCategoryProps> = ({ handleClose }) => {
         onClose={() => setErrorMessage(null)}
         message={errorMessage}
       />
+
       <div className='createCategory__content'>
         <div className='createCategory__content__fields'>
           <h3>Create Category</h3>
@@ -62,16 +64,11 @@ const CreateCategory: React.FC<CreateCategoryProps> = ({ handleClose }) => {
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
-          <TextField
-            id='colour'
-            name='colour'
-            label='colour'
-            variant='outlined'
-            type='text'
-            value={colour}
-            onChange={(e) => setColour(e.target.value)}
-          />
         </div>
+        <div className='createCategory__content__color-picker'>
+          <HexColorPicker color={colour} onChange={setColour} />
+        </div>
+
         <div className='createCategory__content__buttons'>
           <div className='createCategory__content__buttons__navigate'>
             <Button variant='contained' size='small' onClick={handleReset}>

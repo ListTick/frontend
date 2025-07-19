@@ -21,8 +21,8 @@ const NewCategory: React.FC = () => {
       <Modal
         open={open}
         onClose={handleClose}
-        aria-labelledby='modal-modal-title'
-        aria-describedby='modal-modal-description'
+        aria-labelledby='modal-shopping-list-new-category-title'
+        aria-describedby='modal-shopping-list-new-category-description'
         onClick={(e) => e.stopPropagation()}
       >
         <div onClick={(e) => e.stopPropagation()}>
