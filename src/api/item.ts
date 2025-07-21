@@ -1,4 +1,4 @@
-import { ItemRequest, ItemResponse } from '@/types/item.ts';
+import { ItemRequest, ItemRequestUpdate, ItemResponse } from '@/types/item.ts';
 import { api } from '@/config/axios.ts';
 
 enum ItemAPI {
@@ -35,7 +35,7 @@ export const createItem = async (item: ItemRequest): Promise<ItemResponse> => {
     }
 }
 
-export const updateItem = async (id: string, item: ItemRequest): Promise<ItemResponse> => {
+export const updateItem = async (id: string, item: ItemRequestUpdate): Promise<ItemResponse> => {
     try {
       const response = await api.put(`${ItemAPI.ITEMS}/${id}`, item);
       return response.data;
@@ -45,7 +45,7 @@ export const updateItem = async (id: string, item: ItemRequest): Promise<ItemRes
     }
 }
 
-export const updateItemByFields = async (id: string, item: ItemRequest): Promise<ItemResponse> => {
+export const updateItemByFields = async (id: string, item: ItemRequestUpdate): Promise<ItemResponse> => {
   try {
     const response = await api.patch(`${ItemAPI.ITEMS}/${id}`, item);
     return response.data;
@@ -57,7 +57,7 @@ export const updateItemByFields = async (id: string, item: ItemRequest): Promise
 
 export const deactivateItem = async (id: string): Promise<void> => {
     try {
-      await api.delete(`${ItemAPI.ITEMS}/${id}/deactivate`);
+      await api.patch(`${ItemAPI.ITEMS}/${id}/deactivate`);
     } catch (error) {
       console.error('Error deactivating item: ', error);
       throw error;

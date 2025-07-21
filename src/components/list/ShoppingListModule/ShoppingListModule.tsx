@@ -3,9 +3,10 @@ import './ShoppingListModule.scss';
 import ShoppingListList from '@/components/list/List/ShoppingListList.tsx';
 import ItemList from '@/components/list/Item/ItemList.tsx';
 import CategoryList from '@/components/list/Category/List/CategoryList.tsx';
+import { ShoppingListResponse } from '@/types/shoppingList.ts';
 
 const ShoppingListModule: React.FC = () => {
-  const [selectedListId, setSelectedListId] = useState<string | null>(null);
+  const [selectedShoppingList, setSelectedShoppingList] = useState<ShoppingListResponse | null>(null);
   const [selectedCategoryId, setSelectedCategoryId] = useState<string | null>(null);
 
   return (
@@ -15,10 +16,10 @@ const ShoppingListModule: React.FC = () => {
       </section>
       <section className='shopping-lists__content'>
         <section className='shopping-lists__lists'>
-          <ShoppingListList selectedCategoryId={selectedCategoryId} onListClick={setSelectedListId} />
+          <ShoppingListList selectedCategoryId={selectedCategoryId} onListClick={setSelectedShoppingList} />
         </section>
         <section className='shopping-lists__items'>
-          <ItemList shoppingListId={selectedListId} />
+          <ItemList shoppingList={selectedShoppingList} />
         </section>
       </section>
     </div>

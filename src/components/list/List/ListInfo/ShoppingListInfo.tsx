@@ -104,7 +104,13 @@ const ShoppingListInfo: React.FC<ShoppingListInfoProps> = ({ shoppingList, handl
   }
 
   const handleDelete = () => {
-
+    const shoppingListRequestUpdate: ShoppingListRequestUpdate = {
+      active: false
+    };
+    updateMutation.mutate({
+      id: shoppingList.id,
+      updatedList: shoppingListRequestUpdate
+    });
   }
 
   return (

@@ -6,10 +6,11 @@ import './ShoppingListList.scss';
 import { getAllShoppingListsByAccountId } from '@/api/shoppingList.ts';
 import ListItem from '@/components/list/ListItem/ListItem.tsx';
 import NewShoppingList from '@/components/list/List/NewList/NewShoppingList.tsx';
+import { ShoppingListResponse } from '@/types/shoppingList.ts';
 
 interface ShoppingListListProps {
   selectedCategoryId: string | null;
-  onListClick: (shoppingListId: string) => void;
+  onListClick: (shoppingList: ShoppingListResponse) => void;
 }
 
 const ShoppingListList: React.FC<ShoppingListListProps> = ({ selectedCategoryId, onListClick }) => {
@@ -35,7 +36,7 @@ const ShoppingListList: React.FC<ShoppingListListProps> = ({ selectedCategoryId,
   return (
     <div className='shoppingListList'>
       {filteredLists.map((shoppingList) => (
-        <div key={shoppingList.id} onClick={() => onListClick(shoppingList.id)}>
+        <div key={shoppingList.id} onClick={() => onListClick(shoppingList)}>
           <ListItem shoppingList={shoppingList} />
         </div>
       ))}

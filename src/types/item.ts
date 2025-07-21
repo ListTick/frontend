@@ -11,6 +11,7 @@ export interface ItemRequest {
 }
 
 export interface ItemRequestUpdate {
-  name: string;
+  name?: string;
   value?: number;
+  active?: boolean;
 }

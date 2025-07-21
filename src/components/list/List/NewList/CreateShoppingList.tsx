@@ -35,7 +35,7 @@ const CreateShoppingList: React.FC<CreateShoppingListProps> = ({ handleClose }) 
   }, [data]);
 
   const createMutation = useMutation({
-    mutationKey: ['shopping-lists-create'],
+    mutationKey: ['shopping-list-create'],
     mutationFn: (newList: ShoppingListRequest) => createShoppingList(newList),
     onSuccess: () => {
       void queryClient.invalidateQueries({ queryKey: ['shopping-lists'] });
