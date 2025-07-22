@@ -35,6 +35,8 @@ const NewItem: React.FC<NewItemProps> = ({ shoppingList }) => {
     mutationFn: (itemRequest: ItemRequest) => createItem(itemRequest),
     onSuccess: () => {
       void queryClient.invalidateQueries({ queryKey: ['items', shoppingList.id] });
+      setName('');
+      setValue('');
     },
     onError: (error: any) => {
       setErrorMessage(error?.response?.data?.message || 'An unexpected error occurred.');
@@ -71,7 +73,7 @@ const NewItem: React.FC<NewItemProps> = ({ shoppingList }) => {
             size='small'
             type='number'
             value={ value }
-            onChange={(e) => setValue(e.target.value)}
+            onChange={(e) => setValue(e.target.value === '' ? '' : Number(e.target.value))}
             sx={{ width: 100 }}
           />
         </div>

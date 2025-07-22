@@ -15,7 +15,7 @@ const CategoryClickable: React.FC<CategoryClickableProps> = ({ category, onClick
       className={`categoryClickable${isSelected ? '--selected' : ''}`}
       key={category.id}
       onClick={() => onClick(category.id)}
-      style={!isSelected ? { backgroundColor: category.colour } : undefined}
+      style={{backgroundColor: category.colour }}
     >
       <p>{category.name}</p>
     </ListItem>

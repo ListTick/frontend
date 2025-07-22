@@ -13,8 +13,7 @@ import {
 import './DeleteItem.scss';
 import { ShoppingListResponse } from '@/types/shoppingList.ts';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { ItemRequestUpdate } from '@/types/item.ts';
-import { deactivateItem, updateItemByFields } from '@/api/item.ts';
+import { deactivateItem } from '@/api/item.ts';
 import { ExpenseRequest } from '@/types/expense.ts';
 import { createExpense } from '@/api/expense.ts';
 
@@ -26,7 +25,7 @@ interface DeleteItemProps {
 }
 
 const DeleteItem: React.FC<DeleteItemProps> = ({ selectedItems, clearSelectedItems, shoppingList, handleClose }) => {
-  const [amount, setAmount] = useState<number | null>(null);
+  const [amount, setAmount] = useState<number>(0);
   const [currency, setCurrency] = useState<string>('PLN');
   const [reimbursed, setReimbursed] = useState<boolean>(false);
   const [addExpense, setAddExpense] = useState<boolean>(false);
@@ -102,7 +101,7 @@ const DeleteItem: React.FC<DeleteItemProps> = ({ selectedItems, clearSelectedIte
                 type='number'
                 size='small'
                 value={amount}
-                onChange={(e) => setAmount(e.target.value)}
+                onChange={(e) => setAmount(Number(e.target.value))}
               />
               <FormControl variant='outlined' size='small' style={{ minWidth: 120 }}>
                 <InputLabel id='currency-label'>Currency</InputLabel>

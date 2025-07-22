@@ -22,3 +22,12 @@ export interface ExpenseRequestUpdate {
   currency?: string;
   reimbursed?: boolean;
 }
+
+export interface ExpenseShareResponse {
+  id: string,
+  amount: number,
+  currency: string,
+  reimbursed: boolean,
+  accountId: string,
+  expenseId: string
+}

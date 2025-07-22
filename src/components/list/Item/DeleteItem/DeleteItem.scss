@@ -45,6 +45,11 @@
       color: $accent-color !important;
     }
 
+    .MuiFormControlLabel-label {
+      color: $accent-color;
+      margin-left: $margin-base;
+    }
+
     &__fields {
       display: flex;
       flex-direction: column;
