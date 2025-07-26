@@ -2,7 +2,7 @@ import { ItemRequest, ItemRequestUpdate, ItemResponse } from '@/types/item.ts';
 import { api } from '@/config/axios.ts';
 
 enum ItemAPI {
-  ITEMS = '/items'
+  ITEMS = 'shopping-lists/items'
 }
 
 export const getItemById = async (id: string): Promise<ItemResponse> => {
