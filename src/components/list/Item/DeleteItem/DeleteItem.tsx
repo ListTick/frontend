@@ -13,7 +13,7 @@ import {
 import './DeleteItem.scss';
 import { ShoppingListResponse } from '@/types/shoppingList.ts';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { deactivateItem } from '@/api/item.ts';
+import { deactivateItem } from '@/api/shoppingListItem.ts';
 import { ExpenseRequest } from '@/types/expense.ts';
 import { createExpense } from '@/api/expense.ts';
 

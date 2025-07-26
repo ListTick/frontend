@@ -7,7 +7,7 @@ import React, { useState } from 'react';
 import Snackbar from '../../task/alert/Alert.tsx';
 import { useQuery } from '@tanstack/react-query';
 import './ItemList.scss';
-import { getAllItemsByShoppingListId } from '@/api/item.ts';
+import { getAllItemsByShoppingListId } from '@/api/shoppingListItem.ts';
 import NewItem from '@/components/list/Item/NewItem/NewItem.tsx';
 import Item from '@/components/list/Item/Item/Item.tsx';
 import DeleteItem from '@/components/list/Item/DeleteItem/DeleteItem.tsx';

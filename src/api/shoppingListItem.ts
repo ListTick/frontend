@@ -1,4 +1,4 @@
-import { ItemRequest, ItemRequestUpdate, ItemResponse } from '@/types/item.ts';
+import { ItemRequest, ItemRequestUpdate, ItemResponse } from '@/types/shoppingListItem.ts';
 import { api } from '@/config/axios.ts';
 
 enum ItemAPI {

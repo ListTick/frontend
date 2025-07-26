@@ -1,6 +1,6 @@
 import React from 'react';
 import { Checkbox, TextField } from '@mui/material';
-import { ItemResponse } from '@/types/item.ts';
+import { ItemResponse } from '@/types/shoppingListItem.ts';
 import './Item.scss'
 
 interface ItemProps {

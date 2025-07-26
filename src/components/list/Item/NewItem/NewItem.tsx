@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import './NewItem.scss'
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { ItemRequest } from '@/types/item.ts';
-import { createItem } from '@/api/item.ts';
+import { ItemRequest } from '@/types/shoppingListItem.ts';
+import { createItem } from '@/api/shoppingListItem.ts';
 import { Button, Snackbar, TextField } from '@mui/material';
 import { ShoppingListResponse } from '@/types/shoppingList.ts';
 
@@ -24,7 +24,7 @@ const NewItem: React.FC<NewItemProps> = ({ shoppingList }) => {
   const handleCreate = () => {
     const itemRequest: ItemRequest = {
       name,
-      ...(value !== null && { value }),
+      ...(value !== '' && { value }),
       shoppingListId: shoppingList.id
     };
     createMutation.mutate(itemRequest);
