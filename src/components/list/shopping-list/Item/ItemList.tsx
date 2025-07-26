@@ -23,7 +23,7 @@ const ItemList: React.FC<ItemListProps> = ({ shoppingList }) => {
   const [open, setOpen] = useState<boolean>(false);
 
   const { data, isError, isLoading } = useQuery({
-    queryKey: ['items', shoppingList?.id],
+    queryKey: ['shopping-list-items', shoppingList?.id],
     queryFn: () => (shoppingList ? getAllItemsByShoppingListId(shoppingList.id) : Promise.resolve([])),
     enabled: !!shoppingList
   });

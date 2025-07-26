@@ -30,7 +30,7 @@ const NewItem: React.FC<NewItemProps> = ({ shoppingList }) => {
     mutationKey: ['shopping-list-item-create'],
     mutationFn: (itemRequest: ItemRequest) => createItem(itemRequest),
     onSuccess: () => {
-      void queryClient.invalidateQueries({ queryKey: ['items', shoppingList.id] });
+      void queryClient.invalidateQueries({ queryKey: ['shopping-list-items', shoppingList.id] });
       setName('');
       setValue('');
     },

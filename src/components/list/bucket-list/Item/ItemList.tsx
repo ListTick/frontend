@@ -23,7 +23,7 @@ const ItemList: React.FC<ItemListProps> = ({ bucketList }) => {
   const [open, setOpen] = useState<boolean>(false);
 
   const { data, isError, isLoading } = useQuery({
-    queryKey: ['items', bucketList?.id],
+    queryKey: ['bucket-list-items', bucketList?.id],
     queryFn: () => (bucketList ? getAllItemsByBucketListId(bucketList.id) : Promise.resolve([])),
     enabled: !!bucketList
   });

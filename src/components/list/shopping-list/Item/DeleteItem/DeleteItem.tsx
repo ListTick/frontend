@@ -34,7 +34,7 @@ const DeleteItem: React.FC<DeleteItemProps> = ({ selectedItems, clearSelectedIte
   const queryClient = useQueryClient();
 
   const deactivateItemMutation = useMutation({
-    mutationKey: ['item-patch'],
+    mutationKey: ['shopping-list-item-patch'],
     mutationFn: (id: string) =>
       deactivateItem(id),
     onError: (error: any) => {
@@ -59,7 +59,7 @@ const DeleteItem: React.FC<DeleteItemProps> = ({ selectedItems, clearSelectedIte
         deactivateItemMutation.mutateAsync(id)
       )
     ).then(() => {
-      void queryClient.invalidateQueries({ queryKey: ['items', shoppingList.id] });
+      void queryClient.invalidateQueries({ queryKey: ['shopping-list-items', shoppingList.id] });
       if (addExpense) {
         const expenseRequest: ExpenseRequest = {
           amount,
