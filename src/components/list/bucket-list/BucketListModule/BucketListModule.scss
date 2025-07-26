@@ -1,0 +1,13 @@
+.bucket-lists {
+  max-width: 92vw;
+}
+
+.bucket-lists__content {
+  display: flex;
+  gap: 2rem;
+  min-height: 400px;
+}
+
+.bucket-lists__lists, .bucket-lists__items {
+  flex: 2;
+}

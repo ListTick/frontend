@@ -1,0 +1,36 @@
+@use '/src/styles/base/core' as *;
+
+.categoryClickable {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: $border;
+  border-radius: $border-radius-base;
+  min-width: 130px;
+  max-width: 130px;
+  max-height: 30px;
+  font-size: $font-size-small;
+
+  cursor: pointer;
+  background-color: $background-color;
+
+  p {
+    color: $accent-color;
+    font-size: $font-size-small;
+  }
+
+  &--selected {
+    border: solid 4px $gray-700;
+    border-radius: $border-radius-base;
+    min-width: 130px;
+    max-width: 130px;
+    max-height: 30px;
+    cursor: pointer;
+
+    p {
+      color: $accent-color;
+      font-size: $font-size-small;
+    }
+
+  }
+}

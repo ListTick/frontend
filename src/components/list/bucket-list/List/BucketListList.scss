@@ -1,0 +1,8 @@
+@use '/src/styles/base/core' as *;
+
+.bucketListList {
+  display: flex;
+  flex-direction: column;
+  gap: $small-gap;
+  margin: $margin-base;
+}

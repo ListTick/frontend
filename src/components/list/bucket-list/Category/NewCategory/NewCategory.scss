@@ -1,0 +1,25 @@
+@use '/src/styles/base/core' as *;
+
+.newCategory {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px dashed $secondary-color;
+  border-radius: $border-radius-base;
+  min-width: 128px;
+  max-width: 128px;
+  max-height: 28px;
+  font-size: $font-size-small;
+
+  &__content {
+    display: flex;
+    gap: $gap-base;
+    color: $accent-color;
+    align-items: center;
+  }
+
+  &:hover {
+    background-color: $gray-800;
+    cursor: pointer;
+  }
+}

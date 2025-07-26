@@ -1,0 +1,22 @@
+@use '/src/styles/base/core' as *;
+
+.categoryListClickable {
+
+  display: flex;
+  flex-direction: row;
+  gap: $small-gap;
+  margin-left: $margin-base;
+  height: 45px;
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  &::-webkit-scrollbar {
+    height: 5px;
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $accent-color;
+    border-radius: $border-radius-medium;
+  }
+}
