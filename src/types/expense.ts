@@ -5,6 +5,8 @@ export interface ExpenseResponse {
   amount: number;
   currency: string;
   reimbursed: boolean;
+  shared: boolean;
+  creationDate: Date;
   shoppingListId: string;
   items: ItemResponse[];
 }
@@ -24,10 +26,11 @@ export interface ExpenseRequestUpdate {
 }
 
 export interface ExpenseShareResponse {
-  id: string,
-  amount: number,
-  currency: string,
-  reimbursed: boolean,
-  accountId: string,
-  expenseId: string
+  id: string;
+  amount: number;
+  currency: string;
+  reimbursed: boolean;
+  creationDate: Date;
+  accountId: string;
+  expenseId: string;
 }

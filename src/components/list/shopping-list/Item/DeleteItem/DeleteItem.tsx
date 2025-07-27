@@ -76,7 +76,7 @@ const DeleteItem: React.FC<DeleteItemProps> = ({ selectedItems, clearSelectedIte
   };
 
   return (
-    <div className='deleteItem'>
+    <div className='deleteItem-shopping'>
       <Snackbar
         anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
         open={errorMessage !== null}
@@ -84,15 +84,15 @@ const DeleteItem: React.FC<DeleteItemProps> = ({ selectedItems, clearSelectedIte
         onClose={() => setErrorMessage(null)}
         message={errorMessage}
       />
-      <div className='deleteItem__content'>
+      <div className='deleteItem-shopping__content'>
         <h3>Confirm Delete</h3>
         <FormControlLabel
           control={<Checkbox checked={addExpense} onChange={(e) => setAddExpense(e.target.checked)} />}
           label='Add Expense'
         />
         {addExpense && (
-          <div className='deleteItem__content__fields'>
-            <div className='deleteItem__content__fields__expense'>
+          <div className='deleteItem-shopping__content__fields'>
+            <div className='deleteItem-shopping__content__fields__expense'>
               <TextField
                 id='amount'
                 name='amount'
@@ -127,7 +127,7 @@ const DeleteItem: React.FC<DeleteItemProps> = ({ selectedItems, clearSelectedIte
           </div>
         )}
       </div>
-      <div className='deleteItem__buttons'>
+      <div className='deleteItem-shopping__buttons'>
         <Button variant='contained' size='small' onClick={handleClose}>
           Cancel
         </Button>
