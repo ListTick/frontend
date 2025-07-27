@@ -77,6 +77,7 @@ const Clock = ({ pomodoroDuration, breakDuration, isDisplayed, taskId }: ClockPr
     isDisplayed && (
       <div className='clock'>
         <div className='clock__time'>
+          <h5>{isPomodoro? "Time to get things done" : "Time to take a break"}</h5>
           <h1>{time.format('mm:ss')}</h1>
           <div className='clock__time--buttons'>
             <Button variant='contained' size='large' onClick={handleStartStop}>

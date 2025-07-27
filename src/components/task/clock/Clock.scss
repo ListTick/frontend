@@ -17,6 +17,9 @@
     font-size: $font-size-large;
     margin-bottom: $medium-gap;
 
+    h5 {
+      color: $accent-color;
+    }
     &--buttons {
       display: flex;
       gap: $gap-base;
