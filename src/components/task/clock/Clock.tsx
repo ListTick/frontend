@@ -26,6 +26,11 @@ const Clock = ({ pomodoroDuration, breakDuration, isDisplayed, taskId }: ClockPr
   }, [pomodoroDuration]);
 
   useEffect(() => {
+    let state: string = isPomodoro ? "Focus time: " : "Break time: ";
+    document.title = state + "" + time.format('mm:ss');
+  }, [time, isPomodoro]);
+
+  useEffect(() => {
     if (!isRunning) return;
 
     const interval = setInterval(() => {
