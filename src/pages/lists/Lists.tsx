@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import ListTabButton from '@/components/list/ListTabButton/ListTabButton';
-import ShoppingListModule from '@/components/list/ShoppingListModule/ShoppingListModule.tsx';
-import BucketListModule from '@/components/list/BucketListModule/BucketListModule.tsx';
+import ListTabButton from '@/components/list/shopping-list/ListTabButton/ListTabButton';
+import ShoppingListModule from '@/components/list/shopping-list/ShoppingListModule/ShoppingListModule.tsx';
+import BucketListModule from '@/components/list/bucket-list/BucketListModule/BucketListModule.tsx';
 import './Lists.scss';
 
 const Lists = () => {

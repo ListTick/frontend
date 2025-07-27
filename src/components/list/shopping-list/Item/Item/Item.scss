@@ -1,0 +1,57 @@
+@use '/src/styles/base/core.scss' as *;
+
+.item {
+  background-color: $background-color;
+  color: $accent-color;
+  padding: $padding-base;
+  border: $border;
+  border-radius: $border-radius-base;
+  height: 40px;
+
+  &__content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+
+
+    &__fields {
+      display: flex;
+      gap: $small-gap;
+
+      .MuiInputLabel-root,
+      .MuiInputLabel-root.Mui-focused {
+        color: $accent-color !important;
+      }
+
+      input,
+      .MuiInputBase-input,
+      .MuiSelect-select,
+      .MuiOutlinedInput-root {
+        -webkit-text-fill-color: $gray-500 !important;
+        transition: background-color 5000s ease-in-out 0s;
+        border: $border;
+        border-radius: $border-radius-medium;
+      }
+
+    }
+
+    .MuiCheckbox-root {
+      color: $accent-color !important;
+      border: $border;
+      border-radius: $border-radius-medium;
+      vertical-align: middle;
+
+      &:hover {
+        background-color: $gray-700 !important;
+      }
+    }
+
+    .Mui-checked {
+      color: $accent-color !important;
+    }
+
+  }
+
+}

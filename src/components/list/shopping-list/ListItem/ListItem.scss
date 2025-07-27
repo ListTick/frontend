@@ -1,0 +1,40 @@
+@use '/src/styles/base/core.scss' as *;
+
+.listItem {
+  background-color: $background-color;
+  color: $accent-color;
+  display: flex;
+  align-items: center;
+  padding: $padding-base;
+  border: $border;
+  border-radius: $border-radius-base;
+  height: 40px;
+
+  &__title {
+
+    h3 {
+      font-weight: normal;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__icons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    gap: 8px;
+
+
+    .MuiIconButton-root:hover {
+      cursor: pointer;
+      background-color: $secondary-color;
+    }
+  }
+
+}
+

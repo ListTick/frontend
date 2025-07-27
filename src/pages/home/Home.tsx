@@ -1,7 +1,7 @@
 import { useCurrentUser } from '../../hooks/useCurrentUser.ts';
 import dayjs from 'dayjs';
 import './Home.scss';
-import Expense from '@/components/list/Expense/Expense.tsx';
+import Expense from '@/components/list/shopping-list/Expense/Expense.tsx';
 
 const Home = () => {
   const user = useCurrentUser();

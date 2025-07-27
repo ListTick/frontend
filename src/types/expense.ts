@@ -1,4 +1,4 @@
-import { ItemResponse } from '@/types/item.ts';
+import { ItemResponse } from '@/types/shoppingListItem.ts';
 
 export interface ExpenseResponse {
   id: string;
