@@ -52,6 +52,7 @@ const DeleteItem: React.FC<DeleteItemProps> = ({ selectedItems, clearSelectedIte
       />
       <div className='deleteItem__content'>
         <h3>Confirm Delete</h3>
+        <p>Are you sure, you want to delete the selected items?</p>
       </div>
       <div className='deleteItem__buttons'>
         <Button variant='contained' size='small' onClick={handleClose}>
