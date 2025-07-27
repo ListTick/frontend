@@ -1,11 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Expense.scss'
-import { useQuery } from '@tanstack/react-query';
-import { Button, CircularProgress } from '@mui/material';
-import Snackbar from '@/components/task/alert/Alert.tsx';
-import { getAllExpensesByAccountId, getAllExpenseSharesByAccountId } from '@/api/expense.ts';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { Button, CircularProgress, Snackbar } from '@mui/material';
+import {
+  getAllExpensesByAccountId,
+  getAllExpenseSharesByAccountId,
+  reimburseExpenseShare
+} from '@/api/expense.ts';
 
 const Expense: React.FC = () => {
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+
+  const queryClient = useQueryClient();
+
+  const reimburseExpenseMutation = useMutation({
+    mutationKey: ['reimburse-expense'],
+    mutationFn: ( id: string ) => reimburseExpenseShare(id),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: ['expense-shares'] });
+      void queryClient.invalidateQueries({ queryKey: ['expense'] })
+    },
+    onError: (error: any) => {
+      setErrorMessage(error?.response?.data?.message || 'An unexpected error occurred.');
+    }
+  });
+
   const {
     data: expenses,
     isError: isExpensesError,
@@ -34,7 +53,18 @@ const Expense: React.FC = () => {
   }
 
   if (isExpensesError || isExpenseSharesError || !expenses || !expenseShares) {
-    return <Snackbar severity='error'>Oops there was an error, please contact our IT department</Snackbar>;
+    return (
+      <Snackbar
+        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+        open={true}
+        autoHideDuration={2000}
+        message={'Oops there was an error, please contact our IT department'}
+      />
+    );
+  }
+
+  const reimburseExpense = (id: string) => {
+    reimburseExpenseMutation.mutate(id);
   }
 
   return (
@@ -54,7 +84,7 @@ const Expense: React.FC = () => {
                     {expense.items
                       .map(
                         (item) =>
-                          `${item.name}${item.value !== undefined ? `, ${item.value}` : ''}`
+                          `${item.name}${item.value !== undefined ? `: ${item.value}` : ''}`
                       )
                       .join(', ')}
                     {')'}
@@ -64,7 +94,7 @@ const Expense: React.FC = () => {
                   variant="contained"
                   color="primary"
                   style={{ marginLeft: '8px' }}
-                  onClick={() => alert('Ups the feature is not implemented yet')}
+                  onClick={() => reimburseExpense(share.id)}
                 >
                   Reimburse
                 </Button>
@@ -72,34 +102,51 @@ const Expense: React.FC = () => {
             );
           })
         ) : (
-          <li>No not reimbursed expenses.</li>
+          <li>You are settled up.</li>
         )}
       </ul>
       <hr />
       <h2>Last Expenses</h2>
       <ul>
         {expenses && expenses.length > 0 ? (
-          expenses.map((expense) => {
-            const shares = expenseSharesRaw?.filter(
-              (share) => share.expenseId === expense.id
-            );
-            return (
-              <li key={expense.id}>
-                {expense.amount} {expense.currency}
-                <ul>
-                  {shares && shares.length > 0 ? (
-                    shares.filter(share => share.reimbursed).map((share) => (
-                      <li key={share.id}>
-                        Share: {share.amount} {share.currency}
-                      </li>
-                    ))
-                  ) : (
-                    <li>No shares</li>
+          expenses
+            .slice()
+            .sort((a, b) =>
+              new Date(b.creationDate).getTime() - new Date(a.creationDate).getTime())
+            .slice(0, 3)
+            .map((expense) => {
+              const shares = expenseSharesRaw?.filter(
+                (share) => share.expenseId === expense.id
+              );
+              return (
+                <li key={expense.id}>
+                  {expense.amount} {expense.currency}
+                  {expense && Array.isArray(expense.items) && expense.items.length > 0 && (
+                    <>
+                      {' ('}
+                      {expense.items
+                        .map(
+                          (item) =>
+                            `${item.name}${item.value !== null ? `: ${item.value}` : ''}`
+                        )
+                        .join(', ')}
+                      {')'}
+                    </>
                   )}
-                </ul>
-              </li>
-            );
-          })
+                  <ul>
+                    {shares && shares.length > 0 ? (
+                      shares.filter(share => share.reimbursed).map((share) => (
+                        <li key={share.id}>
+                          Share: {share.amount} {share.currency}
+                        </li>
+                      ))
+                    ) : (
+                      <li>No shares</li>
+                    )}
+                  </ul>
+                </li>
+              );
+            })
         ) : (
           <li>No expenses found.</li>
         )}

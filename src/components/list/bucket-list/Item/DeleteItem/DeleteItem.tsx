@@ -42,7 +42,7 @@ const DeleteItem: React.FC<DeleteItemProps> = ({ selectedItems, clearSelectedIte
   };
 
   return (
-    <div className='deleteItem'>
+    <div className='deleteItem-bucket'>
       <Snackbar
         anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
         open={errorMessage !== null}
@@ -50,11 +50,11 @@ const DeleteItem: React.FC<DeleteItemProps> = ({ selectedItems, clearSelectedIte
         onClose={() => setErrorMessage(null)}
         message={errorMessage}
       />
-      <div className='deleteItem__content'>
+      <div className='deleteItem-bucket__content'>
         <h3>Confirm Delete</h3>
         <p>Are you sure, you want to delete the selected items?</p>
       </div>
-      <div className='deleteItem__buttons'>
+      <div className='deleteItem-bucket__buttons'>
         <Button variant='contained' size='small' onClick={handleClose}>
           Cancel
         </Button>

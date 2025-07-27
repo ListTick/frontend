@@ -4,4 +4,14 @@
   &__date {
     color: $accent-color;
   }
+
+  &__content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: $small-gap;
+    height: 80vh;
+    align-items: stretch;
+
+  }
 }

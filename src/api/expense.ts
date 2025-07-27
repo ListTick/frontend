@@ -73,3 +73,12 @@ export const reimburseExpense = async (id: string): Promise<void> => {
     throw error;
   }
 }
+
+  export const reimburseExpenseShare = async (id: string): Promise<void> => {
+    try {
+      await api.patch(`${ExpenseAPI.EXPENSES}/shared/${id}/reimburse`);
+    } catch (error) {
+      console.error('Error deleting expense: ', error);
+      throw error;
+    }
+}
