@@ -1,0 +1,18 @@
+@use '/src/styles/base/core.scss' as *;
+
+.intro {
+  display: flex;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+
+    &__calendar {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+    }
+
+  }
+
+}

@@ -1,7 +1,7 @@
 import { useCurrentUser } from '@/hooks/useCurrentUser.ts';
-import dayjs from 'dayjs';
 import './Home.scss';
-import Expense from '@/components/list/shopping-list/Expense/Expense.tsx';
+import Expense from '@/components/home/Expense/Expense.tsx';
+import Intro from '@/components/home/Intro/Intro.tsx';
 
 const Home = () => {
   const user = useCurrentUser();
@@ -10,8 +10,7 @@ const Home = () => {
     <div className='home'>
       <div className='home__content'>
         <div className='home__content__introduction'>
-          <h2>Hello, {user.profile?.firstName}</h2>
-          <p className='home__date'>Today, {dayjs().format('DD MMM')}</p>
+          <Intro user={user}/>
         </div>
         <div className='home__content__expenses'>
           <Expense />
