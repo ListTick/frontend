@@ -69,6 +69,12 @@ const Expense: React.FC = () => {
 
   return (
     <div>
+      <Snackbar
+        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+        open={errorMessage !== null}
+        autoHideDuration={2000}
+        message={errorMessage}
+      />
       <h3>Spending's</h3>
       You owe:
       <ul>
