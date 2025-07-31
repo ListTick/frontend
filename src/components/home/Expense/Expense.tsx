@@ -5,8 +5,8 @@ import {
   Avatar,
   Button,
   Card, CardContent, CardHeader,
-  CircularProgress, List, ListItemAvatar, ListItemText,
-  Snackbar,
+  CircularProgress, List, ListItemAvatar, ListItemText, Modal,
+  Snackbar
 } from '@mui/material';
 import {
   getAllExpensesByAccountId,
@@ -17,9 +17,12 @@ import ListItem from '@mui/material/ListItem';
 import SellIcon from '@mui/icons-material/Sell';
 import CreditScoreIcon from '@mui/icons-material/CreditScore';
 import AddCardIcon from '@mui/icons-material/AddCard';
+import ExpenseInfo from '@/components/home/ExpenseInfo/ExpenseInfo.tsx';
 
 const Expense: React.FC = () => {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [open, setOpen] = useState<boolean>(false);
+  const [selectedObject, setSelectedObject] = useState<any>(null);
 
   const queryClient = useQueryClient();
 
@@ -58,6 +61,15 @@ const Expense: React.FC = () => {
     notReimbursed: expenseSharesRaw?.filter((share) => !share.reimbursed)
   };
 
+  const getRecentExpenses = () => {
+    const ownExpenses = expenses?.filter((expense) => expense.reimbursed && !expense.shared)
+    return [
+      ...(ownExpenses ?? []),
+      ...(expenseShares.reimbursed ?? [])
+    ].sort((a, b) => new Date(b.creationDate).getTime() - new Date(a.creationDate).getTime())
+      .slice(0, 3)
+  }
+
   if (isExpensesLoading || isExpenseSharesLoading) {
     return <CircularProgress />;
   }
@@ -77,6 +89,8 @@ const Expense: React.FC = () => {
     reimburseExpenseMutation.mutate(id);
   };
 
+  const handleClose = () => setOpen(false);
+
   return (
     <div className='expense'>
       <Snackbar
@@ -90,11 +104,9 @@ const Expense: React.FC = () => {
           <CardHeader title='Recent Expenses' slotProps={{ title: { className: 'expense__content__card__title' } }}/>
           <CardContent sx={{ pt: 0 }}>
             <List disablePadding>
-              {expenses
-                .sort((a, b) => new Date(b.creationDate).getTime() - new Date(a.creationDate).getTime())
-                .slice(0, 3)
+              {getRecentExpenses()
                 .map((expense) => (
-                  <ListItem key={expense.id}>
+                  <ListItem key={expense.id} onClick={() => { setSelectedObject(expense); setOpen(true); }}>
                     <ListItemAvatar>
                       <Avatar>
                         <SellIcon />
@@ -116,7 +128,7 @@ const Expense: React.FC = () => {
               {expenseShares.notReimbursed && expenseShares.notReimbursed.length > 0 ? (
                 expenseShares.notReimbursed.slice(0, 3).map((share) => {
                   return (
-                    <ListItem key={share.id}>
+                    <ListItem key={share.id} onClick={() => { setSelectedObject(share); setOpen(true); }}>
                       <ListItemAvatar>
                         <Avatar>
                           <AddCardIcon />
@@ -149,6 +161,17 @@ const Expense: React.FC = () => {
           </CardContent>
         </Card>
       </div>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby='modal-expense-info'
+        aria-describedby='modal-expense-info-description'
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div onClick={(e) => e.stopPropagation()}>
+          <ExpenseInfo object={selectedObject} handleClose={handleClose} />
+        </div>
+      </Modal>
     </div>
   );
 };
