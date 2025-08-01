@@ -18,11 +18,12 @@ import SellIcon from '@mui/icons-material/Sell';
 import CreditScoreIcon from '@mui/icons-material/CreditScore';
 import AddCardIcon from '@mui/icons-material/AddCard';
 import ExpenseInfo from '@/components/home/ExpenseInfo/ExpenseInfo.tsx';
+import { ExpenseResponse, ExpenseShareResponse } from '@/types/expense.ts';
 
 const Expense: React.FC = () => {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [open, setOpen] = useState<boolean>(false);
-  const [selectedObject, setSelectedObject] = useState<any>(null);
+  const [selectedObject, setSelectedObject] = useState<ExpenseResponse | ExpenseShareResponse>();
 
   const queryClient = useQueryClient();
 
@@ -169,7 +170,7 @@ const Expense: React.FC = () => {
         onClick={(e) => e.stopPropagation()}
       >
         <div onClick={(e) => e.stopPropagation()}>
-          <ExpenseInfo object={selectedObject} handleClose={handleClose} />
+          <ExpenseInfo object={selectedObject as ExpenseResponse | ExpenseShareResponse} expenses={expenses} handleClose={handleClose} />
         </div>
       </Modal>
     </div>
