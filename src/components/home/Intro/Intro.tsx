@@ -1,13 +1,12 @@
 import dayjs from 'dayjs';
 import { KeycloakProfile } from 'keycloak-js';
-import React, { useMemo } from 'react';
+import React from 'react';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
 import './Intro.scss'
 import { motivationalQuotes } from '@/components/home/Intro/MotivationQuotes.ts';
 
-'MotivationQuotes.ts'
 
 interface User {
   id: string | undefined;
