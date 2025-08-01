@@ -2,15 +2,21 @@
 
 .intro {
   display: flex;
+  flex-direction: column;
 
   &__content {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
 
     &__calendar {
       display: flex;
       flex-direction: row;
       align-items: flex-start;
+    }
+
+    &__quote {
+      display: flex;
+      margin-top: $margin-base * 2;
     }
 
   }
