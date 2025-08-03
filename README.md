@@ -1,11 +1,8 @@
 DOCKER
 
 EXECUTE THE BELOW COMMANDS
-docker build -t listtick-front .
-docker run -p 5173:80 listtick-front
-
-
-
+docker build -t listtick-frontend .
+docker run -p 5173:80 listtick-frontend
 
 # React + TypeScript + Vite
 
