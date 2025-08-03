@@ -1,0 +1,31 @@
+@use '/src/styles/base/core.scss' as *;
+
+.note {
+  background-color: $background-color;
+  color: $accent-color;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $padding-base;
+  margin-right: $margin-base;
+  border: $border;
+  border-radius: $border-radius-base;
+  height: 40px;
+
+  &__title {
+    h3 {
+      font-weight: normal;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__icons {
+    .MuiIconButton-root:hover {
+      cursor: pointer;
+    }
+  }
+
+}
