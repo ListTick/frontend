@@ -1,8 +1,9 @@
-DOCKER
-
-EXECUTE THE BELOW COMMANDS
-docker build -t listtick-frontend .
-docker run -p 5173:80 listtick-frontend
+# SETUP WITH DOCKER
+Execute the following commands to build and run the Docker container
+```bash
+docker build -t listtick-frontend-image . # Add --no-cache to rebuild the image without cache
+docker run --name listtick-frontend -p 5173:80 --network listtick-network listtick-frontend-image
+```
 
 # React + TypeScript + Vite
 
