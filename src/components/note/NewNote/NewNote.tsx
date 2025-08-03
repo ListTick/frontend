@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
 import { Modal } from '@mui/material';
 import CreateNote from '@/components/note/NewNote/CreateNote.tsx';
+import './NewNote.scss'
 
 
 const NewNote: React.FC = () => {
@@ -18,8 +19,7 @@ const NewNote: React.FC = () => {
       <Modal
         open={open}
         onClose={handleClose}
-        aria-labelledby='modal-create-note-title'
-        aria-describedby='modal-create-note-description'
+        aria-labelledby='modal-create-note'
         onClick={(e) => e.stopPropagation()}
       >
         <div onClick={(e) => e.stopPropagation()}>

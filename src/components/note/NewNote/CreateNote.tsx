@@ -3,6 +3,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { NoteRequest } from '@/types/note.ts';
 import { createNote } from '@/api/note.ts';
 import { Button, Snackbar, TextField } from '@mui/material';
+import './CreateNote.scss'
 
 interface CreateNoteProps {
   handleClose: () => void;
@@ -45,6 +46,7 @@ const CreateNote: React.FC<CreateNoteProps> = ({ handleClose }) => {
 
       <div className='createNote__content'>
         <div className='createNote__content__fields'>
+            <h3>Create Note</h3>
           <TextField
             id='title'
             name='title'
