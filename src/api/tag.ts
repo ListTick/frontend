@@ -8,7 +8,7 @@ enum TagApi {
 export const getTagsByUserId = async (): Promise<Tag[]> => {
   try {
     const response = await api.get(TagApi.TAG);
-    return response.data;
+    return Array.isArray(response.data) ? response.data : [];
   } catch (error) {
     console.error('Error fetching data: ', error);
     throw error;

@@ -9,7 +9,7 @@ enum CategoryAPI {
 export const getAllBucketListCategoriesByAccountId = async (): Promise<BucketListCategoryResponse[]> => {
   try {
     const response = await api.get(CategoryAPI.CATEGORY);
-    return response.data;
+    return Array.isArray(response.data) ? response.data : [];
   } catch (error) {
     console.error('Error fetching bucket list categories: ', error);
     throw error;

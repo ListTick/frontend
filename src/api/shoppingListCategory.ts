@@ -9,7 +9,7 @@ enum CategoryAPI {
 export const getAllShoppingListCategoriesByAccountId = async (): Promise<ShoppingListCategoryResponse[]> => {
   try {
     const response = await api.get(CategoryAPI.CATEGORY);
-    return response.data;
+    return Array.isArray(response.data) ? response.data : [];
   } catch (error) {
     console.error('Error fetching shopping list categories: ', error);
     throw error;
@@ -41,7 +41,7 @@ export const updateShoppingListCategory = async (id: string, category: ShoppingL
     const response = await api.put(`${CategoryAPI.CATEGORY}/${id}`, category);
     return response.data;
   } catch (error) {
-    console.error('Error updating shopping list category: ', error);
+    console.error('Error updating shreturn Array.isArray(response.data) ? response.data : [];\nopping list category: ', error);
     throw error;
   }
 }
