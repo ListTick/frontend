@@ -1,7 +1,7 @@
 import axios, { AxiosRequestHeaders } from 'axios';
 import { keycloak } from '../security/keycloak.ts';
 
-export const api = axios.create({ baseURL: 'http://localhost:8080/api' });
+export const api = axios.create({ baseURL: '/api' });
 
 api.interceptors.request.use(async (config) => {
   await keycloak.updateToken(60).catch(() => keycloak.logout());
