@@ -8,7 +8,7 @@ enum GoalApi {
 export const getGoalsByUserId = async (): Promise<Goal[]> => {
   try {
     const response = await api.get(GoalApi.GOAL);
-    return response.data;
+    return Array.isArray(response.data) ? response.data : [];
   } catch (error) {
     console.error('Error fetching data: ', error);
     throw error;

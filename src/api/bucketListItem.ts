@@ -18,7 +18,7 @@ export const getItemById = async (id: string): Promise<ItemResponse> => {
 export const getAllItemsByBucketListId = async (id: string): Promise<ItemResponse[]> => {
   try {
     const response = await api.get(`${ItemAPI.ITEMS}/bucket-list/${id}`);
-    return response.data;
+    return Array.isArray(response.data) ? response.data : [];
   } catch (error) {
     console.error('Error fetching items by bucket list ID: ', error);
     throw error;

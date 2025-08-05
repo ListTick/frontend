@@ -8,7 +8,7 @@ enum ShoppingListAPI {
 export const getAllShoppingListsByAccountId = async (): Promise<ShoppingListResponse[]> => {
   try {
     const response = await api.get(ShoppingListAPI.SHOPPING_LISTS);
-    return response.data;
+    return Array.isArray(response.data) ? response.data : [];
   } catch (error) {
     console.error('Error fetching data: ', error);
     throw error;

@@ -8,7 +8,7 @@ enum BucketListAPI {
 export const getAllBucketListsByAccountId = async (): Promise<BucketListResponse[]> => {
   try {
     const response = await api.get(BucketListAPI.BUCKET_LISTS);
-    return response.data;
+    return Array.isArray(response.data) ? response.data : [];
   } catch (error) {
     console.error('Error fetching data: ', error);
     throw error;

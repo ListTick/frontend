@@ -18,7 +18,7 @@ export const getExpenseById = async (id: string): Promise<ExpenseResponse> => {
 export const getAllExpensesByAccountId = async (): Promise<ExpenseResponse[]> => {
   try {
     const response = await api.get(ExpenseAPI.EXPENSES);
-    return response.data;
+    return Array.isArray(response.data) ? response.data : [];
   } catch (error) {
     console.error('Error fetching expenses: ', error);
     throw error;
@@ -28,7 +28,7 @@ export const getAllExpensesByAccountId = async (): Promise<ExpenseResponse[]> =>
 export const getAllExpenseSharesByAccountId = async (): Promise<ExpenseShareResponse[]> => {
   try {
     const response = await api.get(`${ExpenseAPI.EXPENSES}/shared`);
-    return response.data;
+    return Array.isArray(response.data) ? response.data : [];
   } catch (error) {
     console.error('Error fetching expense shares: ', error);
     throw error;

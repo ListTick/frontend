@@ -13,7 +13,7 @@ export const getTasksByUserId = async (tag: Tag | null): Promise<Task[]> => {
       console.log("Hello handle me!")
     }
     const response = await api.get(`${TaskApi.TASK}`);
-    return response.data;
+    return Array.isArray(response.data) ? response.data : [];
   } catch (error) {
     console.error('Error fetching data: ', error);
     throw error;
