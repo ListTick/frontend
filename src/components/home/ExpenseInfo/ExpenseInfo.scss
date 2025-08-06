@@ -1,0 +1,102 @@
+@use '/src/styles/base/core.scss' as *;
+
+.expenseInfo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: $background-color;
+  padding: 20px;
+  border: $border;
+  border-radius: $border-radius-medium;
+  width: 90vw;
+  max-width: 400px;
+  min-width: 280px;
+  height: 75vh;
+  max-height: 90vh;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: $small-gap;
+    height: 100%;
+
+    h3 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    // Floating labels
+    .MuiInputLabel-root,
+    .MuiInputLabel-root.Mui-focused {
+      color: $accent-color !important;
+    }
+
+    input,
+    .MuiInputBase-input,
+    .MuiSelect-select,
+    .MuiOutlinedInput-root {
+      background-color: $gray-800 !important;
+      -webkit-text-fill-color: $gray-500 !important;
+      transition: background-color 5000s ease-in-out 0s;
+      border: $border;
+      border-radius: $border-radius-medium;
+    }
+
+    &__fields {
+      display: flex;
+      flex-direction: column;
+      gap: $small-gap;
+      color: $accent-color;
+    }
+
+    &__items {
+      display: flex;
+      flex-direction: column;
+      gap: $small-gap;
+      color: $accent-color;
+      height: 195px;
+      overflow-y: auto;
+
+      &__item {
+        display: flex;
+        flex-direction: row;
+        gap: $small-gap;
+        margin-top: 5px;
+
+      }
+
+      &::-webkit-scrollbar {
+        height: 5px;
+        background: transparent;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: $accent-color;
+        border-radius: $border-radius-medium;
+      }
+    }
+
+    &__buttons {
+      display: flex;
+      flex-direction: column;
+      gap: $small-gap;
+
+      button,
+      .MuiButton-root {
+        background-color: $gray-800;
+        color: $accent-color;
+        border: $border;
+        border-radius: $border-radius-medium;
+        padding: $padding-base;
+        font-weight: normal;
+
+        &:hover {
+          background-color: $gray-700;
+        }
+      }
+    }
+
+  }
+}

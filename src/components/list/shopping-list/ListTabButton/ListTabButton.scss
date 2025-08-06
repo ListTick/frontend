@@ -1,0 +1,20 @@
+@use '/src/styles/base/core.scss' as *;
+
+.header-btn {
+  font-size: $font-size-medium;
+  font-family: $font-family-primary;
+  cursor: pointer;
+  padding: $padding-base $large-gap;
+  border: 2px $secondary-color;
+  border-radius: $border-radius-base;
+  height: 40px;
+  max-width: 80vw;
+
+  &.active {
+    background-color: $gray-800;
+  }
+
+  &:hover {
+    background-color: $secondary-color;
+  }
+}

@@ -1,3 +1,10 @@
+# SETUP WITH DOCKER
+Execute the following commands to build and run the Docker container
+```bash
+docker build -t listtick-frontend-image . # Add --no-cache to rebuild the image without cache
+docker run --name listtick-frontend -p 5173:80 --network listtick-network listtick-frontend-image
+```
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.

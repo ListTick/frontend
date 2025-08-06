@@ -1,0 +1,66 @@
+@use '/src/styles/base/core.scss' as *;
+
+.navbar {
+  &__list {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    border-bottom: $border;
+
+    &--group {
+      display: flex;
+      gap: $gap-base;
+    }
+  }
+
+  &__tab {
+    display: flex;
+    padding: $padding-base;
+    &:hover {
+      cursor: pointer;
+      color: $accent-color;
+    }
+  }
+}
+
+.active {
+  color: $accent-color;
+}
+
+@media screen and (max-width: $breakpoint-phone) {
+  .navbar {
+    &__list {
+      border-bottom: none;
+      border-top: $border;
+
+      &--home p,
+      &--notifications-desktop {
+        display: none;
+      }
+    }
+  }
+}
+
+// Using the same value for both min-width and max-width can lead to conflicting styles at the exact breakpoint.
+// To avoid this, we offset one of them (e.g., max-width: $breakpoint - 1px or min-width: $breakpoint + 1px)
+// so that only one media query applies at a time.
+@media screen and (min-width: $breakpoint-phone + 1) {
+  .navbar {
+    &__list {
+      &--group {
+        display: flex;
+      }
+
+      &--home,
+      &--lists,
+      &--tasks,
+      &--notes,
+      &--notifications {
+        display: none;
+      }
+    }
+    &__tab {
+      margin: $margin-base;
+    }
+  }
+}

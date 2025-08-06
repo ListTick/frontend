@@ -1,0 +1,23 @@
+@use '/src/styles/base/core.scss' as *;
+
+.edit-tag {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100dvh;
+
+  &__content {
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    gap: $gap-base;
+    border-radius: $border-radius-base;
+    background-color: $secondary-color;
+    padding: 1rem;
+
+    &--buttons {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+}

@@ -1,0 +1,28 @@
+@use '/src/styles/base/core.scss' as *;
+
+.clock {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+
+  &__time {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background-color: $secondary-color;
+    padding: 25px 50px;
+    border-radius: $border-radius-base;
+    font-family: $font-family-secondary;
+    font-size: $font-size-large;
+    margin-bottom: $medium-gap;
+
+    h5 {
+      color: $accent-color;
+    }
+    &--buttons {
+      display: flex;
+      gap: $gap-base;
+    }
+  }
+}

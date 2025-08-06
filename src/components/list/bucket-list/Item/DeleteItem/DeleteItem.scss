@@ -1,0 +1,106 @@
+@use '/src/styles/base/core.scss' as *;
+
+.deleteItem-bucket {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: $background-color;
+  padding: 20px;
+  border: $border;
+  border-radius: $border-radius-medium;
+  width: 90vw;
+  max-width: 400px;
+  min-width: 280px;
+  height: 15vh;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: $medium-gap;
+
+    h3 {
+      display: flex;
+      justify-content: center;
+      color: $accent-color;
+    }
+
+
+    .MuiCheckbox-root {
+      color: $accent-color !important;
+      border: $border;
+      border-radius: $border-radius-medium;
+      vertical-align: middle;
+
+      &:hover {
+        background-color: $gray-700 !important;
+      }
+    }
+
+    .Mui-checked {
+      color: $accent-color !important;
+    }
+
+    .MuiFormControlLabel-label {
+      color: $accent-color;
+      margin-left: $margin-base;
+    }
+
+    &__fields {
+      display: flex;
+      flex-direction: column;
+      gap: $medium-gap;
+
+      &__expense {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: $gap-base;
+
+        // Floating labels
+        .MuiInputLabel-root,
+        .MuiInputLabel-root.Mui-focused {
+          color: $accent-color !important;
+        }
+
+        input,
+        .MuiInputBase-input,
+        .MuiSelect-select,
+        .MuiOutlinedInput-root {
+          background-color: $gray-800 !important;
+          -webkit-text-fill-color: $gray-500 !important;
+          transition: background-color 5000s ease-in-out 0s;
+          border: $border;
+          border-radius: $border-radius-medium;
+        }
+      }
+    }
+
+
+
+  }
+
+  &__buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    button,
+    .MuiButton-root {
+      background-color: $gray-800;
+      color: $accent-color;
+      border: $border;
+      border-radius: $border-radius-medium;
+      padding: $padding-base;
+      font-weight: normal;
+      &:hover {
+        background-color: $gray-700;
+      }
+    }
+  }
+
+}

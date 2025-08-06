@@ -1,0 +1,12 @@
+@use '/src/styles/base/core.scss' as *;
+
+.tagCard {
+  background-color: $background-color;
+  border-radius: 100px;
+  max-width: 150px;
+
+  p {
+    color: $accent-color;
+    font-size: $font-size-small;
+  }
+}
