@@ -16,6 +16,11 @@
     gap: $gap-base;
     margin: 0 auto;
 
+    h2 {
+        color: $accent-color;
+        text-align: center;
+    }
+
     &--pomodoro-duration {
       display: flex;
       flex-wrap: wrap;
@@ -30,6 +35,12 @@
       margin-top: 1rem;
       display: flex;
       justify-content: space-between;
+
+      &_right {
+        display: flex;
+        flex-direction: row;
+        gap: $gap-base;
+      }
     }
   }
 }

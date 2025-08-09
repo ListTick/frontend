@@ -9,14 +9,12 @@ import ArchivedTaskList from '@/components/task/archivedTaskList/ArchivedTaskLis
 import './Tasks.scss';
 import { Tag } from '@/types/tag.ts';
 import { useQueryClient } from '@tanstack/react-query';
-import { Snackbar } from '@mui/material';
 
 const Tasks = () => {
   const [isClockDisplayed, setIsClockDisplayed] = useState(false);
   const [selectedTask, setSelectedTask] = useState({} as Task);
   const [isArchivedTasksDisplayed, setIsArchivedTasksDisplayed] = useState<boolean>(false);
   const [selectedTagId, setSelectedTagId] = useState<string | null>(null);
-  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const queryClient = useQueryClient();
 
@@ -53,13 +51,6 @@ const Tasks = () => {
         breakDuration={selectedTask.breakDuration ?? 5}
         isDisplayed={isClockDisplayed}
         taskId={selectedTask.id}
-      />
-      <Snackbar
-        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
-        open={errorMessage !== null}
-        autoHideDuration={2000}
-        onClose={() => setErrorMessage(null)}
-        message={errorMessage}
       />
       <div className="tasks">
         <section className="tasks__tags">

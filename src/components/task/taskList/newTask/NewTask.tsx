@@ -6,11 +6,9 @@ import EditTask from '../editTask/EditTask';
 
 const NewTask = () => {
   const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
 
   return (
-    <div className='newTaskItem' onClick={handleOpen}>
+    <div className='newTaskItem' onClick={() => setOpen(prev => !prev)}>
       <div className='newTaskItem__content'>
         <PlaylistAddIcon />
         <p>Add Task</p>
@@ -19,14 +17,14 @@ const NewTask = () => {
         open={open}
         onClose={(_event, reason) => {
           if (reason === 'escapeKeyDown') {
-            handleClose();
+            setOpen(false);
           }
         }}
         aria-labelledby='modal-modal-title'
         aria-describedby='modal-modal-description'
       >
-        <div>
-          <EditTask handleClose={handleClose} />
+        <div onClick={e => e.stopPropagation()}>
+          <EditTask handleClose={() => setOpen(false)} />
         </div>
       </Modal>
     </div>

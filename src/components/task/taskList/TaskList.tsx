@@ -23,7 +23,7 @@ const TaskList: React.FC<TaskListProps> = ({ onPomodoroClick, filterByTagId }) =
     return <CircularProgress />;
   }
 
-  if (isError) {
+  if (isError ) {
     return (
       <Snackbar
         anchorOrigin={{ vertical: 'top', horizontal: 'center' }}

@@ -154,15 +154,20 @@ const EditTask: React.FC<EditTaskProps> = ({ taskDetails, handleClose }) => {
         </div>
         <div className='add-new-task__content--buttons'>
           {taskDetails ? (
-            <Button variant='contained' size='large' color='error' onClick={handleDelete}>
+            <Button variant='contained' size='medium' color='error' onClick={handleDelete}>
               Delete
             </Button>
           ) : (
             <div />
           )}
-          <Button variant='contained' size='large' onClick={handleTask}>
+          <div className='add-new-task__content--buttons_right'>
+          <Button variant='contained' size='medium' onClick={handleClose}>
+            Cancel
+          </Button>
+          <Button variant='contained' size='medium' onClick={handleTask}>
             {taskDetails ? 'Update' : 'Create'}
           </Button>
+          </div>
         </div>
       </div>
     </div>
