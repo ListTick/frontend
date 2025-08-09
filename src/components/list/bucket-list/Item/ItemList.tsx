@@ -4,7 +4,7 @@ import {
   Modal
 } from '@mui/material';
 import React, { useState } from 'react';
-import Snackbar from '../../../task/alert/Alert.tsx';
+import Snackbar from '@mui/material/Snackbar';
 import { useQuery } from '@tanstack/react-query';
 import './ItemList.scss';
 import { getAllItemsByBucketListId } from '@/api/bucketListItem.ts';
@@ -48,8 +48,15 @@ const ItemList: React.FC<ItemListProps> = ({ bucketList }) => {
     return <CircularProgress />;
   }
 
-  if (isError) {
-    return <Snackbar severity='error'>Oops there was an error, please contact our IT department</Snackbar>;
+  if (isError || !data) {
+    return (
+      <Snackbar
+        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+        open={true}
+        autoHideDuration={2000}
+        message={'Oops there was an error, please contact our IT department'}
+      />
+    );
   }
 
   return (

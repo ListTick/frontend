@@ -2,7 +2,7 @@ import React from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { getAllBucketListCategoriesByAccountId } from '@/api/bucketListCategory.ts';
 import { CircularProgress } from '@mui/material';
-import Snackbar from '@/components/task/alert/Alert.tsx';
+import Snackbar from '@mui/material/Snackbar';
 import CategoryClickable from '@/components/list/bucket-list/Category/CategoryClickable.tsx';
 import './CategoryList.scss';
 import NewCategory from '@/components/list/bucket-list/Category/NewCategory/NewCategory.tsx';
@@ -23,7 +23,14 @@ const CategoryList: React.FC<CategoryListProps> = ({ selectedCategoryId, setSele
   }
 
   if (isError || !data) {
-    return <Snackbar severity='error'>Oops there was an error, please contact our IT department</Snackbar>;
+    return (
+      <Snackbar
+        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+        open={true}
+        autoHideDuration={2000}
+        message={'Oops there was an error, please contact our IT department'}
+      />
+    );
   }
 
   const handleCategoryClick = (categoryId: string) => {

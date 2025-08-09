@@ -1,5 +1,5 @@
 import { CircularProgress } from '@mui/material';
-import Snackbar from '@/components/task/alert/Alert.tsx';
+import Snackbar from '@mui/material/Snackbar';
 import { getGoalsByUserId } from '@/api/goal.ts';
 import { useQuery } from '@tanstack/react-query';
 import GoalItem from '@/components/profile/goalList/goalItem/GoalItem.tsx';
@@ -16,7 +16,14 @@ const GoalList = () => {
   }
 
   if (isError || !data) {
-    return <Snackbar severity='error'>Oops there was an error, please contact our IT department</Snackbar>;
+    return (
+      <Snackbar
+        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+        open={true}
+        autoHideDuration={2000}
+        message={'Oops there was an error, please contact our IT department'}
+      />
+    );
   }
 
   return (

@@ -2,7 +2,7 @@ import { CircularProgress } from '@mui/material';
 import { getTasksByUserId } from '@/api/task';
 import TaskItem from './task/TaskItem';
 import React from 'react';
-import Snackbar from '../alert/Alert';
+import Snackbar from '@mui/material/Snackbar';
 import { Task } from '@/types/task';
 import NewTask from './newTask/NewTask';
 import { useQuery } from '@tanstack/react-query';
@@ -24,7 +24,14 @@ const TaskList: React.FC<TaskListProps> = ({ onPomodoroClick, filterByTagId }) =
   }
 
   if (isError || !data) {
-    return <Snackbar severity='error'>Oops there was an error, please contact our IT department</Snackbar>;
+    return (
+      <Snackbar
+        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+        open={true}
+        autoHideDuration={2000}
+        message={'Oops there was an error, please contact our IT department'}
+      />
+    );
   }
 
   return (

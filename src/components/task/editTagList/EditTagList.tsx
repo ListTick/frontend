@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import CircularProgress from '@mui/material/CircularProgress';
-import Snackbar from '../alert/Alert';
+import Snackbar from '@mui/material/Snackbar';
 import { getTagsByUserId } from '@/api/tag';
 import EditTagCard from './editTagCard/EditTagCard';
 import Button from '@mui/material/Button';
@@ -21,9 +21,17 @@ const EditTagList = () => {
     return <CircularProgress />;
   }
 
-  if (isError) {
-    return <Snackbar severity='error'>Oops there was an error, please contact our IT department</Snackbar>;
+  if (isError || !data) {
+    return (
+      <Snackbar
+        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+        open={true}
+        autoHideDuration={2000}
+        message={'Oops there was an error, please contact our IT department'}
+      />
+    );
   }
+
   const handleModalOpen = () => {
     setIsModalOpen(true);
   };

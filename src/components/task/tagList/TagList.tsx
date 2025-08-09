@@ -1,5 +1,5 @@
 import CircularProgress from '@mui/material/CircularProgress';
-import Snackbar from '../alert/Alert';
+import Snackbar from '@mui/material/Snackbar';
 import TagCard from './tagCard/TagCard';
 import { useQuery } from '@tanstack/react-query';
 import { getTagsByUserId } from '@/api/tag';
@@ -17,7 +17,14 @@ const TagList = () => {
   }
 
   if (isError || !data) {
-    return <Snackbar severity='error'>Oops there was an error, please contact our IT department</Snackbar>;
+    return (
+      <Snackbar
+        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+        open={true}
+        autoHideDuration={2000}
+        message={'Oops there was an error, please contact our IT department'}
+      />
+    );
   }
 
   return (
