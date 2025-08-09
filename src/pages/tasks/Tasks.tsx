@@ -36,7 +36,12 @@ const Tasks = () => {
   };
 
   const handleTagClick = (tag: Tag) => {
-    setSelectedTagId(tag.id ?? null);
+    setSelectedTagId((prevSelectedTagId) => {
+      if (prevSelectedTagId === tag.id) {
+        return null;
+      }
+      return tag.id as string;
+    });
   }
 
   return (

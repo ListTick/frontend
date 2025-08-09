@@ -76,9 +76,14 @@ const EditTask: React.FC<EditTaskProps> = ({ taskDetails, handleClose }) => {
   const handleTagClick = (tag: Tag) => {
     setTask((prevTask) => ({
       ...prevTask,
-      tagId: tag.id
+      tagId: prevTask.tagId === tag.id ? undefined : tag.id
     }));
-    setSelectedTagId(tag.id || null);
+    setSelectedTagId((prevSelectedTagId) => {
+      if (prevSelectedTagId === tag.id) {
+        return null;
+      }
+      return tag.id as string;
+    })
   };
 
   return (
