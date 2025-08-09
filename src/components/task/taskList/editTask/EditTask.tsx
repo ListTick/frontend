@@ -1,4 +1,4 @@
-import { TextField, Button } from '@mui/material';
+import { TextField, Button, Snackbar } from '@mui/material';
 import React, { useState } from 'react';
 import { TaskWithTagId } from '@/types/task';
 import { createTask, deleteTask, updateTask } from '@/api/task';
@@ -26,6 +26,7 @@ const EditTask: React.FC<EditTaskProps> = ({ taskDetails, handleClose }) => {
     tagId: taskDetails?.tagId || undefined
   });
   const [selectedTagId, setSelectedTagId] = useState<string | null>(taskDetails?.tagId || null);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -40,6 +41,15 @@ const EditTask: React.FC<EditTaskProps> = ({ taskDetails, handleClose }) => {
     onSuccess: () => {
       void queryClient.invalidateQueries({ queryKey: ['tasks'] });
       handleClose();
+    },
+    onError: (error: any) => {
+      const data = error?.response?.data;
+      if (data && typeof data === 'object') {
+        const messages = Object.values(data).join(', ');
+        setErrorMessage(messages);
+      } else {
+        setErrorMessage('An unexpected error occurred.');
+      }
     }
   });
 
@@ -88,6 +98,13 @@ const EditTask: React.FC<EditTaskProps> = ({ taskDetails, handleClose }) => {
 
   return (
     <div className='add-new-task'>
+      <Snackbar
+        anchorOrigin={{vertical: 'top', horizontal: 'center'}}
+        open={errorMessage !== null}
+        autoHideDuration={2000}
+        onClose={() => setErrorMessage(null)}
+        message={errorMessage}
+      />
       <div className='add-new-task__content'>
         <h2>{taskDetails ? 'Edit Task' : 'New Task'}</h2>
         <TextField
