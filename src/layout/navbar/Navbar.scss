@@ -5,7 +5,7 @@
     display: flex;
     justify-content: space-between;
     list-style: none;
-    border-bottom: $border;
+    border-bottom: solid 1px $gray-700;;
 
     &--group {
       display: flex;
@@ -31,7 +31,7 @@
   .navbar {
     &__list {
       border-bottom: none;
-      border-top: $border;
+      border-top: solid 1px $gray-700;
 
       &--home p,
       &--notifications-desktop {

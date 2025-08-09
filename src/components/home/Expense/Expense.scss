@@ -9,11 +9,13 @@
     height: 100%;
     display: flex;
     flex-direction: row;
+    gap: $gap-base;
 
     &__card {
       height: 100%;
       width: 50%;
       background: $background-color !important;
+      border: solid 1px $gray-700;
 
       button,
       .MuiButton-root {
