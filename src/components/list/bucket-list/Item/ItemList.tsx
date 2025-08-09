@@ -48,7 +48,7 @@ const ItemList: React.FC<ItemListProps> = ({ bucketList }) => {
     return <CircularProgress />;
   }
 
-  if (isError || !data) {
+  if (isError) {
     return (
       <Snackbar
         anchorOrigin={{ vertical: 'top', horizontal: 'center' }}

@@ -22,7 +22,7 @@ const CategoryList: React.FC<CategoryListProps> = ({ selectedCategoryId, setSele
     return <CircularProgress />;
   }
 
-  if (isError || !data) {
+  if (isError) {
     return (
       <Snackbar
         anchorOrigin={{ vertical: 'top', horizontal: 'center' }}

@@ -47,7 +47,7 @@ const Notes: React.FC = () => {
     return <CircularProgress />;
   }
 
-  if (isError || !data) {
+  if (isError) {
     return (
       <Snackbar
         anchorOrigin={{ vertical: 'top', horizontal: 'center' }}

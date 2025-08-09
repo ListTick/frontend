@@ -26,7 +26,7 @@ const TaskTagList: React.FC<TaskTagProps> = ({
     return <CircularProgress />;
   }
 
-  if (isError || !data) {
+  if (isError) {
     return (
       <Snackbar severity="error">
         Oops there was an error, please contact our IT department

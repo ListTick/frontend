@@ -50,7 +50,7 @@ const CreateBucketList: React.FC<CreateBucketListProps> = ({ handleClose }) => {
     return <CircularProgress />;
   }
 
-  if (isError || !data) {
+  if (isError) {
     return (
       <Snackbar
         anchorOrigin={{ vertical: 'top', horizontal: 'center' }}

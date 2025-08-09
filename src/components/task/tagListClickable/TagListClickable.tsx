@@ -21,7 +21,7 @@ const TagListClickable: React.FC<TagListClickableProps> = ({ handleTagClick, sel
     return <CircularProgress />;
   }
 
-  if (isError || !data) {
+  if (isError) {
     return (
       <Snackbar
         anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
