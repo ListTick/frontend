@@ -12,10 +12,15 @@
   &__main {
     display: flex;
     flex-direction: row;
+    align-items: center;
     color: $accent-color;
 
     &--title {
       color: $accent-color;
+
+      p:empty {
+        display: none;
+      }
     }
   }
 
