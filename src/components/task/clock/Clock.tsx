@@ -12,10 +12,11 @@ interface ClockProps {
   pomodoroDuration: number;
   breakDuration: number;
   isDisplayed: boolean;
+  taskName?: string;
   taskId?: string;
 }
 
-const Clock = ({ pomodoroDuration, breakDuration, isDisplayed, taskId }: ClockProps) => {
+const Clock = ({ pomodoroDuration, breakDuration, isDisplayed, taskId, taskName }: ClockProps) => {
   const useQuery = useQueryClient();
   const [time, setTime] = useState(dayjs.duration(25, 'minutes'));
   const [isRunning, setIsRunning] = useState(false);
@@ -88,6 +89,7 @@ const Clock = ({ pomodoroDuration, breakDuration, isDisplayed, taskId }: ClockPr
     isDisplayed && (
       <div className='clock'>
         <div className='clock__time'>
+          <h6>{taskName}</h6>
           <h5>{isPomodoro? "Time to get things done" : "Time to take a break"}</h5>
           <h1>{time.format('mm:ss')}</h1>
           <div className='clock__time--buttons'>
