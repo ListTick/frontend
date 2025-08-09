@@ -27,11 +27,13 @@ const Clock = ({ pomodoroDuration, breakDuration, isDisplayed, taskId }: ClockPr
 
   useEffect(() => {
     if (isDisplayed) {
-      let state: string = isPomodoro ? "Focus time: " : "Break time: ";
-      document.title = state + "" + time.format('mm:ss');
+      document.title = time.format('mm:ss');
     } else {
       document.title = "ListTick";
     }
+    return () => {
+      document.title = "ListTick";
+    };
   }, [isDisplayed, time, isPomodoro]);
 
   useEffect(() => {
