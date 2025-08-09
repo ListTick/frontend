@@ -70,7 +70,7 @@ const TaskItem: React.FC<TaskItemProps> = ({ task, onPomodoroClick }) => {
         </IconButton>
         <div className='taskItem__main--title'>
           <h3>{task.name}</h3>
-          {task.dueDate != null && (<p>{task.dueDate}</p>)}
+          {task.dueDate != null && (<p>{new Date(task.dueDate).toLocaleDateString()}</p>)}
         </div>
       </div>
 
