@@ -36,21 +36,25 @@ const EditTask: React.FC<EditTaskProps> = ({ taskDetails, handleClose }) => {
     }));
   };
 
+  const onGenericError = (error: any) => {
+    const data = error?.response?.data;
+    if (data && typeof data === 'object') {
+      const messages = Object.values(data).join(', ');
+      setErrorMessage(String(messages));
+    } else if (typeof error?.message === 'string') {
+      setErrorMessage(error.message);
+    } else {
+      setErrorMessage('An unexpected error occurred.');
+    }
+  };
+
   const postMutation = useMutation({
     mutationFn: () => createTask(task),
     onSuccess: () => {
       void queryClient.invalidateQueries({ queryKey: ['tasks'] });
       handleClose();
     },
-    onError: (error: any) => {
-      const data = error?.response?.data;
-      if (data && typeof data === 'object') {
-        const messages = Object.values(data).join(', ');
-        setErrorMessage(messages);
-      } else {
-        setErrorMessage('An unexpected error occurred.');
-      }
-    }
+    onError: onGenericError
   });
 
   const updateTaskMutation = useMutation({
@@ -58,7 +62,8 @@ const EditTask: React.FC<EditTaskProps> = ({ taskDetails, handleClose }) => {
     onSuccess: () => {
       void queryClient.invalidateQueries({ queryKey: ['tasks'] });
       handleClose();
-    }
+    },
+    onError: onGenericError
   });
 
   const deleteMutation = useMutation({
@@ -66,7 +71,8 @@ const EditTask: React.FC<EditTaskProps> = ({ taskDetails, handleClose }) => {
     onSuccess: () => {
       void queryClient.invalidateQueries({ queryKey: ['tasks'] });
       handleClose();
-    }
+    },
+    onError: onGenericError
   });
 
   const handleTask = async () => {

@@ -1,0 +1,25 @@
+@use '/src/styles/base/core' as *;
+
+.goalItem {
+  display: flex;
+  flex-direction: column;
+  padding: $padding-base;
+  border-radius: $border-radius-base;
+  border: $border;
+  justify-content: space-between;
+
+  &__main {
+    p:empty {
+      display: none;
+    }
+
+    &--title {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &--priority-dates {
+      margin-top: $margin-base;
+    }
+  }
+}

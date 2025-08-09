@@ -1,11 +1,15 @@
 import { CircularProgress } from '@mui/material';
+import React from 'react';
 import Snackbar from '@mui/material/Snackbar';
-import { getGoalsByUserId } from '@/api/goal.ts';
 import { useQuery } from '@tanstack/react-query';
-import GoalItem from '@/components/profile/goalList/goalItem/GoalItem.tsx';
+import { getGoalsByUserId } from '@/api/goal.ts';
+import GoalItem from '../goalItem/GoalItem.tsx';
+import NewGoal from '@/components/profile/goal/newGoal/NewGoal.tsx';
 
-const GoalList = () => {
+interface GoalListProps {
+}
 
+const GoalList: React.FC<GoalListProps> = () => {
   const { data, isError, isLoading } = useQuery({
     queryKey: ['goals'],
     queryFn: () => getGoalsByUserId()
@@ -15,7 +19,7 @@ const GoalList = () => {
     return <CircularProgress />;
   }
 
-  if (isError) {
+  if (isError ) {
     return (
       <Snackbar
         anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
@@ -29,8 +33,9 @@ const GoalList = () => {
   return (
     <div className='taskList'>
       {data.map((goal) => {
-        return <GoalItem key = {goal.id} goal={goal}/>;
+        return <GoalItem key={goal.id} goal={goal} />;
       })}
+      <NewGoal />
     </div>
   );
 };

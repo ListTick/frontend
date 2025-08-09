@@ -50,6 +50,7 @@ const Tasks = () => {
         pomodoroDuration={selectedTask.pomodoroDuration ?? 25}
         breakDuration={selectedTask.breakDuration ?? 5}
         isDisplayed={isClockDisplayed}
+        taskName={selectedTask.name}
         taskId={selectedTask.id}
       />
       <div className="tasks">
