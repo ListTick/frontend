@@ -25,7 +25,7 @@ const EditTask: React.FC<EditTaskProps> = ({ taskDetails, handleClose }) => {
     isCompleted: taskDetails?.isCompleted || false,
     tagId: taskDetails?.tagId || undefined
   });
-  console.log(task);
+  const [selectedTagId, setSelectedTagId] = useState<string | null>(taskDetails?.tagId || null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -78,6 +78,7 @@ const EditTask: React.FC<EditTaskProps> = ({ taskDetails, handleClose }) => {
       ...prevTask,
       tagId: tag.id
     }));
+    setSelectedTagId(tag.id || null);
   };
 
   return (
@@ -144,7 +145,7 @@ const EditTask: React.FC<EditTaskProps> = ({ taskDetails, handleClose }) => {
         </div>
         <div>
           <h2>Tags</h2>
-          <TagListClickable handleTagClick={handleTagClick}/>
+          <TagListClickable handleTagClick={handleTagClick} selectedTagId={selectedTagId}/>
         </div>
         <div className='add-new-task__content--buttons'>
           {taskDetails ? (

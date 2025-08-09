@@ -9,15 +9,16 @@ import Snackbar from '@/components/task/alert/Alert';
 
 interface TaskListProps {
   onPomodoroClick: (task: Task) => void;
+  filterByTagId: string | null;
 }
 
-const ArchivedTaskList: React.FC<TaskListProps> = ({ onPomodoroClick }) => {
+const ArchivedTaskList: React.FC<TaskListProps> = ({ onPomodoroClick, filterByTagId }) => {
   const [currentPage, setCurrentPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
 
   const { data, isLoading, isError } = useQuery({
     queryKey: ['archived-tasks', currentPage, rowsPerPage],
-    queryFn: () => getArchivedTasksByUserId(currentPage, rowsPerPage)
+    queryFn: () => getArchivedTasksByUserId(currentPage, rowsPerPage, filterByTagId)
   });
 
   if (isLoading) {

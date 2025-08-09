@@ -1,16 +1,15 @@
 import { api } from '@/config/axios';
 import { PagedTask, Task, TaskWithTagId } from '@/types/task';
-import { Tag } from '@/types/tag.ts';
 
 enum TaskApi {
   TASK = 'task'
 }
 
-export const getTasksByUserId = async (tag: Tag | null): Promise<Task[]> => {
+export const getTasksByUserId = async (tagId: string | null): Promise<Task[]> => {
   try {
-    //todo: handle tag
-    if (tag) {
-      console.log("Hello handle me!")
+    if (tagId !== null) {
+      const response = await api.get(`${TaskApi.TASK}?tagId=${tagId}`);
+      return Array.isArray(response.data) ? response.data : [];
     }
     const response = await api.get(`${TaskApi.TASK}`);
     return Array.isArray(response.data) ? response.data : [];
@@ -20,9 +19,18 @@ export const getTasksByUserId = async (tag: Tag | null): Promise<Task[]> => {
   }
 };
 
-export const getArchivedTasksByUserId = async (page: number, size: number): Promise<PagedTask> => {
+export const getArchivedTasksByUserId =
+    async (page: number, size: number, tagId: string | null): Promise<PagedTask> => {
+
   try {
-    const response = await api.get(`${TaskApi.TASK}/archive?page=${page}&size=${size}&sort=name%2CASC`);
+    let response;
+    if (tagId !== null) {
+      response = await api
+        .get(`${TaskApi.TASK}/archive?tagId=${tagId}&page=${page}&size=${size}&sort=name%2CASC`);
+    } else {
+      response = await api
+        .get(`${TaskApi.TASK}/archive?page=${page}&size=${size}&sort=name%2CASC`);
+    }
     return response.data;
   } catch (error) {
     console.error('Error fetching data: ', error);

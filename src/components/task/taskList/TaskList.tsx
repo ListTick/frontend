@@ -10,12 +10,13 @@ import './TaskList.scss';
 
 interface TaskListProps {
   onPomodoroClick: (task: Task) => void;
+  filterByTagId: string | null;
 }
 
-const TaskList: React.FC<TaskListProps> = ({ onPomodoroClick }) => {
+const TaskList: React.FC<TaskListProps> = ({ onPomodoroClick, filterByTagId }) => {
   const { data, isError, isLoading } = useQuery({
     queryKey: ['tasks'],
-    queryFn: () => getTasksByUserId(null)
+    queryFn: () => getTasksByUserId(filterByTagId)
   });
 
   if (isLoading) {

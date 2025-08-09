@@ -9,7 +9,7 @@ import './TagListClickable.scss';
 
 interface TagListClickableProps {
   handleTagClick: (tag: Tag) => void;
-  selectedTagId?: string;
+  selectedTagId: string | null;
 }
 
 const TagListClickable: React.FC<TagListClickableProps> = ({ handleTagClick, selectedTagId }) => {
@@ -17,7 +17,6 @@ const TagListClickable: React.FC<TagListClickableProps> = ({ handleTagClick, sel
     queryKey: ['tags'],
     queryFn: getTagsByUserId
   });
-
   if (isLoading) {
     return <CircularProgress />;
   }
