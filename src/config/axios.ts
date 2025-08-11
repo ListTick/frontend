@@ -1,5 +1,5 @@
 import axios, { AxiosRequestHeaders } from 'axios';
-import { keycloak } from '../security/keycloak.ts';
+import { keycloak } from '../security/KeycloakProvider.tsx';
 
 export const api = axios.create({ baseURL: '/api' });
 
