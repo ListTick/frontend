@@ -10,8 +10,6 @@ const NewCategory: React.FC = () => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-
-
   return (
     <div className='newCategory' onClick={handleOpen}>
       <div className='newCategory__content'>

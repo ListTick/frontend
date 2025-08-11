@@ -15,7 +15,7 @@ const TagCardClickable: React.FC<TagCardProps> = ({ tag, onTagClick, isSelected 
       onTagClick(tag);
     }
   };
-  console.log(isSelected);
+
   return (
     <ListItem
       className={`tagCardClickable${isSelected ? '--selected' : ''}`}

@@ -65,7 +65,7 @@ const BucketListInfo: React.FC<BucketListInfoProps> = ({ bucketList, handleClose
     return <CircularProgress />;
   }
 
-  if (isError || !data) {
+  if (isError) {
     return (
       <Snackbar
         anchorOrigin={{ vertical: 'top', horizontal: 'center' }}

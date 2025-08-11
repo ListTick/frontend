@@ -5,7 +5,6 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
 import './Intro.scss'
-import { motivationalQuotes } from '@/components/home/Intro/MotivationQuotes.ts';
 
 
 interface User {
@@ -28,9 +27,6 @@ const Intro: React.FC<IntroProps> = ({ user }) => {
     return 'Good night';
   };
 
-  const dayOfMonth = new Date().getDate();
-  const quoteOfTheDay = motivationalQuotes[(dayOfMonth - 1) % motivationalQuotes.length];
-
   return (
     <div className='intro'>
       <h2>{`${getGreeting()} ${user.profile?.firstName}`}</h2>
@@ -40,10 +36,6 @@ const Intro: React.FC<IntroProps> = ({ user }) => {
             <DateCalendar referenceDate={dayjs()} views={['year', 'month', 'day']} />
           </LocalizationProvider>
         </div>
-        <div className='intro__content__quote'>
-          <p>{quoteOfTheDay}</p>
-        </div>
-
       </div>
     </div>
   );

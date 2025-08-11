@@ -4,6 +4,7 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import './Options.scss';
 import EditTagList from '../editTagList/EditTagList';
 import { deleteAllCompletedTasks } from '@/api/task';
+import { useQueryClient } from '@tanstack/react-query';
 
 interface OptionsProps {
   toggleShowArchivedTasks: () => void;
@@ -14,6 +15,7 @@ const Options: React.FC<OptionsProps> = ({ toggleShowArchivedTasks, isArchivedTa
   const [isPopoverOpen, setIsPopoverOpen] = useState<boolean>(false);
   const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
   const [isTagsEditOpen, setIsTagsEditOpen] = useState<boolean>(false);
+  const queryClient = useQueryClient();
 
   const handleOpenPopover = (event: React.MouseEvent<HTMLButtonElement>): void => {
     setAnchorEl(event.currentTarget);
@@ -35,6 +37,7 @@ const Options: React.FC<OptionsProps> = ({ toggleShowArchivedTasks, isArchivedTa
 
   const handleDeleteCompletedTasks = async (): Promise<void> => {
     await deleteAllCompletedTasks();
+    void queryClient.invalidateQueries({ queryKey: ['tasks'] });
     handleClosePopover();
   };
 

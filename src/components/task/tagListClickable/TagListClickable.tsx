@@ -1,5 +1,5 @@
 import React from 'react';
-import Snackbar from '../alert/Alert';
+import Snackbar from '@mui/material/Snackbar';
 import { Tag } from '@/types/tag';
 import { getTagsByUserId } from '@/api/tag';
 import TagCardClickable from './tagCardClickable/TagCardClickable';
@@ -9,7 +9,7 @@ import './TagListClickable.scss';
 
 interface TagListClickableProps {
   handleTagClick: (tag: Tag) => void;
-  selectedTagId?: string;
+  selectedTagId: string | null;
 }
 
 const TagListClickable: React.FC<TagListClickableProps> = ({ handleTagClick, selectedTagId }) => {
@@ -17,13 +17,19 @@ const TagListClickable: React.FC<TagListClickableProps> = ({ handleTagClick, sel
     queryKey: ['tags'],
     queryFn: getTagsByUserId
   });
-
   if (isLoading) {
     return <CircularProgress />;
   }
 
   if (isError) {
-    return <Snackbar severity='error'>Oops there was an error, please contact our IT department</Snackbar>;
+    return (
+      <Snackbar
+        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+        open={true}
+        autoHideDuration={2000}
+        message={'Oops there was an error, please contact our IT department'}
+      />
+    );
   }
 
   if (data)

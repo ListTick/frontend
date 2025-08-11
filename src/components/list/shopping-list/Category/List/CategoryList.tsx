@@ -2,7 +2,7 @@ import React from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { getAllShoppingListCategoriesByAccountId } from '@/api/shoppingListCategory.ts';
 import { CircularProgress } from '@mui/material';
-import Snackbar from '@/components/task/alert/Alert.tsx';
+import Snackbar from '@mui/material/Snackbar';
 import CategoryClickable from '@/components/list/shopping-list/Category/CategoryClickable.tsx';
 import './CategoryList.scss';
 import NewCategory from '@/components/list/shopping-list/Category/NewCategory/NewCategory.tsx';
@@ -22,8 +22,15 @@ const CategoryList: React.FC<CategoryListProps> = ({ selectedCategoryId, setSele
     return <CircularProgress />;
   }
 
-  if (isError || !data) {
-    return <Snackbar severity='error'>Oops there was an error, please contact our IT department</Snackbar>;
+  if (isError) {
+    return (
+      <Snackbar
+        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+        open={true}
+        autoHideDuration={2000}
+        message={'Oops there was an error, please contact our IT department'}
+      />
+    );
   }
 
   const handleCategoryClick = (categoryId: string) => {

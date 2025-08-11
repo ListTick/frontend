@@ -1,8 +1,15 @@
 @use '/src/styles/base/core.scss' as *;
 
 .user {
+  margin-top: $margin-base;
   display: flex;
   flex-direction: column;
   &__avatar {
+    align-self: center;
+  }
+
+  &__logout {
+    margin-top: $margin-base;
+    align-self: center;
   }
 }

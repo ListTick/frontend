@@ -29,9 +29,11 @@ const User = () => {
       <p>
         <strong>Last name:</strong> {profile?.lastName}
       </p>
-      <Button variant='contained' onClick={() => handleLogout()}>
+      <div className='user__logout'>
+      <Button variant='contained' size='medium' onClick={() => handleLogout()}>
         Logout
       </Button>
+      </div>
     </div>
   );
 };

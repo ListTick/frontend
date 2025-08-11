@@ -1,0 +1,78 @@
+@use '/src/styles/base/core.scss' as *;
+
+.notificationInfo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: $background-color;
+  padding: 20px;
+  border: $border;
+  border-radius: $border-radius-medium;
+  width: 90vw;
+  max-width: 400px;
+  min-width: 280px;
+  height: 55vh;
+  max-height: 90vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  h3 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: $margin-base;
+  }
+
+  button,
+  .MuiButton-root {
+    background-color: $gray-800;
+    color: $accent-color;
+    border: $border;
+    border-radius: $border-radius-medium;
+    padding: $padding-base;
+    font-weight: normal;
+    &:hover {
+      background-color: $gray-700;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: $gap-base;
+    height: 100%;
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+      width: 10px;
+      background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: $accent-color;
+      border-radius: $border-radius-medium;
+    }
+
+    &__record {
+      border: $border;
+      border-radius: $border-radius-medium;
+      padding: $margin-base;
+      background-color: $gray-800;
+
+      .MuiFormControlLabel-label {
+        color: $accent-color;
+      }
+    }
+
+    &__no-record {
+      display: flex;
+      flex-direction: row;
+      align-content: center;
+      gap: $gap-base;
+    }
+
+  }
+}

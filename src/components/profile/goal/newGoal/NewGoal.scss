@@ -1,0 +1,57 @@
+@use '/src/styles/base/core.scss' as *;
+
+.newGoalItem {
+  background-color: $background-color;
+  color: $accent-color;
+  padding: $padding-base;
+  border: dashed 1px $gray-700;;
+  border-radius: $border-radius-base;
+  height: 40px;
+  display: flex;
+
+  &__content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: $small-gap;
+    width: 100%;
+
+    &--inputs {
+      display: flex;
+      gap: $small-gap;
+
+      .MuiInputLabel-root,
+      .MuiInputLabel-root.Mui-focused {
+        color: $accent-color !important;
+      }
+
+      input,
+      .MuiInputBase-input,
+      .MuiSelect-select,
+      .MuiOutlinedInput-root {
+        background-color: $gray-800 !important;
+        -webkit-text-fill-color: $gray-500 !important;
+        transition: background-color 5000s ease-in-out 0s;
+        border: $border;
+        border-radius: $border-radius-medium;
+      }
+    }
+
+    button,
+    .MuiButton-root {
+      background-color: $gray-800;
+      color: $accent-color;
+      border: $border;
+      border-radius: $border-radius-medium;
+      padding: $padding-base;
+      font-weight: normal;
+      &:hover {
+        background-color: $gray-700;
+        cursor: pointer;
+      }
+    }
+
+  }
+
+}

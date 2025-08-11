@@ -7,7 +7,7 @@
 
   &__sidebar {
     order: 0;
-    border-right: $border;
+    border-right: solid 1px $gray-700;
   }
 
   &__main {

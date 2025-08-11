@@ -1,4 +1,4 @@
-import { TextField, Button } from '@mui/material';
+import { TextField, Button, Snackbar } from '@mui/material';
 import React, { useState } from 'react';
 import { TaskWithTagId } from '@/types/task';
 import { createTask, deleteTask, updateTask } from '@/api/task';
@@ -25,7 +25,8 @@ const EditTask: React.FC<EditTaskProps> = ({ taskDetails, handleClose }) => {
     isCompleted: taskDetails?.isCompleted || false,
     tagId: taskDetails?.tagId || undefined
   });
-  console.log(task);
+  const [selectedTagId, setSelectedTagId] = useState<string | null>(taskDetails?.tagId || null);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -35,12 +36,25 @@ const EditTask: React.FC<EditTaskProps> = ({ taskDetails, handleClose }) => {
     }));
   };
 
+  const onGenericError = (error: any) => {
+    const data = error?.response?.data;
+    if (data && typeof data === 'object') {
+      const messages = Object.values(data).join(', ');
+      setErrorMessage(String(messages));
+    } else if (typeof error?.message === 'string') {
+      setErrorMessage(error.message);
+    } else {
+      setErrorMessage('An unexpected error occurred.');
+    }
+  };
+
   const postMutation = useMutation({
     mutationFn: () => createTask(task),
     onSuccess: () => {
       void queryClient.invalidateQueries({ queryKey: ['tasks'] });
       handleClose();
-    }
+    },
+    onError: onGenericError
   });
 
   const updateTaskMutation = useMutation({
@@ -48,7 +62,8 @@ const EditTask: React.FC<EditTaskProps> = ({ taskDetails, handleClose }) => {
     onSuccess: () => {
       void queryClient.invalidateQueries({ queryKey: ['tasks'] });
       handleClose();
-    }
+    },
+    onError: onGenericError
   });
 
   const deleteMutation = useMutation({
@@ -56,7 +71,8 @@ const EditTask: React.FC<EditTaskProps> = ({ taskDetails, handleClose }) => {
     onSuccess: () => {
       void queryClient.invalidateQueries({ queryKey: ['tasks'] });
       handleClose();
-    }
+    },
+    onError: onGenericError
   });
 
   const handleTask = async () => {
@@ -76,12 +92,25 @@ const EditTask: React.FC<EditTaskProps> = ({ taskDetails, handleClose }) => {
   const handleTagClick = (tag: Tag) => {
     setTask((prevTask) => ({
       ...prevTask,
-      tagId: tag.id
+      tagId: prevTask.tagId === tag.id ? undefined : tag.id
     }));
+    setSelectedTagId((prevSelectedTagId) => {
+      if (prevSelectedTagId === tag.id) {
+        return null;
+      }
+      return tag.id as string;
+    })
   };
 
   return (
     <div className='add-new-task'>
+      <Snackbar
+        anchorOrigin={{vertical: 'top', horizontal: 'center'}}
+        open={errorMessage !== null}
+        autoHideDuration={2000}
+        onClose={() => setErrorMessage(null)}
+        message={errorMessage}
+      />
       <div className='add-new-task__content'>
         <h2>{taskDetails ? 'Edit Task' : 'New Task'}</h2>
         <TextField
@@ -144,19 +173,24 @@ const EditTask: React.FC<EditTaskProps> = ({ taskDetails, handleClose }) => {
         </div>
         <div>
           <h2>Tags</h2>
-          <TagListClickable handleTagClick={handleTagClick}/>
+          <TagListClickable handleTagClick={handleTagClick} selectedTagId={selectedTagId}/>
         </div>
         <div className='add-new-task__content--buttons'>
           {taskDetails ? (
-            <Button variant='contained' size='large' color='error' onClick={handleDelete}>
+            <Button variant='contained' size='medium' color='error' onClick={handleDelete}>
               Delete
             </Button>
           ) : (
             <div />
           )}
-          <Button variant='contained' size='large' onClick={handleTask}>
+          <div className='add-new-task__content--buttons_right'>
+          <Button variant='contained' size='medium' onClick={handleClose}>
+            Cancel
+          </Button>
+          <Button variant='contained' size='medium' onClick={handleTask}>
             {taskDetails ? 'Update' : 'Create'}
           </Button>
+          </div>
         </div>
       </div>
     </div>

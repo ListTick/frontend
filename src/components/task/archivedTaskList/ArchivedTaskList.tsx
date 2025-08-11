@@ -5,27 +5,35 @@ import { Task } from '@/types/task';
 import TaskItem from '../taskList/task/TaskItem';
 import './ArchivedTaskList.scss';
 import { useQuery } from '@tanstack/react-query';
-import Snackbar from '@/components/task/alert/Alert';
+import Snackbar from '@mui/material/Snackbar';
 
 interface TaskListProps {
   onPomodoroClick: (task: Task) => void;
+  filterByTagId: string | null;
 }
 
-const ArchivedTaskList: React.FC<TaskListProps> = ({ onPomodoroClick }) => {
+const ArchivedTaskList: React.FC<TaskListProps> = ({ onPomodoroClick, filterByTagId }) => {
   const [currentPage, setCurrentPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
 
   const { data, isLoading, isError } = useQuery({
     queryKey: ['archived-tasks', currentPage, rowsPerPage],
-    queryFn: () => getArchivedTasksByUserId(currentPage, rowsPerPage)
+    queryFn: () => getArchivedTasksByUserId(currentPage, rowsPerPage, filterByTagId)
   });
 
   if (isLoading) {
     return <CircularProgress />;
   }
 
-  if (isError || !data) {
-    return <Snackbar severity='error'>Oops there was an error, please contact our IT department</Snackbar>;
+  if (isError) {
+    return (
+      <Snackbar
+        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+        open={true}
+        autoHideDuration={2000}
+        message={'Oops there was an error, please contact our IT department'}
+      />
+    );
   }
 
   const handlePageChange = (_event: React.MouseEvent<HTMLButtonElement> | null, newPage: number) => {

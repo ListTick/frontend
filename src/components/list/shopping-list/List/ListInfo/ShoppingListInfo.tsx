@@ -65,7 +65,7 @@ const ShoppingListInfo: React.FC<ShoppingListInfoProps> = ({ shoppingList, handl
     return <CircularProgress />;
   }
 
-  if (isError || !data) {
+  if (isError) {
     return (
       <Snackbar
         anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
