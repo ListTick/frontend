@@ -7,6 +7,8 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import { useNavigate } from 'react-router-dom';
 import { AppRoutes } from '../../types/routes';
 import './Navbar.scss';
+import { useState } from 'react';
+import Notification from '@/components/home/Notification/Notification.tsx';
 
 type NavbarProps = {
   activeTab: string | null;
@@ -15,6 +17,7 @@ type NavbarProps = {
 
 const Navbar = ({ activeTab, setActiveTab }: NavbarProps) => {
   const navigate = useNavigate();
+  const [openNotification, setOpenNotification] = useState<boolean>(false);
 
   return (
     <header className='navbar'>
@@ -64,26 +67,26 @@ const Navbar = ({ activeTab, setActiveTab }: NavbarProps) => {
             <StickyNote2Icon fontSize='medium' />
           </div>
         </li>
-        <li>
-          <div
-            className={`navbar__list--notifications navbar__tab ${activeTab === 'notifications' ? 'active' : ''}`}
-            onClick={() => {
-              setActiveTab('notifications');
-              navigate(AppRoutes.NOTIFICATIONS);
-            }}
-          >
-            <NotificationsIcon fontSize='medium' />
-          </div>
-        </li>
+        {/*<li>*/}
+        {/*  <div*/}
+        {/*    className={`navbar__list--notifications navbar__tab ${activeTab === 'notifications' ? 'active' : ''}`}*/}
+        {/*    // onClick={() => {*/}
+        {/*    //   setActiveTab('notifications');*/}
+        {/*    //   navigate(AppRoutes.NOTIFICATIONS);*/}
+        {/*    // }}*/}
+        {/*  >*/}
+        {/*    <NotificationsIcon fontSize='medium' />*/}
+        {/*  </div>*/}
+        {/*</li>*/}
         <li>
           <div className='navbar__list--group'>
             <div
               className={`navbar__list--notifications-desktop navbar__tab ${activeTab === 'notifications' ? 'active' : ''}`}
               onClick={() => {
-                setActiveTab('notifications');
-                navigate(AppRoutes.NOTIFICATIONS);
+                setOpenNotification(true);
               }}
             >
+              <Notification open={openNotification} setOpen={setOpenNotification} />
               <NotificationsIcon fontSize='medium' />
             </div>
             <div
