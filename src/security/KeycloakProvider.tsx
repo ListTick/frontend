@@ -1,26 +1,40 @@
 import React, { useEffect, useState } from 'react';
 import { KeycloakContext } from './KeycloakContext.tsx';
 import { CircularProgress } from '@mui/material';
-import { keycloak } from './keycloak.ts';
+import Keycloak from 'keycloak-js';
 
-let initPromise: Promise<boolean> | null = null;
-const initKeycloak = () =>
-  (initPromise ??= keycloak
-    .init({
-      onLoad: 'check-sso',
-      silentCheckSsoRedirectUri: `${window.location.origin}/silent-check-sso.html`,
-      pkceMethod: 'S256'
-    })
-    .catch((error) => {
-      console.error('Keycloak initialization failed:', error);
-      return false;
-    }));
+export const keycloak = new Keycloak({
+  url: '/auth',
+  realm: 'listtick',
+  clientId: 'listtick-frontend',
+});
 
 export const KeycloakProvider: React.FC<React.PropsWithChildren> = ({ children }) => {
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
-    initKeycloak().finally(() => setReady(true));
+    (async () => {
+      try {
+        const authenticated = await keycloak.init({
+          onLoad: 'check-sso',
+          checkLoginIframe: false,
+          pkceMethod: 'S256',
+          flow: 'standard'
+        });
+        if (authenticated) {
+          console.log('User is authenticated');
+        } else {
+          console.log('User is not authenticated');
+        }
+      } catch (error) {
+        console.error('Failed to initialize adapter:', error, {
+          message: (error as Error)?.message,
+          stack: (error as Error)?.stack,
+        });
+      } finally {
+        setReady(true);
+      }
+    })();
   }, []);
 
   if (!ready)
