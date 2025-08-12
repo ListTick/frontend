@@ -33,15 +33,15 @@ button,
   }
 }
 
-button,
-.MuiButton-root {
-  background-color: $gray-800;
-  color: $accent-color;
-  border: $border;
-  border-radius: $border-radius-medium;
-  padding: $padding-base;
-  font-weight: normal;
+body button,
+body .MuiButton-root {
+  background-color: $gray-800 !important;
+  color: $accent-color !important;
+  border: $border !important;
+  border-radius: $border-radius-medium !important;
+  padding: $padding-base !important;
+  font-weight: normal !important;
   &:hover {
-    background-color: $gray-700;
+    background-color: $gray-700 !important;
   }
 }
