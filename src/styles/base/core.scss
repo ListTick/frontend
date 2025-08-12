@@ -19,18 +19,15 @@ body {
 
 button,
 .btn {
-  background-color: $gray-800;
-  color: $accent-color;
-  border: $border;
-  border-radius: $border-radius-medium;
-  padding: $padding-base;
-  font-weight: normal;
+  background-color: $accent-color;
+  color: $primary-color;
   margin: 1px;
+  padding: $small-gap;
   border: none;
+  border-radius: $border-radius-base;
   transition: filter $transition-duration-base $transition-easing-base;
 
   &:hover {
-    background-color: $gray-700;
     cursor: pointer;
     filter: brightness(85%);
   }
