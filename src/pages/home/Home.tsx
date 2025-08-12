@@ -25,15 +25,15 @@ const Home = () => {
         <Quote />
       </section>
 
-      <section className="home__section">
-        <h2>Goals</h2>
-        {/* TODO: Goal list */}
-      </section>
+      {/*<section className="home__section">*/}
+      {/*  <h2>Goals</h2>*/}
+      {/*   TODO: Goal list */}
+      {/*</section>*/}
 
-      <section className="home__section">
-        <h2>Recent Tasks</h2>
-        {/* TODO: Task list */}
-      </section>
+      {/*<section className="home__section">*/}
+      {/*  <h2>Recent Tasks</h2>*/}
+      {/*  /!* TODO: Task list *!/*/}
+      {/*</section>*/}
     </div>
   );
 };
