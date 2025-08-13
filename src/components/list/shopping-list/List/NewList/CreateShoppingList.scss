@@ -15,7 +15,6 @@
   height: 75vh;
   max-height: 90vh;
 
-
   &__content {
     display: flex;
     flex-direction: column;
@@ -27,23 +26,6 @@
       flex-direction: column;
       gap: $small-gap;
       color: $accent-color;
-
-      // Floating labels
-      .MuiInputLabel-root,
-      .MuiInputLabel-root.Mui-focused {
-        color: $accent-color !important;
-      }
-
-      input,
-      .MuiInputBase-input,
-      .MuiSelect-select,
-      .MuiOutlinedInput-root {
-        background-color: $gray-800 !important;
-        -webkit-text-fill-color: $gray-500 !important;
-        transition: background-color 5000s ease-in-out 0s;
-        border: $border;
-        border-radius: $border-radius-medium;
-      }
 
       &__sharing {
         display: flex;
@@ -71,19 +53,6 @@
       flex-direction: column;
       gap: $small-gap;
 
-      button,
-      .MuiButton-root {
-        background-color: $gray-800;
-        color: $accent-color;
-        border: $border;
-        border-radius: $border-radius-medium;
-        padding: $padding-base;
-        font-weight: normal;
-        &:hover {
-          background-color: $gray-700;
-        }
-      }
-
       &__navigate {
         display: flex;
         flex-direction: row;
@@ -95,7 +64,6 @@
           gap: $small-gap;
         }
       }
-
     }
 
 

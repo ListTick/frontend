@@ -54,11 +54,11 @@ const Tasks = () => {
         taskId={selectedTask.id}
       />
       <div className="tasks">
-        <section className="tasks__tags">
-          <TagListClickable handleTagClick={handleTagClick} selectedTagId={selectedTagId} />
-        </section>
-        <section className='tasks__tasks'>
-          <div className='tasks__tasks--header'>
+
+        <div className='tasks__content'>
+
+        <section className='tasks__content--tasks'>
+          <div className='tasks__content--tasks-header'>
             <h2>{isArchivedTasksDisplayed ? 'Archived Tasks' : 'Tasks'}</h2>
             <Options
               toggleShowArchivedTasks={displayArchivedTasks}
@@ -71,6 +71,10 @@ const Tasks = () => {
             <TaskList onPomodoroClick={handlePomodoroClick} filterByTagId={selectedTagId} />
           )}
         </section>
+        <section className="tasks__content--tags">
+          <TagListClickable handleTagClick={handleTagClick} selectedTagId={selectedTagId} />
+        </section>
+        </div>
       </div>
       </>
   );

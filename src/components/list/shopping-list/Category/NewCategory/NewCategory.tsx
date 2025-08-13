@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
 import { Modal } from '@mui/material';
 import CreateCategory from '@/components/list/shopping-list/Category/NewCategory/CreateCategory.tsx';
-import './NewCategory.scss'
+import '../../../bucket-list/Category/NewCategory/NewCategory.scss'
 
 
 const NewCategory: React.FC = () => {
@@ -19,8 +19,8 @@ const NewCategory: React.FC = () => {
       <Modal
         open={open}
         onClose={handleClose}
-        aria-labelledby='modal-shopping-list-new-category-title'
-        aria-describedby='modal-shopping-list-new-category-description'
+        aria-labelledby='modal-bucket-list-new-category-title'
+        aria-describedby='modal-bucket-list-new-category-description'
         onClick={(e) => e.stopPropagation()}
       >
         <div onClick={(e) => e.stopPropagation()}>

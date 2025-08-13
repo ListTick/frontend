@@ -162,7 +162,7 @@ const CreateShoppingList: React.FC<CreateShoppingListProps> = ({ handleClose }) 
         <div className='createShoppingList__content__buttons'>
           <Button
             variant='text'
-            size='small'
+            size='medium'
             onClick={() => {
               setSelectedCategory(SHARED_LIST_ID);
               setShared(true);
@@ -174,15 +174,15 @@ const CreateShoppingList: React.FC<CreateShoppingListProps> = ({ handleClose }) 
           </Button>
 
           <div className='createShoppingList__content__buttons__navigate'>
-            <Button variant='contained' size='small' onClick={handleReset}>
+            <Button variant='contained' size='medium' onClick={handleReset}>
               Reset
             </Button>
 
             <div className='createShoppingList__content__buttons__navigate__right'>
-              <Button variant='contained' size='small' onClick={handleClose}>
+              <Button variant='contained' size='medium' onClick={handleClose}>
                 Cancel
               </Button>
-              <Button variant='contained' size='small' onClick={create}>
+              <Button variant='contained' size='medium' onClick={create}>
                 Create
               </Button>
             </div>

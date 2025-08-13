@@ -29,16 +29,12 @@ const Settings = () => {
           <p>Break reminder: {settings.default_notification_break_reminder_time} min</p>
           <p>Long breaks enabled: {settings.is_long_break_enabled ? 'Yes' : 'No'}</p>
         </div>
-        {/*
-         TODO: do we even need those colors?
-        */}
-        <h3>Tag colors</h3>
-        <div>
-          <ColorItem label='Default task color' color={settings.default_task_tag_colour} />
-          <ColorItem label='Default note color' color={settings.default_note_tag_colour} />
-          <ColorItem label='Default Shopping list color' color={settings.default_shoppinglist_category_colour} />
-          <ColorItem label='Default bucket list color' color={settings.default_bucketlist_category_colour} />
-          <ColorItem label='Default goal color' color={settings.default_goal_category_colour} />
+        <h2>Default colors</h2>
+        <div className='settings__colors'>
+          <ColorItem label='List' color={settings.default_note_tag_colour} />
+          <ColorItem label='Task' color={settings.default_shoppinglist_category_colour} />
+          <ColorItem label='Goal' color={settings.default_bucketlist_category_colour} />
+          <ColorItem label='Tag' color={settings.default_goal_category_colour} />
         </div>
       </div>
 

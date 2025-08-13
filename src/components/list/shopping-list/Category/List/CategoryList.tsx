@@ -1,11 +1,11 @@
 import React from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { getAllShoppingListCategoriesByAccountId } from '@/api/shoppingListCategory.ts';
 import { CircularProgress } from '@mui/material';
 import Snackbar from '@mui/material/Snackbar';
 import CategoryClickable from '@/components/list/shopping-list/Category/CategoryClickable.tsx';
-import './CategoryList.scss';
+import '../../../bucket-list/Category/List/CategoryList.tsx';
 import NewCategory from '@/components/list/shopping-list/Category/NewCategory/NewCategory.tsx';
+import { getAllShoppingListCategoriesByAccountId } from '@/api/shoppingListCategory.ts';
 
 interface CategoryListProps {
   selectedCategoryId: string | null,

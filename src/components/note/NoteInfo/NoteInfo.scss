@@ -33,43 +33,11 @@
         align-items: center;
         justify-content: center;
       }
-
-      // Floating labels
-      .MuiInputLabel-root,
-      .MuiInputLabel-root.Mui-focused {
-        color: $accent-color !important;
-      }
-
-      input,
-      .MuiInputBase-input,
-      .MuiSelect-select,
-      .MuiOutlinedInput-root {
-        background-color: $gray-800 !important;
-        -webkit-text-fill-color: $gray-500 !important;
-        transition: background-color 5000s ease-in-out 0s;
-        border: $border;
-        border-radius: $border-radius-medium;
-      }
     }
 
     &__buttons {
       display: flex;
       flex-direction: column;
-
-      button,
-      .MuiButton-root {
-        background-color: $gray-800;
-        color: $accent-color;
-        border: $border;
-        border-radius: $border-radius-medium;
-        padding: $padding-base;
-        font-weight: normal;
-
-        &:hover {
-          background-color: $gray-700;
-        }
-      }
-
     }
 
   }

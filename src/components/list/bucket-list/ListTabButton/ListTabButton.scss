@@ -8,10 +8,12 @@
   border: 2px $secondary-color;
   border-radius: $border-radius-base;
   height: 40px;
-  max-width: 80vw;
+  max-width: 320px;
 
   &.active {
-    background-color: $gray-800;
+    background-color: $accent-color;
+    color: $accent-color;
+    border: 2px solid $accent-color;
   }
 
   &:hover {

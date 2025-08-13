@@ -1,14 +1,13 @@
 @use '/src/styles/base/core.scss' as *;
 
 .categoryListClickable {
-
   display: flex;
   flex-direction: row;
   gap: $small-gap;
   margin-left: $margin-base;
-  height: 45px;
   overflow-x: auto;
-  overflow-y: hidden;
+  padding-bottom: $padding-base;
+  max-width: 1370px;
 
   &::-webkit-scrollbar {
     height: 5px;

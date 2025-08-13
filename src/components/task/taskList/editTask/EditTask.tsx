@@ -112,7 +112,7 @@ const EditTask: React.FC<EditTaskProps> = ({ taskDetails, handleClose }) => {
         message={errorMessage}
       />
       <div className='add-new-task__content'>
-        <h2>{taskDetails ? 'Edit Task' : 'New Task'}</h2>
+        <h3>{taskDetails ? 'Edit Task' : 'New Task'}</h3>
         <TextField
           id={'name'}
           name='name'
@@ -126,18 +126,18 @@ const EditTask: React.FC<EditTaskProps> = ({ taskDetails, handleClose }) => {
           id='dueDate'
           type='date'
           name='dueDate'
-          variant='filled'
+          variant='outlined'
           value={task.dueDate}
           onChange={handleChange}
         />
-        <h2>Pomodoro</h2>
+        <h3>Pomodoro</h3>
         <div className='add-new-task__content--pomodoro-duration'>
           <TextField
             id='pomodoroDuration'
             type='number'
             name='pomodoroDuration'
             label='Pomodoro Duration'
-            variant='filled'
+            variant='outlined'
             value={task.pomodoroDuration}
             onChange={handleChange}
           />
@@ -146,7 +146,7 @@ const EditTask: React.FC<EditTaskProps> = ({ taskDetails, handleClose }) => {
             type='number'
             name='breakDuration'
             label='Break Duration'
-            variant='filled'
+            variant='outlined'
             value={task.breakDuration}
             onChange={handleChange}
           />
@@ -157,7 +157,7 @@ const EditTask: React.FC<EditTaskProps> = ({ taskDetails, handleClose }) => {
             type='number'
             name='completedPomodoros'
             label='Completed Pomodoros'
-            variant='filled'
+            variant='outlined'
             value={task.completedPomodoros}
             onChange={handleChange}
           />
@@ -166,20 +166,23 @@ const EditTask: React.FC<EditTaskProps> = ({ taskDetails, handleClose }) => {
             type='number'
             name='totalPomodoros'
             label='Total Pomodoros'
-            variant='filled'
+            variant='outlined'
             value={task.totalPomodoros}
             onChange={handleChange}
           />
+
         </div>
         <div>
-          <h2>Tags</h2>
+          <h3>Tags</h3>
           <TagListClickable handleTagClick={handleTagClick} selectedTagId={selectedTagId}/>
         </div>
         <div className='add-new-task__content--buttons'>
           {taskDetails ? (
+            <div className='add-new-task__content--buttons_left'>
             <Button variant='contained' size='medium' color='error' onClick={handleDelete}>
               Delete
             </Button>
+            </div>
           ) : (
             <div />
           )}

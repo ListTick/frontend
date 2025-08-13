@@ -29,27 +29,6 @@
       color: $accent-color;
     }
 
-
-    .MuiCheckbox-root {
-      color: $accent-color !important;
-      border: $border;
-      border-radius: $border-radius-medium;
-      vertical-align: middle;
-
-      &:hover {
-        background-color: $gray-700 !important;
-      }
-    }
-
-    .Mui-checked {
-      color: $accent-color !important;
-    }
-
-    .MuiFormControlLabel-label {
-      color: $accent-color;
-      margin-left: $margin-base;
-    }
-
     &__fields {
       display: flex;
       flex-direction: column;
@@ -60,27 +39,8 @@
         flex-direction: row;
         justify-content: center;
         gap: $gap-base;
-
-        // Floating labels
-        .MuiInputLabel-root,
-        .MuiInputLabel-root.Mui-focused {
-          color: $accent-color !important;
-        }
-
-        input,
-        .MuiInputBase-input,
-        .MuiSelect-select,
-        .MuiOutlinedInput-root {
-          background-color: $gray-800 !important;
-          -webkit-text-fill-color: $gray-500 !important;
-          transition: background-color 5000s ease-in-out 0s;
-          border: $border;
-          border-radius: $border-radius-medium;
-        }
       }
     }
-
-
 
   }
 
@@ -88,19 +48,6 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-
-    button,
-    .MuiButton-root {
-      background-color: $gray-800;
-      color: $accent-color;
-      border: $border;
-      border-radius: $border-radius-medium;
-      padding: $padding-base;
-      font-weight: normal;
-      &:hover {
-        background-color: $gray-700;
-      }
-    }
   }
 
 }

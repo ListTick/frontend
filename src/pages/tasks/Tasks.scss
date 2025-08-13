@@ -3,38 +3,38 @@
 .tasks {
   display: flex;
   flex-direction: column;
-  gap: $gap-base;
+  padding: $padding-base;
 
-  &__tasks {
-    flex-grow: 1;
-    gap: $small-gap;
-    margin: $margin-base 0;
+  &__content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: $gap-base;
+    width: 100%;
 
-    &--header {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
+    &--tasks {
+      flex-grow: 7;
+      flex-shrink: 0;
+      flex-basis: 0;
+      gap: $small-gap;
+      padding-top: $padding-base;
+      &-header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
 
-      h2 {
-        align-self: end;
+        h2 {
+          align-self: end;
+          color: $accent-color;
+        }
       }
     }
-  }
 
-  &__tags {
-    flex-grow: 1;
-    gap: $small-gap;
-    margin: $margin-base 0;
-  }
-}
-@media screen and (min-width: $breakpoint-tablet) {
-  .tasks {
-    padding: 0 40px;
-  }
-}
-
-@media screen and (min-width: $breakpoint-desktop) {
-  .tasks {
-    padding: 0 240px;
+    &--tags {
+      flex-grow: 3;
+      flex-shrink: 0;
+      flex-basis: 0;
+      gap: $small-gap;
+    }
   }
 }

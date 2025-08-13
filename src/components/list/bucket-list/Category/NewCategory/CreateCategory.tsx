@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Button, Snackbar, TextField } from '@mui/material';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { BucketListCategoryRequest } from '@/types/bucketListCategory.ts';
-import { createBucketListCategory } from '@/api/bucketListCategory.ts';
+import { ShoppingListCategoryRequest } from '@/types/shoppingListCategory.ts';
+import { createShoppingListCategory } from '@/api/shoppingListCategory.ts';
 import './CreateCategory.scss'
 import { HexColorPicker } from 'react-colorful';
 
@@ -12,16 +12,16 @@ interface CreateCategoryProps {
 
 const CreateCategory: React.FC<CreateCategoryProps> = ({ handleClose }) => {
   const [name, setName] = useState<string>('');
-  const [colour, setColour] = useState<string>('');
+  const [colour, setColour] = useState<string>('#494d50');
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const queryClient = useQueryClient();
 
   const createMutation = useMutation({
-    mutationKey: ['bucket-list-category-create'],
-    mutationFn: (newCategory: BucketListCategoryRequest) => createBucketListCategory(newCategory),
+    mutationKey: ['shopping-list-category-create'],
+    mutationFn: (newCategory: ShoppingListCategoryRequest) => createShoppingListCategory(newCategory),
     onSuccess: () => {
-      void queryClient.invalidateQueries({ queryKey: ['bucket-list-categories'] });
+      void queryClient.invalidateQueries({ queryKey: ['shopping-list-categories'] });
       handleClose();
     },
     onError: (error: any) => {
@@ -30,7 +30,7 @@ const CreateCategory: React.FC<CreateCategoryProps> = ({ handleClose }) => {
   });
 
   const create = () => {
-    const categoryRequest: BucketListCategoryRequest = {
+    const categoryRequest: ShoppingListCategoryRequest = {
       name,
       ...(colour && { colour })
     };
@@ -71,14 +71,14 @@ const CreateCategory: React.FC<CreateCategoryProps> = ({ handleClose }) => {
 
         <div className='createCategory__content__buttons'>
           <div className='createCategory__content__buttons__navigate'>
-            <Button variant='contained' size='small' onClick={handleReset}>
+            <Button variant='contained' size='medium' onClick={handleReset}>
               Reset
             </Button>
             <div className='createCategory__content__buttons__navigate__right'>
-              <Button variant='contained' size='small' onClick={handleClose}>
+              <Button variant='contained' size='medium' onClick={handleClose}>
                 Cancel
               </Button>
-              <Button variant='contained' size='small' onClick={create}>
+              <Button variant='contained' size='medium' onClick={create}>
                 Create
               </Button>
             </div>

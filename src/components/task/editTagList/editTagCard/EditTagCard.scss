@@ -9,8 +9,14 @@
   max-width: 150px;
   width: 150px;
 
+  cursor: pointer;
+
   p {
     color: $accent-color;
     font-size: $font-size-small;
+  }
+
+  .MuiListItem-root {
+    border-radius: $border-radius-base;
   }
 }

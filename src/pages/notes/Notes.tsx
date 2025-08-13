@@ -111,18 +111,18 @@ const Notes: React.FC = () => {
       {selectedNote !== null && (
         <div className='notes__content'>
           <div className='notes__content__header'>
-            <Button variant='contained' size='small' onClick={handleDelete}>
+            <Button variant='contained' size='medium' onClick={handleDelete}>
               Delete
             </Button>
             <h3>{selectedNote.title}</h3>
-            <Button variant='contained' size='small' onClick={handleUpdate}>
+            <Button variant='contained' size='medium' onClick={handleUpdate}>
               Save
             </Button>
           </div>
           <TextField
             label='Description'
             multiline
-            rows={20}
+            rows={14}
             fullWidth
             variant='outlined'
             value={description !== null ? description : ''}

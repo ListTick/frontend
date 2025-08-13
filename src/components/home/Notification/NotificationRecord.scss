@@ -7,22 +7,6 @@
   &__content {
     display: flex;
 
-
-    .MuiCheckbox-root {
-      color: $accent-color !important;
-      border: $border;
-      border-radius: $border-radius-medium;
-      vertical-align: middle;
-
-      &:hover {
-        background-color: $gray-700 !important;
-      }
-    }
-
-    .Mui-checked {
-      color: $accent-color !important;
-    }
-
     &__checkbox {
       display: flex;
       flex-direction: row;

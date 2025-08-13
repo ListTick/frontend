@@ -5,25 +5,34 @@
   display: flex;
   justify-content: center;
   align-self: center;
-
   &__content {
     width: 350px;
     padding: 1rem;
-    background-color: $secondary-color;
+    background-color: $background-color;
     border-radius: $border-radius-base;
     align-self: center;
     display: flex;
     flex-direction: column;
+    gap: $gap-base;
+
 
     &--title {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
+      color: $accent-color;
     }
 
     &--list {
       display: flex;
       flex-wrap: wrap;
+      gap: $gap-base;
+    }
+
+    &--buttons {
+      display: flex;
+      justify-content: space-between;
+      gap: $gap-base;
     }
   }
 }

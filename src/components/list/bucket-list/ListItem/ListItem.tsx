@@ -5,7 +5,7 @@ import { IconButton, Modal } from '@mui/material';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import GroupIcon from '@mui/icons-material/Group';
 import BucketListInfo from '@/components/list/bucket-list/List/ListInfo/BucketListInfo.tsx';
-import Category from '../Category/Category.tsx'
+import Category from '@/components/list/shopping-list/Category/Category.tsx'
 
 interface ListItemProps {
   bucketList: BucketListResponse;

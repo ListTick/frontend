@@ -1,6 +1,5 @@
 import CircularProgress from '@mui/material/CircularProgress';
 import { useQuery } from '@tanstack/react-query';
-import Snackbar from '../../alert/Alert';
 import TagCardClickable from '../../tagListClickable/tagCardClickable/TagCardClickable';
 import React, { useState } from 'react';
 import './TaskTagList.scss';
@@ -16,7 +15,7 @@ const TaskTagList: React.FC<TaskTagProps> = ({
   alreadySelectedTags,
   onSelectedTagsChange,
 }) => {
-  const { data, isLoading, isError } = useQuery<Tag[]>({
+  const { data, isLoading } = useQuery<Tag[]>({
     queryKey: ['tags'],
     queryFn: getTagsByUserId,
   });
@@ -26,13 +25,7 @@ const TaskTagList: React.FC<TaskTagProps> = ({
     return <CircularProgress />;
   }
 
-  if (isError) {
-    return (
-      <Snackbar severity="error">
-        Oops there was an error, please contact our IT department
-      </Snackbar>
-    );
-  }
+  //TODO: Handle error state
 
   const handleTagClick = (tag: Tag) => {
     setSelectedTags((prevSelectedTags) => {

@@ -14,7 +14,7 @@ const EditTag: React.FC<EditTagProps> = ({ tag, onClose }) => {
   const queryClient = useQueryClient();
   const id = tag?.id || '';
   const [name, setName] = useState(tag?.name || '');
-  const [color, setColor] = useState(tag?.color || '');
+  const [color, setColor] = useState(tag?.color || '#494d50');
 
   const updateMutation = useMutation({
     mutationFn: () => updateTag({ name, color }, id),
@@ -61,26 +61,30 @@ const EditTag: React.FC<EditTagProps> = ({ tag, onClose }) => {
     <div className='edit-tag'>
       <div className='edit-tag__content'>
         <div className='edit-tag__content-title'>
-          <h2>{tag ? 'Edit tag' : 'New tag'}</h2>
+          <h3>{tag ? 'Edit tag' : 'Create Tag'}</h3>
+          <TextField
+            id={'name'}
+            label={'Name'}
+            variant={'outlined'}
+            type={'text'}
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          ></TextField>
         </div>
-        <TextField
-          id={'name'}
-          label={'Name'}
-          variant={'outlined'}
-          type={'text'}
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        ></TextField>
+
         <HexColorPicker color={color} onChange={setColor} />
         <div className='edit-tag__content--buttons'>
+          <Button variant='contained' size='medium' onClick={onClose}>
+            Cancel
+          </Button>
           {tag ? (
-            <Button variant='contained' size='large' onClick={handleDelete}>
+            <Button variant='contained' size='medium' onClick={handleDelete}>
               Delete
             </Button>
           ) : (
             <div></div>
           )}
-          <Button variant='contained' size='large' onClick={handleTag}>
+          <Button variant='contained' size='medium' onClick={handleTag}>
             {tag ? 'Update' : 'Create'}
           </Button>
         </div>

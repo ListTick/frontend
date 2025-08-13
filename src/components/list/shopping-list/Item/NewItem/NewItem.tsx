@@ -75,7 +75,7 @@ const NewItem: React.FC<NewItemProps> = ({ shoppingList }) => {
         </div>
         <Button
           variant='contained'
-          size='small'
+          size='medium'
           onClick={handleCreate}>
           Add
         </Button>

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import CircularProgress from '@mui/material/CircularProgress';
 import Snackbar from '@mui/material/Snackbar';
 import { getTagsByUserId } from '@/api/tag';
@@ -9,7 +9,11 @@ import EditTag from './editTag/EditTag';
 import { useQuery } from '@tanstack/react-query';
 import './EditTagList.scss';
 
-const EditTagList = () => {
+interface EditTagListProps {
+  handleCloseTagsEdit: () => void;
+}
+
+const EditTagList:React.FC<EditTagListProps> = ({handleCloseTagsEdit}) => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   const { data, isLoading, isError } = useQuery({
@@ -33,7 +37,7 @@ const EditTagList = () => {
   }
 
   const handleModalOpen = () => {
-    setIsModalOpen(true);
+    setIsModalOpen(prev => !prev);
   };
   const handleModalClose = () => {
     setIsModalOpen(false);
@@ -45,7 +49,6 @@ const EditTagList = () => {
         <div className='edit-tag-list__content'>
           <div className='edit-tag-list__content--title'>
             <h2>Edit tags</h2>
-            <Button onClick={handleModalOpen}>Add Tag</Button>
             {isModalOpen && (
               <Modal
                 open={isModalOpen}
@@ -67,6 +70,10 @@ const EditTagList = () => {
             {data.map((tag) => (
               <EditTagCard tag={tag} key={tag.id} />
             ))}
+          </div>
+          <div className='edit-tag-list__content--buttons'>
+          <Button variant='contained' size='medium' onClick={handleCloseTagsEdit}>Close</Button>
+          <Button variant='contained' size='medium' onClick={handleModalOpen}>Add Tag</Button>
           </div>
         </div>
       </div>

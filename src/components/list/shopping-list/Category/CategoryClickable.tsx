@@ -1,10 +1,10 @@
 import React from 'react';
-import { ShoppingListCategoryResponse } from '@/types/shoppingListCategory.ts';
+import { BucketListCategoryResponse } from '@/types/bucketListCategory.ts';
 import ListItem from '@mui/material/ListItem';
-import './CategoryClickable.scss'
+import '../../bucket-list/Category/CategoryClickable.scss'
 
 interface CategoryClickableProps {
-  category: ShoppingListCategoryResponse;
+  category: BucketListCategoryResponse;
   onClick: (categoryId: string) => void;
   isSelected: boolean;
 }

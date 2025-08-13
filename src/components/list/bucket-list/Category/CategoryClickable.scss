@@ -1,36 +1,31 @@
 @use '/src/styles/base/core.scss' as *;
 
 .categoryClickable {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: $border;
-  border-radius: $border-radius-base;
-  min-width: 130px;
-  max-width: 130px;
-  max-height: 30px;
-  font-size: $font-size-small;
-
+  padding: $padding-base;
   cursor: pointer;
   background-color: $background-color;
+  border-radius: $border-radius-base;
+  border: $border;
+  min-width: 128px;
+  max-width: 128px;
+  height: 38px;
 
   p {
+    max-width: 60px;
     color: $accent-color;
-    font-size: $font-size-small;
+    text-overflow-ellipsis: true;
   }
 
   &--selected {
-    border: solid 4px $gray-700;
+    border: solid 2px $accent-color;
     border-radius: $border-radius-base;
-    min-width: 130px;
-    max-width: 130px;
-    max-height: 30px;
     cursor: pointer;
+    min-width: 128px;
+    max-width: 128px;
+    height: 38px;
 
     p {
       color: $accent-color;
-      font-size: $font-size-small;
     }
-
   }
 }

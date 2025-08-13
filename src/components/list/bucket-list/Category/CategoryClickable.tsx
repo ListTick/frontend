@@ -1,10 +1,9 @@
 import React from 'react';
-import { BucketListCategoryResponse } from '@/types/bucketListCategory.ts';
+import { ShoppingListCategoryResponse } from '@/types/shoppingListCategory.ts';
 import ListItem from '@mui/material/ListItem';
-import './CategoryClickable.scss'
 
 interface CategoryClickableProps {
-  category: BucketListCategoryResponse;
+  category: ShoppingListCategoryResponse;
   onClick: (categoryId: string) => void;
   isSelected: boolean;
 }
@@ -12,7 +11,7 @@ interface CategoryClickableProps {
 const CategoryClickable: React.FC<CategoryClickableProps> = ({ category, onClick, isSelected }) => {
   return (
     <ListItem
-      className={`categoryClickable${isSelected ? '--selected' : ''}`}
+      className={`categoryClickable${isSelected ? 'categoryClickable--selected' : ''}`}
       key={category.id}
       onClick={() => onClick(category.id)}
       style={{backgroundColor: category.colour }}

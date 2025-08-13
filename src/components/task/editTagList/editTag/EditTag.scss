@@ -5,19 +5,37 @@
   justify-content: center;
   align-items: center;
   height: 100dvh;
+  width: 100vw;
 
   &__content {
-    width: 350px;
     display: flex;
+    width: 100%;
+    max-width: 400px;
+    min-width: 280px;
+    height: 50vh;
+    max-height: 90vh;
     flex-direction: column;
     gap: $gap-base;
     border-radius: $border-radius-base;
-    background-color: $secondary-color;
-    padding: 1rem;
+    background-color: $background-color;
+    border: $border;
+    align-items: center;
+    justify-content: space-around;
+
+    &-title {
+      text-align: center;
+
+    }
+
+    h3 {
+      color: $accent-color;
+      padding-bottom: $gap-base;
+    }
 
     &--buttons {
+      width: 100%;
       display: flex;
-      justify-content: space-between;
+      justify-content: space-around;
     }
   }
 }

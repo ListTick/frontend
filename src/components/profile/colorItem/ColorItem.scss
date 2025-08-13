@@ -1,0 +1,8 @@
+@use '/src/styles/base/core.scss' as *;
+
+.color-item {
+  display: flex;
+  text-align: center;
+  justify-content: space-between;
+  align-items: center;
+}

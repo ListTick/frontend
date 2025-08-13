@@ -144,7 +144,6 @@ const EditGoal: React.FC<EditGoalProps> = ({ goalDetails, handleClose}) => {
           onChange={handleChange('name')}
           fullWidth
         />
-
         <TextField
           id='description'
           name='description'
@@ -155,57 +154,70 @@ const EditGoal: React.FC<EditGoalProps> = ({ goalDetails, handleClose}) => {
           onChange={handleChange('description')}
           multiline
           rows={8}
-          maxRows={15}
           fullWidth
-          sx={{ marginTop: 2 }}
         />
 
         <TextField
           id='priority'
           name='priority'
           label='Priority'
-          variant='filled'
+          variant='outlined'
           type='number'
           value={form.priority}
           onChange={handleChange('priority')}
-          sx={{ marginTop: 2 }}
         />
 
         <h2 style={{ marginTop: 16 }}>Dates</h2>
         <div className='add-new-task__content--pomodoro-duration'>
+          <div>
+          <h5 style={{
+            fontWeight: 'normal', color: '#90c4f9',
+          }}>Start Date</h5>
           <TextField
             id='startDate'
             name='startDate'
             type='date'
-            label='Start Date'
-            variant='filled'
+            variant='outlined'
             value={form.startDate}
             onChange={handleChange('startDate')}
-            InputLabelProps={{ shrink: true }}
-          />
+            slotProps={{
+              inputLabel: { shrink: true }
+            }}
+          /></div>
+          <div>
+            <h5 style={{
+              fontWeight: 'normal', color: '#90c4f9',
+            }}>End Date</h5>
           <TextField
             id='endDate'
             name='endDate'
             type='date'
-            label='End Date'
-            variant='filled'
+            variant='outlined'
             value={form.endDate}
             onChange={handleChange('endDate')}
-            InputLabelProps={{ shrink: true }}
-          />
+            slotProps={{
+              inputLabel: { shrink: true }
+            }}
+          /></div>
         </div>
 
         <div className='add-new-task__content--pomodoro-quantity'>
+          <div>
+            <h5 style={{
+              fontWeight: 'normal', color: '#90c4f9',
+            }}>Realization Date (optional)</h5>
           <TextField
             id='realizationDate'
             name='realizationDate'
             type='date'
-            label='Realization Date (optional)'
-            variant='filled'
+            variant='outlined'
             value={form.realizationDate || ''}
             onChange={handleChange('realizationDate')}
-            InputLabelProps={{ shrink: true }}
-          />
+            slotProps={{
+              inputLabel: { shrink: true, style: { color: 'black' } },
+
+            }}
+          /></div>
         </div>
 
         <div className='add-new-task__content--buttons' style={{ marginTop: 16 }}>

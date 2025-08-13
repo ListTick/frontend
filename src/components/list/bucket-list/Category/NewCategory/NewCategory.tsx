@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
 import { Modal } from '@mui/material';
-import CreateCategory from '@/components/list/bucket-list/Category/NewCategory/CreateCategory.tsx';
+import CreateCategory from '@/components/list/shopping-list/Category/NewCategory/CreateCategory.tsx';
 import './NewCategory.scss'
 
 
@@ -9,8 +9,6 @@ const NewCategory: React.FC = () => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-
-
 
   return (
     <div className='newCategory' onClick={handleOpen}>
@@ -21,8 +19,8 @@ const NewCategory: React.FC = () => {
       <Modal
         open={open}
         onClose={handleClose}
-        aria-labelledby='modal-bucket-list-new-category-title'
-        aria-describedby='modal-bucket-list-new-category-description'
+        aria-labelledby='modal-shopping-list-new-category-title'
+        aria-describedby='modal-shopping-list-new-category-description'
         onClick={(e) => e.stopPropagation()}
       >
         <div onClick={(e) => e.stopPropagation()}>

@@ -59,10 +59,10 @@ const CreateNote: React.FC<CreateNoteProps> = ({ handleClose }) => {
         </div>
 
         <div className='createNote__content__buttons'>
-          <Button variant='contained' size='small' onClick={handleClose}>
+          <Button variant='contained' size='medium' onClick={handleClose}>
             Cancel
           </Button>
-          <Button variant='contained' size='small' onClick={create}>
+          <Button variant='contained' size='medium' onClick={create}>
             Create
           </Button>
         </div>

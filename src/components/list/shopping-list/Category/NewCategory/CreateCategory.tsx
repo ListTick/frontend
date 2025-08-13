@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Button, Snackbar, TextField } from '@mui/material';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
+import '../../../bucket-list/Category/NewCategory/CreateCategory.scss'
+import { HexColorPicker } from 'react-colorful';
 import { ShoppingListCategoryRequest } from '@/types/shoppingListCategory.ts';
 import { createShoppingListCategory } from '@/api/shoppingListCategory.ts';
-import './CreateCategory.scss'
-import { HexColorPicker } from 'react-colorful';
 
 interface CreateCategoryProps {
   handleClose: () => void;
@@ -12,7 +12,7 @@ interface CreateCategoryProps {
 
 const CreateCategory: React.FC<CreateCategoryProps> = ({ handleClose }) => {
   const [name, setName] = useState<string>('');
-  const [colour, setColour] = useState<string>('');
+  const [colour, setColour] = useState<string>('#494d50');
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const queryClient = useQueryClient();
@@ -71,14 +71,14 @@ const CreateCategory: React.FC<CreateCategoryProps> = ({ handleClose }) => {
 
         <div className='createCategory__content__buttons'>
           <div className='createCategory__content__buttons__navigate'>
-            <Button variant='contained' size='small' onClick={handleReset}>
+            <Button variant='contained' size='medium' onClick={handleReset}>
               Reset
             </Button>
             <div className='createCategory__content__buttons__navigate__right'>
-              <Button variant='contained' size='small' onClick={handleClose}>
+              <Button variant='contained' size='medium' onClick={handleClose}>
                 Cancel
               </Button>
-              <Button variant='contained' size='small' onClick={create}>
+              <Button variant='contained' size='medium' onClick={create}>
                 Create
               </Button>
             </div>
