@@ -74,7 +74,7 @@ const ItemList: React.FC<ItemListProps> = ({ bucketList }) => {
             </div>
             {data &&
               data.length > 0 &&
-              data.map((item) => <Item item={item} key={item.id} selectedItems={selectedItems} handleSelect={handleSelect} />)}
+              data.map((item) => <Item item={item} selectedItems={selectedItems} handleSelect={handleSelect} />)}
             <NewItem bucketList={bucketList} />
 
             <Modal open={open} onClose={handleClose} onClick={(e) => e.stopPropagation()}>

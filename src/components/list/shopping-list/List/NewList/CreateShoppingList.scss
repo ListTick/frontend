@@ -15,6 +15,7 @@
   height: 75vh;
   max-height: 90vh;
 
+
   &__content {
     display: flex;
     flex-direction: column;
@@ -26,6 +27,7 @@
       flex-direction: column;
       gap: $small-gap;
       color: $accent-color;
+
 
       &__sharing {
         display: flex;
@@ -64,6 +66,7 @@
           gap: $small-gap;
         }
       }
+
     }
 
 

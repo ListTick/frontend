@@ -1,8 +1,8 @@
-import { BucketListCategoryResponse } from '@/types/bucketListCategory.ts';
+import { ShoppingListCategoryResponse } from '@/types/shoppingListCategory.ts';
 import ListItem from '@mui/material/ListItem';
 
 
-const Category = ({ category }: { category: BucketListCategoryResponse}) => {
+const Category = ({ category }: { category: ShoppingListCategoryResponse}) => {
   return (
     <ListItem className='category' key={category.id} style={{
       backgroundColor: category.colour,

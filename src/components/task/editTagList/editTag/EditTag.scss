@@ -10,7 +10,7 @@
   &__content {
     display: flex;
     width: 100%;
-    max-width: 400px;
+    max-width: 420px;
     min-width: 280px;
     height: 50vh;
     max-height: 90vh;
@@ -20,11 +20,12 @@
     background-color: $background-color;
     border: $border;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
+    padding: $large-gap;
 
     &-title {
       text-align: center;
-
+      width: 100%;
     }
 
     h3 {
@@ -35,7 +36,7 @@
     &--buttons {
       width: 100%;
       display: flex;
-      justify-content: space-around;
+      justify-content: space-between;
     }
   }
 }

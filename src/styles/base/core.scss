@@ -43,6 +43,7 @@ button,
 
 .MuiFormControl-root {
   border: none;
+  border-radius: $border-radius-base;
   background-color: $gray-800;
 }
 
@@ -54,7 +55,6 @@ button,
 }
 
 .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline {
-  border: $border;
 }
 
 .MuiInputBase-input,
@@ -100,6 +100,7 @@ button {
 
     &:hover {
       background-color: $accent-color;
+      color: $primary-color;
     }
   }
 }

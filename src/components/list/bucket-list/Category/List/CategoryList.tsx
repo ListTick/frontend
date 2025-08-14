@@ -1,11 +1,11 @@
 import React from 'react';
 import { useQuery } from '@tanstack/react-query';
+import { getAllBucketListCategoriesByAccountId } from '@/api/bucketListCategory.ts';
 import { CircularProgress } from '@mui/material';
 import Snackbar from '@mui/material/Snackbar';
-import CategoryClickable from '@/components/list/shopping-list/Category/CategoryClickable.tsx';
+import CategoryClickable from '@/components/list/bucket-list/Category/CategoryClickable.tsx';
 import './CategoryList.scss';
-import NewCategory from '@/components/list/shopping-list/Category/NewCategory/NewCategory.tsx';
-import { getAllBucketListCategoriesByAccountId } from '@/api/bucketListCategory.ts';
+import NewCategory from '@/components/list/bucket-list/Category/NewCategory/NewCategory.tsx';
 
 interface CategoryListProps {
   selectedCategoryId: string | null,

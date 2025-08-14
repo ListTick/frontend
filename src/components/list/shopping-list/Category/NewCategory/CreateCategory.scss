@@ -1,6 +1,6 @@
 @use '/src/styles/base/core.scss' as *;
 
-.createBucketList {
+.createCategory {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -12,7 +12,7 @@
   width: 90vw;
   max-width: 400px;
   min-width: 280px;
-  height: 75vh;
+  height: 50vh;
   max-height: 90vh;
 
 
@@ -21,30 +21,24 @@
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
+    gap: 25px;
 
     &__fields {
       display: flex;
       flex-direction: column;
       gap: $small-gap;
       color: $accent-color;
-      &__sharing {
-        display: flex;
-        flex-direction: column;
-        gap: $small-gap;
-
-        &--record {
-          display: flex;
-          flex-direction: row;
-          gap: $small-gap;
-        }
-
-      }
 
       h3 {
         display: flex;
         justify-content: center;
         align-items: center;
       }
+    }
+
+    &__color-picker {
+      display: flex;
+      justify-content: center;
     }
 
 

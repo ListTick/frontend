@@ -29,6 +29,11 @@
       color: $accent-color;
     }
 
+    .MuiFormControlLabel-label {
+      color: $accent-color;
+      margin-left: $margin-base;
+    }
+
     &__fields {
       display: flex;
       flex-direction: column;
@@ -41,13 +46,13 @@
         gap: $gap-base;
       }
     }
-
   }
 
   &__buttons {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+
   }
 
 }

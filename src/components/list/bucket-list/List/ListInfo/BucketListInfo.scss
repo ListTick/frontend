@@ -38,7 +38,6 @@
       p {
         margin-bottom: $margin-base;
       }
-
     }
 
     &__buttons {
@@ -47,8 +46,9 @@
       gap: $medium-gap;
 
       &__firstRow {
-        button {
-          color: #e20d0d;
+        button,
+        .MuiButton-root {
+          color: #e20d0d !important;
           border: solid 1px #e20d0d;
         }
       }

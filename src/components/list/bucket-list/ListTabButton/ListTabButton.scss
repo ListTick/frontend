@@ -8,11 +8,10 @@
   border: 2px $secondary-color;
   border-radius: $border-radius-base;
   height: 40px;
-  max-width: 320px;
+  max-width: 80vw;
 
   &.active {
-    background-color: $accent-color;
-    color: $accent-color;
+    background-color: $gray-800;
     border: 2px solid $accent-color;
   }
 

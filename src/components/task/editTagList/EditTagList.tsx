@@ -72,8 +72,8 @@ const EditTagList:React.FC<EditTagListProps> = ({handleCloseTagsEdit}) => {
             ))}
           </div>
           <div className='edit-tag-list__content--buttons'>
-          <Button variant='contained' size='medium' onClick={handleCloseTagsEdit}>Close</Button>
-          <Button variant='contained' size='medium' onClick={handleModalOpen}>Add Tag</Button>
+          <Button variant='contained' size='small' onClick={handleCloseTagsEdit}>Close</Button>
+          <Button variant='contained' size='small' onClick={handleModalOpen}>Add Tag</Button>
           </div>
         </div>
       </div>

@@ -69,22 +69,23 @@ const EditTag: React.FC<EditTagProps> = ({ tag, onClose }) => {
             type={'text'}
             value={name}
             onChange={(e) => setName(e.target.value)}
+            fullWidth
           ></TextField>
         </div>
 
         <HexColorPicker color={color} onChange={setColor} />
         <div className='edit-tag__content--buttons'>
-          <Button variant='contained' size='medium' onClick={onClose}>
+          <Button variant='contained' size='small' onClick={onClose}>
             Cancel
           </Button>
           {tag ? (
-            <Button variant='contained' size='medium' onClick={handleDelete}>
+            <Button variant='contained' size='small' onClick={handleDelete}>
               Delete
             </Button>
           ) : (
             <div></div>
           )}
-          <Button variant='contained' size='medium' onClick={handleTag}>
+          <Button variant='contained' size='small' onClick={handleTag}>
             {tag ? 'Update' : 'Create'}
           </Button>
         </div>

@@ -222,17 +222,17 @@ const EditGoal: React.FC<EditGoalProps> = ({ goalDetails, handleClose}) => {
 
         <div className='add-new-task__content--buttons' style={{ marginTop: 16 }}>
           {form.id ? (
-            <Button variant='contained' size='medium' color='error' onClick={handleDelete}>
+            <Button variant='contained' size='small' color='error' onClick={handleDelete}>
               Delete
             </Button>
           ) : (
             <div />
           )}
           <div className='add-new-task__content--buttons_right'>
-            <Button variant='contained' size='medium' onClick={handleClose}>
+            <Button variant='contained' size='small' onClick={handleClose}>
               Cancel
             </Button>
-            <Button variant='contained' size='medium' onClick={handleSave}>
+            <Button variant='contained' size='small' onClick={handleSave}>
               {form.id ? 'Update' : 'Create'}
             </Button>
           </div>

@@ -148,7 +148,7 @@ const CreateBucketList: React.FC<CreateBucketListProps> = ({ handleClose }) => {
         <div className='createBucketList__content__buttons'>
           <Button
             variant='text'
-            size='medium'
+            size='small'
             onClick={() => {
               setSelectedCategory(SHARED_LIST_ID);
               setShared(true);
@@ -160,15 +160,15 @@ const CreateBucketList: React.FC<CreateBucketListProps> = ({ handleClose }) => {
           </Button>
 
           <div className='createBucketList__content__buttons__navigate'>
-            <Button variant='contained' size='medium' onClick={handleReset}>
+            <Button variant='contained' size='small' onClick={handleReset}>
               Reset
             </Button>
 
             <div className='createBucketList__content__buttons__navigate__right'>
-              <Button variant='contained' size='medium' onClick={handleClose}>
+              <Button variant='contained' size='small' onClick={handleClose}>
                 Cancel
               </Button>
-              <Button variant='contained' size='medium' onClick={create}>
+              <Button variant='contained' size='small' onClick={create}>
                 Create
               </Button>
             </div>

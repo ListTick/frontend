@@ -28,6 +28,21 @@
       border: $border;
       border-radius: $border-radius-base;
       padding: $padding-base;
+
+      .MuiDialogTitle-root {
+        color: $accent-color;
+        font-weight: bold;
+      }
+
+      .MuiDialogContent-root {
+        color: $gray-500;
+      }
+
+      .MuiDialogActions-root {
+        display: flex;
+        justify-content: flex-end;
+        gap: $small-gap;
+      }
     }
 
   }
