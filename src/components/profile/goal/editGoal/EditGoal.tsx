@@ -222,9 +222,11 @@ const EditGoal: React.FC<EditGoalProps> = ({ goalDetails, handleClose}) => {
 
         <div className='add-new-task__content--buttons' style={{ marginTop: 16 }}>
           {form.id ? (
+            <div className='add-new-task__content--buttons_left'>
             <Button variant='contained' size='small' color='error' onClick={handleDelete}>
               Delete
             </Button>
+            </div>
           ) : (
             <div />
           )}
