@@ -12,25 +12,36 @@
   width: 90vw;
   max-width: 400px;
   min-width: 280px;
-  height: 75vh;
-  max-height: 90vh;
-
 
   &__content {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
-
     &__fields {
       display: flex;
       flex-direction: column;
       gap: $small-gap;
       color: $accent-color;
+      margin-bottom: $margin-base;
       &__sharing {
         display: flex;
         flex-direction: column;
         gap: $small-gap;
+        max-height: 240px;
+        overflow-y: auto;
+        margin-bottom: $medium-gap;
+        padding-right: 4px;
+
+        &::-webkit-scrollbar {
+          width: 5px;
+          background: transparent;
+        }
+
+        &::-webkit-scrollbar-thumb {
+          background: $accent-color;
+          border-radius: $border-radius-medium;
+        }
 
         &--record {
           display: flex;

@@ -46,15 +46,16 @@
         flex-direction: row;
         gap: $small-gap;
         margin-top: 5px;
-
+        padding-right: 5px;
       }
 
       &::-webkit-scrollbar {
-        height: 5px;
+        width: 5px;
         background: transparent;
       }
 
       &::-webkit-scrollbar-thumb {
+        width: 5px;
         background: $accent-color;
         border-radius: $border-radius-medium;
       }
