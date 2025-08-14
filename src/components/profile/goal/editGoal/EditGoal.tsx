@@ -132,7 +132,7 @@ const EditGoal: React.FC<EditGoalProps> = ({ goalDetails, handleClose}) => {
         message={errorMessage}
       />
       <div className='add-new-task__content'>
-        <h2>{form.id ? 'Edit Goal' : 'New Goal'}</h2>
+        <h3>{form.id ? 'Edit Goal' : 'New Goal'}</h3>
 
         <TextField
           id='name'
@@ -167,7 +167,7 @@ const EditGoal: React.FC<EditGoalProps> = ({ goalDetails, handleClose}) => {
           onChange={handleChange('priority')}
         />
 
-        <h2 style={{ marginTop: 16 }}>Dates</h2>
+        <h3>Dates</h3>
         <div className='add-new-task__content--pomodoro-duration'>
           <div>
           <h5 style={{
