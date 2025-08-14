@@ -3,7 +3,7 @@ import { Tag } from '@/types/tag';
 import './EditTagCard.scss';
 import Modal from '@mui/material/Modal';
 import EditTag from '../editTag/EditTag';
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 interface EditTagCardProps {
   tag: Tag;
@@ -13,9 +13,10 @@ const EditTagCard: React.FC<EditTagCardProps> = ({ tag }) => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   const handleModalOpen = () => {
-    setIsModalOpen(true);
+    setIsModalOpen(prev => !prev);
   };
   const handleModalClose = () => {
+    console.log('Modal closed');
     setIsModalOpen(false);
   };
   return (
@@ -33,8 +34,8 @@ const EditTagCard: React.FC<EditTagCardProps> = ({ tag }) => {
         aria-labelledby='modal-tagedit-title'
         aria-describedby='modal-tagedit-description'
       >
-        <div>
-          <EditTag tag={tag} onClose={handleModalClose} />
+        <div  onClick={e => e.stopPropagation()}>
+          <EditTag tag={tag} handleClose={() => setIsModalOpen(false)} />
         </div>
       </Modal>
     </div>

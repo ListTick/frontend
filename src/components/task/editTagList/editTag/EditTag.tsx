@@ -8,9 +8,9 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 interface EditTagProps {
   tag?: Tag;
-  onClose: () => void;
+  handleClose: () => void;
 }
-const EditTag: React.FC<EditTagProps> = ({ tag, onClose }) => {
+const EditTag: React.FC<EditTagProps> = ({ tag, handleClose }) => {
   const queryClient = useQueryClient();
   const id = tag?.id || '';
   const [name, setName] = useState(tag?.name || '');
@@ -20,7 +20,7 @@ const EditTag: React.FC<EditTagProps> = ({ tag, onClose }) => {
     mutationFn: () => updateTag({ name, color }, id),
     onSuccess: () => {
       void queryClient.invalidateQueries({ queryKey: ['tags'] });
-      onClose();
+      handleClose();
     }
   });
 
@@ -28,7 +28,7 @@ const EditTag: React.FC<EditTagProps> = ({ tag, onClose }) => {
     mutationFn: () => createTag({ name, color }),
     onSuccess: () => {
       void queryClient.invalidateQueries({ queryKey: ['tags'] });
-      onClose();
+      handleClose();
     }
   });
 
@@ -41,7 +41,7 @@ const EditTag: React.FC<EditTagProps> = ({ tag, onClose }) => {
     },
     onSuccess: () => {
       void queryClient.invalidateQueries({ queryKey: ['tags'] });
-      onClose();
+      handleClose();
     }
   });
 
@@ -75,19 +75,24 @@ const EditTag: React.FC<EditTagProps> = ({ tag, onClose }) => {
 
         <HexColorPicker color={color} onChange={setColor} />
         <div className='edit-tag__content--buttons'>
-          <Button variant='contained' size='small' onClick={onClose}>
-            Cancel
-          </Button>
           {tag ? (
+            <div className='edit-tag__content--buttons-delete'>
             <Button variant='contained' size='small' onClick={handleDelete}>
               Delete
             </Button>
+            </div>
           ) : (
             <div></div>
           )}
+          <div className='edit-tag__content--buttons-edit'>
+          <Button variant='contained' size='small' onClick={handleClose}>
+            Cancel
+          </Button>
+
           <Button variant='contained' size='small' onClick={handleTag}>
             {tag ? 'Update' : 'Create'}
           </Button>
+          </div>
         </div>
       </div>
     </div>

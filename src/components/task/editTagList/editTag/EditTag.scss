@@ -36,7 +36,22 @@
     &--buttons {
       width: 100%;
       display: flex;
+      flex-direction: column;
       justify-content: space-between;
+      gap: $gap-base;
+
+        &-delete {
+          button,
+          .MuiButton-root {
+            color: #e20d0d !important;
+          }
+        }
+
+      &-edit {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+      }
     }
   }
 }

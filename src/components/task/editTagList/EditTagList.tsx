@@ -60,8 +60,8 @@ const EditTagList:React.FC<EditTagListProps> = ({handleCloseTagsEdit}) => {
                 aria-labelledby='modal-tagedit-title'
                 aria-describedby='modal-tagedit-description'
               >
-                <div>
-                  <EditTag onClose={handleModalClose} />
+                <div onClick={(e) => e.stopPropagation()}>
+                  <EditTag handleClose={handleModalClose} />
                 </div>
               </Modal>
             )}
