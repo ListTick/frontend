@@ -7,6 +7,7 @@
   border-radius: $border-radius-base;
   border: $border;
   justify-content: space-between;
+  max-width: 900px;
 
   &__main {
     p:empty {
@@ -16,6 +17,11 @@
     &--title {
       display: flex;
       justify-content: space-between;
+    }
+
+    &__description {
+        color: $accent-color;
+
     }
 
     &--priority-dates {

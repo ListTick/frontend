@@ -12,6 +12,7 @@
 
   &.active {
     background-color: $gray-800;
+    border: 2px solid $accent-color;
   }
 
   &:hover {

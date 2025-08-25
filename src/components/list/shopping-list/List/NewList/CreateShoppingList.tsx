@@ -161,7 +161,7 @@ const CreateShoppingList: React.FC<CreateShoppingListProps> = ({ handleClose }) 
         </div>
         <div className='createShoppingList__content__buttons'>
           <Button
-            variant='text'
+            variant='contained'
             size='small'
             onClick={() => {
               setSelectedCategory(SHARED_LIST_ID);

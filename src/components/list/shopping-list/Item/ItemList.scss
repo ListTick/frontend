@@ -20,19 +20,6 @@
         font-family: $font-family-primary;
         color: $accent-color;
       }
-
-      button,
-      .MuiButton-root {
-        background-color: $gray-800;
-        color: $accent-color;
-        border: $border;
-        border-radius: $border-radius-medium;
-        padding: $padding-base;
-        font-weight: normal;
-        &:hover {
-          background-color: $gray-700;
-        }
-      }
     }
 
     &__confirm-delete {
@@ -70,7 +57,6 @@
         &.MuiButton-contained {
           background-color: $accent-color;
           color: $background-color;
-
           &:hover {
             background-color: $accent-color;
           }
@@ -79,10 +65,7 @@
 
 
       &--add-expense {
-
       }
-
-
     }
 
   }

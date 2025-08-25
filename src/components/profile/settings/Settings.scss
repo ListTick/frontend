@@ -2,4 +2,12 @@
 
 .settings {
   padding: $padding-base;
+
+  h2 {
+    color: $accent-color;
+  }
+
+  &__colors {
+    max-width: 120px;
+  }
 }

@@ -12,7 +12,7 @@ interface CreateCategoryProps {
 
 const CreateCategory: React.FC<CreateCategoryProps> = ({ handleClose }) => {
   const [name, setName] = useState<string>('');
-  const [colour, setColour] = useState<string>('');
+  const [colour, setColour] = useState<string>('#494d50');
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const queryClient = useQueryClient();

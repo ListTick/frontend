@@ -13,10 +13,10 @@
     flex-direction: column;
     background-color: $background-color;
     border-radius: $border-radius-base;
+    border: $border;
     gap: $gap-base;
     margin: 0 auto;
-
-    h2 {
+    h3 {
         color: $accent-color;
         text-align: center;
     }
@@ -36,6 +36,12 @@
       display: flex;
       justify-content: space-between;
 
+      &_left {
+        button,
+        .MuiButton-root {
+          color: #e20d0d !important;
+        }
+      }
       &_right {
         display: flex;
         flex-direction: row;

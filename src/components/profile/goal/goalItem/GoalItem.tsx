@@ -34,7 +34,12 @@ const GoalItem: React.FC<GoalItemProps> = ({ goal }) => {
         <div className="goalItem__main--content">
           {goal.description && (
             <div className="goalItem__description">
-              <p>{goal.description}</p>
+              <p style={{
+                whiteSpace: 'pre-wrap',
+                overflowWrap: 'break-word',
+                wordBreak: 'break-word',
+                maxWidth: '95%',
+              }}>{goal.description}</p>
             </div>
           )}
         </div>

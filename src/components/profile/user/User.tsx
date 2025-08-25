@@ -30,7 +30,7 @@ const User = () => {
         <strong>Last name:</strong> {profile?.lastName}
       </p>
       <div className='user__logout'>
-      <Button variant='contained' size='medium' onClick={() => handleLogout()}>
+      <Button variant='contained' size='small' onClick={() => handleLogout()}>
         Logout
       </Button>
       </div>

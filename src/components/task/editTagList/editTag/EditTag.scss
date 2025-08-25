@@ -5,19 +5,53 @@
   justify-content: center;
   align-items: center;
   height: 100dvh;
+  width: 100vw;
 
   &__content {
-    width: 350px;
     display: flex;
+    width: 100%;
+    max-width: 420px;
+    min-width: 280px;
+    height: 50vh;
+    max-height: 90vh;
     flex-direction: column;
     gap: $gap-base;
     border-radius: $border-radius-base;
-    background-color: $secondary-color;
-    padding: 1rem;
+    background-color: $background-color;
+    border: $border;
+    align-items: center;
+    justify-content: space-between;
+    padding: $large-gap;
+
+    &-title {
+      text-align: center;
+      width: 100%;
+    }
+
+    h3 {
+      color: $accent-color;
+      padding-bottom: $gap-base;
+    }
 
     &--buttons {
+      width: 100%;
       display: flex;
+      flex-direction: column;
       justify-content: space-between;
+      gap: $gap-base;
+
+        &-delete {
+          button,
+          .MuiButton-root {
+            color: #e20d0d !important;
+          }
+        }
+
+      &-edit {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+      }
     }
   }
 }

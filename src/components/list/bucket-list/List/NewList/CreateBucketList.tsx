@@ -147,7 +147,7 @@ const CreateBucketList: React.FC<CreateBucketListProps> = ({ handleClose }) => {
         </div>
         <div className='createBucketList__content__buttons'>
           <Button
-            variant='text'
+            variant='contained'
             size='small'
             onClick={() => {
               setSelectedCategory(SHARED_LIST_ID);

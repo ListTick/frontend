@@ -83,7 +83,7 @@ const Options: React.FC<OptionsProps> = ({ toggleShowArchivedTasks, isArchivedTa
         aria-describedby='modal-taskedit-description'
       >
         <div>
-          <EditTagList />
+          <EditTagList handleCloseTagsEdit={handleCloseTagsEdit} />
         </div>
       </Modal>
     </div>

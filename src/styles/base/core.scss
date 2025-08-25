@@ -32,3 +32,102 @@ button,
     filter: brightness(85%);
   }
 }
+
+.MuiInputLabel-root {
+  color: $accent-color !important;
+
+  &.Mui-focused {
+    color: $accent-color !important;
+  }
+}
+
+.MuiFormControl-root {
+  border: none;
+  border-radius: $border-radius-base;
+  background-color: $gray-800;
+}
+
+.MuiInputBase-root,
+.MuiOutlinedInput-root {
+  background-color: $gray-800;
+  border: $border;
+  border-radius: $border-radius-base;
+}
+
+.MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline {
+}
+
+.MuiInputBase-input,
+.MuiSelect-select,
+input {
+  -webkit-text-fill-color: $gray-500 !important;
+  color: $gray-500;
+  border-radius: $border-radius-base;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+.MuiCheckbox-root {
+  color: $accent-color !important;
+  border-radius: $border-radius-base;
+  vertical-align: middle;
+
+}
+
+.Mui-checked {
+  color: $accent-color !important;
+}
+
+.MuiFormControlLabel-label {
+  color: $accent-color;
+  margin-left: $margin-base;
+}
+
+.MuiButton-root,
+button {
+  background-color: $gray-800;
+  color: $accent-color;
+  border: $border;
+  border-radius: $border-radius-base;
+  padding: $padding-base;
+  font-weight: normal;
+
+  &:hover {
+    background-color: $gray-700;
+  }
+
+  &.MuiButton-contained {
+    color: $accent-color;
+
+    &:hover {
+      background-color: $accent-color;
+      color: $primary-color;
+    }
+  }
+}
+
+/* Dialog */
+.MuiDialogTitle-root {
+  color: $accent-color;
+  font-weight: bold;
+}
+
+.MuiDialogContent-root {
+  color: $gray-500;
+}
+
+.MuiDialogActions-root {
+  display: flex;
+  justify-content: flex-end;
+  gap: $small-gap;
+}
+
+/* Webkit-based (Chrome, Edge, Safari) */
+.MuiInputBase-input[type=number]::-webkit-outer-spin-button,
+.MuiInputBase-input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+/* Firefox */
+.MuiInputBase-input[type=number] {
+  -moz-appearance: textfield;
+}
