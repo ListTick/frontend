@@ -62,9 +62,9 @@ const NewItem: React.FC<NewItemProps> = ({ shoppingList }) => {
             sx={{ flex: 1, width: 400 }}
           />
           <TextField
-            id='value'
-            name='value'
-            label='Value'
+            id='amount'
+            name='amount'
+            label='Amount'
             variant='outlined'
             size='small'
             type='number'

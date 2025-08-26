@@ -27,9 +27,9 @@ const Item: React.FC<ItemProps> = ({ item, selectedItems, handleSelect }) => {
           />
           {item.value && (
             <TextField
-              id='value'
-              name='value'
-              label='Value'
+              id='amount'
+              name='amount'
+              label='Amount'
               variant='outlined'
               size='small'
               type='text'
