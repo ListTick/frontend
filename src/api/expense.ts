@@ -15,6 +15,16 @@ export const getExpenseById = async (id: string): Promise<ExpenseResponse> => {
   }
 }
 
+export const getExpenseBySharedId = async (id: string): Promise<ExpenseResponse> => {
+  try {
+    const response = await api.get(`${ExpenseAPI.EXPENSES}/${id}/shared`);
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching expense by shared ID: ', error);
+    throw error;
+  }
+}
+
 export const getAllExpensesByAccountId = async (): Promise<ExpenseResponse[]> => {
   try {
     const response = await api.get(ExpenseAPI.EXPENSES);

@@ -25,7 +25,7 @@ interface DeleteItemProps {
 }
 
 const DeleteItem: React.FC<DeleteItemProps> = ({ selectedItems, clearSelectedItems, shoppingList, handleClose }) => {
-  const [amount, setAmount] = useState<number>(0);
+  const [amount, setAmount] = useState<number | null>(null);
   const [currency, setCurrency] = useState<string>('PLN');
   const [reimbursed, setReimbursed] = useState<boolean>(false);
   const [addExpense, setAddExpense] = useState<boolean>(false);
@@ -54,11 +54,11 @@ const DeleteItem: React.FC<DeleteItemProps> = ({ selectedItems, clearSelectedIte
   });
 
   const deleteItems = () => {
-    Promise.all(
-      selectedItems.map((id) =>
-        deactivateItemMutation.mutateAsync(id)
-      )
-    ).then(() => {
+    if (addExpense && (amount === null || amount <= 0)) {
+      setErrorMessage('Value has to be greater than 0');
+      return;
+    }
+    Promise.all(selectedItems.map((id) => deactivateItemMutation.mutateAsync(id))).then(() => {
       void queryClient.invalidateQueries({ queryKey: ['shopping-list-items', shoppingList.id] });
       if (addExpense) {
         const expenseRequest: ExpenseRequest = {
@@ -94,9 +94,9 @@ const DeleteItem: React.FC<DeleteItemProps> = ({ selectedItems, clearSelectedIte
           <div className='deleteItem-shopping__content__fields'>
             <div className='deleteItem-shopping__content__fields__expense'>
               <TextField
-                id='amount'
-                name='amount'
-                label='Amount'
+                id='value'
+                name='value'
+                label='Value'
                 variant='outlined'
                 type='number'
                 size='small'
