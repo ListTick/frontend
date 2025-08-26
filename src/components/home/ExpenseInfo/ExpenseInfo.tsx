@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { ExpenseResponse, ExpenseShareResponse } from '@/types/expense.ts';
-import { Button, TextField } from '@mui/material';
+import { Button, Snackbar, TextField } from '@mui/material';
 import { ItemResponse } from '@/types/shoppingListItem';
 import './ExpenseInfo.scss'
+import { useMutation } from '@tanstack/react-query';
+import { getExpenseBySharedId } from '@/api/expense.ts';
+import { getShoppingListById } from '@/api/shoppingList.ts';
+import { ShoppingListResponse } from '@/types/shoppingList.ts';
 
 interface ExpenseInfoProps {
   object: ExpenseResponse | ExpenseShareResponse;
@@ -11,12 +15,33 @@ interface ExpenseInfoProps {
 }
 
 const ExpenseInfo: React.FC<ExpenseInfoProps> = ({ object, expenses, handleClose }) => {
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [fetchedExpenses, setFetchedExpenses] = useState<ExpenseResponse[]>([]);
+
+  const getExpenseMutation = useMutation({
+    mutationKey: ['get-expense'],
+    mutationFn: (id: string) => getExpenseBySharedId(id),
+    onSuccess: (data) => {
+      setFetchedExpenses((prev) =>
+        prev.some((expense) => expense.id === data.id)
+          ? prev
+          : [...prev, data]
+      );
+    },
+    onError: (error: any) => {
+      setErrorMessage(error?.response?.data?.message || 'An unexpected error occurred.');
+    }
+  });
+
   const isShare = (object: ExpenseResponse | ExpenseShareResponse): object is ExpenseShareResponse => {
     return (object as ExpenseShareResponse).expenseId !== undefined;
   };
 
   const getExpense = (expenseId: string) => {
-    return expenses.find((expense) => expense.id === expenseId);
+    return (
+      expenses.find((expense) => expense.id === expenseId) ||
+      fetchedExpenses.find((expense) => expense.id === expenseId)
+    );
   };
 
   const items = (): ItemResponse[] => {
@@ -27,8 +52,23 @@ const ExpenseInfo: React.FC<ExpenseInfoProps> = ({ object, expenses, handleClose
     }
   };
 
+  useEffect(() => {
+    if (isShare(object)) {
+      const localExpense = expenses.find((expense) => expense.id === object.expenseId);
+      if (!localExpense) {
+        getExpenseMutation.mutate(object.id);
+      }
+    }
+  }, [object, expenses]);
+
   return (
     <div className='expenseInfo'>
+      <Snackbar
+        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+        open={errorMessage != null}
+        autoHideDuration={2000}
+        message={errorMessage}
+      />
       <div className='expenseInfo__content'>
         <h3>Expense Details</h3>
         <div className='expenseInfo__content__fields'>
@@ -91,9 +131,9 @@ const ExpenseInfo: React.FC<ExpenseInfoProps> = ({ object, expenses, handleClose
               disabled={true}
             />
               <TextField
-                id='itemValue'
-                name='itemValue'
-                label='ItemValue'
+                id='ItemAmount'
+                name='ItemAmount'
+                label='ItemAmount'
                 variant='outlined'
                 type='text'
                 value={item.value !== null ? item.value : '-'}
